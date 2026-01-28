@@ -4,80 +4,170 @@
         "kraj": "MS - Lendavska",
         "lat": 46.6591,
         "lon": 16.1622,
-        "vir": "Facebook",
+        "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "Prekmurje",
         "kraj": "MS - Noršinska",
         "lat": 46.6655,
         "lon": 16.1811,
-        "vir": "Facebook",
+        "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "Prekmurje",
-        "kraj": "Beltinci center",
-        "lat": 46.6047,
-        "lon": 16.2383,
-        "vir": "Facebook",
-        "opis": "Kontrola prometa",
+        "kraj": "MS - Panonska",
+        "lat": 46.6555,
+        "lon": 16.1711,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "Prekmurje",
         "kraj": "Gederovci",
         "lat": 46.6655,
         "lon": 16.0488,
-        "vir": "Facebook",
-        "opis": "Radar v naselju",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Prekmurje",
+        "kraj": "Vaneča",
+        "lat": 46.7214,
+        "lon": 16.1633,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "50 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Prekmurje",
+        "kraj": "Petanjci",
+        "lat": 46.6455,
+        "lon": 16.0588,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "50 km/h",
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "Prekmurje",
         "kraj": "Ljutomer center",
         "lat": 46.5181,
         "lon": 16.1975,
-        "vir": "Facebook",
-        "opis": "Možna kontrola",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
-        "regija": "Prekmurje",
-        "kraj": "Radenci",
-        "lat": 46.6433,
-        "lon": 16.0422,
-        "vir": "Facebook",
-        "opis": "Merjenje hitrosti",
-        "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Lendava obvoznica",
-        "lat": 46.5622,
-        "lon": 16.4511,
-        "vir": "Facebook",
-        "opis": "Radar / Kamere",
+        "regija": "Maribor",
+        "kraj": "MB - Ptujska cesta",
+        "lat": 46.5385,
+        "lon": 15.6662,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "70 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
-        "regija": "Prekmurje",
-        "kraj": "Črenšovci",
-        "lat": 46.5711,
-        "lon": 16.2888,
-        "vir": "Facebook",
-        "opis": "Kontrola",
+        "regija": "Maribor",
+        "kraj": "MB - Tržaška",
+        "lat": 46.5355,
+        "lon": 15.6511,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "70 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Celje",
+        "kraj": "CE - Mariborska",
+        "lat": 46.2461,
+        "lon": 15.2711,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Slov. Bistrica",
+        "kraj": "Bistrica - obvoznica",
+        "lat": 46.3922,
+        "lon": 15.5811,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "60 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Ljubljana",
+        "kraj": "LJ - Celovška (pri McDonald'su)",
+        "lat": 46.0792,
+        "lon": 14.4841,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "60 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Ljubljana",
+        "kraj": "LJ - Dunajska",
+        "lat": 46.0855,
+        "lon": 14.5111,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "60 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Ljubljana",
+        "kraj": "LJ - Roška",
+        "lat": 46.0455,
+        "lon": 14.5211,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "50 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "Ljubljana",
+        "kraj": "LJ - Dolenjska",
+        "lat": 46.0311,
+        "lon": 14.5311,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "50 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "AC",
+        "kraj": "AC - Predor Golovec",
+        "lat": 46.0382,
+        "lon": 14.5422,
+        "vir": "DARS",
+        "opis": "SEKCIJSKO MERJENJE",
+        "omejitev": "100 km/h",
+        "cas": "28.01.2026 ob 09:39"
+    },
+    {
+        "regija": "AC",
+        "kraj": "AC - Viadukt Črni Kal",
+        "lat": 45.5533,
+        "lon": 13.8811,
+        "vir": "DARS",
+        "opis": "RADAR / KAMERA",
+        "omejitev": "100 km/h",
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "AC",
@@ -85,68 +175,28 @@
         "lat": 46.3455,
         "lon": 15.4722,
         "vir": "DARS",
-        "opis": "Nadzorna točka",
+        "opis": "NADZORNA TOČKA",
         "omejitev": "130 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
         "regija": "AC",
-        "kraj": "AC - Golovec",
-        "lat": 46.0382,
-        "lon": 14.5422,
+        "kraj": "AC - Lom",
+        "lat": 45.8922,
+        "lon": 14.3511,
         "vir": "DARS",
-        "opis": "Sekcijsko merjenje",
-        "omejitev": "100 km/h",
-        "cas": "28.01.2026 ob 09:31"
-    },
-    {
-        "regija": "AC",
-        "kraj": "AC - Črni Kal",
-        "lat": 45.5533,
-        "lon": 13.8811,
-        "vir": "DARS",
-        "opis": "Kamera / Nadzor",
-        "omejitev": "100 km/h",
-        "cas": "28.01.2026 ob 09:31"
-    },
-    {
-        "regija": "AC",
-        "kraj": "AC - Lukovica",
-        "lat": 46.1681,
-        "lon": 14.6851,
-        "vir": "DARS",
-        "opis": "Nadzor prometa",
+        "opis": "NADZORNA TOČKA",
         "omejitev": "130 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "cas": "28.01.2026 ob 09:39"
     },
     {
-        "regija": "Ljubljana",
-        "kraj": "Celovška cesta",
-        "lat": 46.0792,
-        "lon": 14.4841,
-        "vir": "Radarbot",
-        "opis": "Stacionarni radar",
-        "omejitev": "60 km/h",
-        "cas": "28.01.2026 ob 09:31"
-    },
-    {
-        "regija": "Maribor",
-        "kraj": "Ptujska cesta",
-        "lat": 46.5385,
-        "lon": 15.6662,
-        "vir": "Radarbot",
-        "opis": "Radar na križišču",
-        "omejitev": "70 km/h",
-        "cas": "28.01.2026 ob 09:31"
-    },
-    {
-        "regija": "Celje",
-        "kraj": "Mariborska",
-        "lat": 46.2461,
-        "lon": 15.2711,
-        "vir": "Radarbot",
-        "opis": "Radar",
-        "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:31"
+        "regija": "Slovenija",
+        "kraj": "AMZS Obvestilo",
+        "lat": 46.1,
+        "lon": 14.8,
+        "vir": "AMZS",
+        "opis": "AMZS javi: Aktivne meritve hitrosti!",
+        "omejitev": "-",
+        "cas": "28.01.2026 ob 09:39"
     }
 ]
