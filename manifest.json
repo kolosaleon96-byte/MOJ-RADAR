@@ -1,1 +1,15 @@
-
+{
+  "name": "Radar SLO Pro",
+  "short_name": "Radar",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#ff1744",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
