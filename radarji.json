@@ -1,6 +1,6 @@
 [
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "AC Golovec (Predor)",
         "cas": "24/7",
         "lat": 46.0382,
@@ -8,7 +8,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "LJ - Celovška",
         "cas": "24/7",
         "lat": 46.0792,
@@ -16,7 +16,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "LJ - Dunajska",
         "cas": "24/7",
         "lat": 46.0841,
@@ -24,7 +24,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "MB - Ptujska cesta",
         "cas": "24/7",
         "lat": 46.5385,
@@ -32,7 +32,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "CE - Mariborska",
         "cas": "24/7",
         "lat": 46.2461,
@@ -40,7 +40,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "KP - Šmarska cesta",
         "cas": "24/7",
         "lat": 45.5401,
@@ -48,7 +48,7 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Radarbot",
         "kraj": "MS - Lendavska",
         "cas": "24/7",
         "lat": 46.6591,
@@ -56,58 +56,42 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Tepanje",
-        "cas": "24/7",
-        "lat": 46.3455,
-        "lon": 15.4722,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Lukovica",
-        "cas": "24/7",
-        "lat": 46.1681,
-        "lon": 14.6851,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "AMZS\nMotorevija\nCenter varne vožnje\nŠola vožnje\nAvto-moto šp",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "Članstvo\n\n\n\nČlanstvo\n Nazaj\n\n\n\n\n\n      Zakaj (p)ostati član?",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "Varna mobilnost\n\n\n\nVarna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS te",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "Varna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS testi\n\n\n\n\n\n      Razi",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "Projekti in kampanje\n\n\n\nProjekti in kampanje\n Nazaj\n\n\n\n\n\n   ",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
+        "regija": "AMZS",
         "kraj": "Projekti in kampanje\n Nazaj\n\n\n\n\n\n      Prva pomoč - obnovitv",
         "lat": 46.5547,
         "lon": 15.6459,
@@ -115,32 +99,32 @@
     },
     {
         "regija": "Kolpa-Ljubljana",
-        "kraj": "FB Javljanje: Kolpa-Ljubljana",
-        "cas": "08:03",
+        "kraj": "FB: Kolpa-Ljubljana",
+        "cas": "08:10",
         "lat": 46.0569,
         "lon": 14.5058,
         "vir": "Facebook"
     },
     {
         "regija": "Ptuj in okolica",
-        "kraj": "FB Javljanje: Ptuj in okolica",
-        "cas": "08:03",
+        "kraj": "FB: Ptuj in okolica",
+        "cas": "08:10",
         "lat": 46.42,
         "lon": 15.87,
         "vir": "Facebook"
     },
     {
         "regija": "Kranj",
-        "kraj": "FB Javljanje: Kranj",
-        "cas": "08:03",
+        "kraj": "FB: Kranj",
+        "cas": "08:10",
         "lat": 46.2428,
         "lon": 14.3555,
         "vir": "Facebook"
     },
     {
         "regija": "Postojna",
-        "kraj": "FB Javljanje: Postojna",
-        "cas": "08:03",
+        "kraj": "FB: Postojna",
+        "cas": "08:10",
         "lat": 45.7751,
         "lon": 14.2122,
         "vir": "Facebook"
