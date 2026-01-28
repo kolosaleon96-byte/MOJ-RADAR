@@ -4,149 +4,109 @@
         "kraj": "MS - Lendavska",
         "lat": 46.6591,
         "lon": 16.1622,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     },
     {
         "regija": "Prekmurje",
         "kraj": "MS - Noršinska",
         "lat": 46.6655,
         "lon": 16.1811,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     },
     {
         "regija": "Prekmurje",
         "kraj": "MS - Panonska",
         "lat": 46.6555,
         "lon": 16.1711,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     },
     {
         "regija": "Prekmurje",
         "kraj": "Gederovci",
         "lat": 46.6655,
         "lon": 16.0488,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Petanjci",
-        "lat": 46.6455,
-        "lon": 16.0588,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
-        "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Vaneča",
-        "lat": 46.7214,
-        "lon": 16.1633,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
-        "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Beltinci",
-        "lat": 46.6047,
-        "lon": 16.2383,
-        "vir": "Policija",
-        "opis": "FIKSNA TOČKA: Policija",
-        "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Radenci",
-        "lat": 46.6433,
-        "lon": 16.0422,
-        "vir": "Policija",
-        "opis": "FIKSNA TOČKA: Policija",
-        "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Ljutomer",
-        "lat": 46.5181,
-        "lon": 16.1975,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
-        "omejitev": "50",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Lendava AC",
-        "lat": 46.5511,
-        "lon": 16.4411,
-        "vir": "Kamera",
-        "opis": "FIKSNA TOČKA: Kamera",
-        "omejitev": "130",
-        "cas": "28.01.2026 ob 09:43"
-    },
-    {
-        "regija": "MB",
-        "kraj": "MB - Ptujska",
-        "lat": 46.5385,
-        "lon": 15.6662,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
-        "omejitev": "70",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     },
     {
         "regija": "LJ",
         "kraj": "LJ - Celovška",
         "lat": 46.0792,
         "lon": 14.4841,
-        "vir": "Radar",
-        "opis": "FIKSNA TOČKA: Radar",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
         "omejitev": "60",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     },
     {
-        "regija": "AC",
-        "kraj": "AC - Golovec",
-        "lat": 46.0382,
-        "lon": 14.5422,
-        "vir": "Nadzor",
-        "opis": "FIKSNA TOČKA: Nadzor",
-        "omejitev": "100",
-        "cas": "28.01.2026 ob 09:43"
+        "regija": "MB",
+        "kraj": "MB - Ptujska",
+        "lat": 46.5385,
+        "lon": 15.6662,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI RADAR",
+        "omejitev": "70",
+        "cas": "28.01.2026 ob 09:47"
     },
     {
-        "regija": "AC",
-        "kraj": "AC - Tepanje",
-        "lat": 46.3455,
-        "lon": 15.4722,
-        "vir": "Nadzor",
-        "opis": "FIKSNA TOČKA: Nadzor",
-        "omejitev": "130",
-        "cas": "28.01.2026 ob 09:43"
+        "regija": "Pomurje",
+        "kraj": "Beltinci",
+        "lat": 46.6047,
+        "lon": 16.2383,
+        "vir": "Facebook",
+        "opis": "Kontrola prometa (FB)",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 09:47"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Ljutomer",
+        "lat": 46.5181,
+        "lon": 16.1975,
+        "vir": "Facebook",
+        "opis": "Poročilo s terena (FB)",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 09:47"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Radenci",
+        "lat": 46.6433,
+        "lon": 16.0422,
+        "vir": "Facebook",
+        "opis": "Merjenje hitrosti (FB)",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 09:47"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Murska Sobota - Center",
+        "lat": 46.658,
+        "lon": 16.162,
+        "vir": "Facebook",
+        "opis": "Aktivna kontrola (FB)",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 09:47"
     },
     {
         "regija": "Slovenija",
-        "kraj": "Obvestilo AMZS",
-        "lat": 46.05,
-        "lon": 14.5,
+        "kraj": "AMZS Radar",
+        "lat": 46.12,
+        "lon": 14.82,
         "vir": "AMZS",
-        "opis": "Uradno poročilo: AMZS",
+        "opis": "AMZS: Meritve hitrosti!",
         "omejitev": "-",
-        "cas": "28.01.2026 ob 09:43"
+        "cas": "28.01.2026 ob 09:47"
     }
 ]
