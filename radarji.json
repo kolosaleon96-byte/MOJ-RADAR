@@ -6,7 +6,7 @@
         "lon": 16.1622,
         "vir": "Facebook",
         "opis": "Radar (stacionarni) - aktivno",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Prekmurje",
@@ -15,7 +15,7 @@
         "lon": 16.1811,
         "vir": "Facebook",
         "opis": "Radar (stacionarni) - preverjeno",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Prekmurje",
@@ -24,7 +24,7 @@
         "lon": 16.2383,
         "vir": "Facebook",
         "opis": "Policijska kontrola (možna selekcija)",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Prekmurje",
@@ -33,7 +33,7 @@
         "lon": 16.4511,
         "vir": "Facebook",
         "opis": "Poostren nadzor prometa in kamer",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Prekmurje",
@@ -42,7 +42,7 @@
         "lon": 16.0488,
         "vir": "Facebook",
         "opis": "Radar v naselju (omejitev 50)",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Prekmurje",
@@ -51,7 +51,7 @@
         "lon": 16.0422,
         "vir": "Facebook",
         "opis": "Merjenje hitrosti (ročni radar)",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "AC",
@@ -60,7 +60,7 @@
         "lon": 14.5422,
         "vir": "DARS",
         "opis": "Sekcijsko merjenje hitrosti v predoru",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "AC",
@@ -69,7 +69,7 @@
         "lon": 15.4722,
         "vir": "DARS",
         "opis": "Nadzorna točka DARS / Policija",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "AC",
@@ -78,7 +78,7 @@
         "lon": 14.6851,
         "vir": "DARS",
         "opis": "Kamera in nadzor prometa",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "AC",
@@ -87,7 +87,7 @@
         "lon": 13.8811,
         "vir": "DARS",
         "opis": "Kamera DARS - močan veter / nadzor",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Ljubljana",
@@ -96,7 +96,7 @@
         "lon": 14.4841,
         "vir": "Radarbot",
         "opis": "Stacionarni radar (v obe smeri)",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Maribor",
@@ -105,7 +105,7 @@
         "lon": 15.6662,
         "vir": "Radarbot",
         "opis": "Radar na križišču",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     },
     {
         "regija": "Celje",
@@ -114,6 +114,6 @@
         "lon": 15.2711,
         "vir": "Radarbot",
         "opis": "Radar v naselju",
-        "cas": "28.01.2026 ob 09:11"
+        "cas": "28.01.2026 ob 09:12"
     }
 ]
