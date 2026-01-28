@@ -7,7 +7,7 @@
         "vir": "Facebook",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -17,7 +17,7 @@
         "vir": "Facebook",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -27,7 +27,7 @@
         "vir": "Facebook",
         "opis": "Kontrola prometa",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -37,7 +37,7 @@
         "vir": "Facebook",
         "opis": "Radar v naselju",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -47,7 +47,7 @@
         "vir": "Facebook",
         "opis": "Možna kontrola",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -57,7 +57,7 @@
         "vir": "Facebook",
         "opis": "Merjenje hitrosti",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -67,7 +67,7 @@
         "vir": "Facebook",
         "opis": "Radar / Kamere",
         "omejitev": "70 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Prekmurje",
@@ -77,7 +77,7 @@
         "vir": "Facebook",
         "opis": "Kontrola",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "AC",
@@ -87,7 +87,7 @@
         "vir": "DARS",
         "opis": "Nadzorna točka",
         "omejitev": "130 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "AC",
@@ -97,7 +97,7 @@
         "vir": "DARS",
         "opis": "Sekcijsko merjenje",
         "omejitev": "100 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "AC",
@@ -107,7 +107,7 @@
         "vir": "DARS",
         "opis": "Kamera / Nadzor",
         "omejitev": "100 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "AC",
@@ -117,7 +117,7 @@
         "vir": "DARS",
         "opis": "Nadzor prometa",
         "omejitev": "130 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Ljubljana",
@@ -127,7 +127,7 @@
         "vir": "Radarbot",
         "opis": "Stacionarni radar",
         "omejitev": "60 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Maribor",
@@ -137,7 +137,7 @@
         "vir": "Radarbot",
         "opis": "Radar na križišču",
         "omejitev": "70 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     },
     {
         "regija": "Celje",
@@ -147,6 +147,6 @@
         "vir": "Radarbot",
         "opis": "Radar",
         "omejitev": "50 km/h",
-        "cas": "28.01.2026 ob 09:30"
+        "cas": "28.01.2026 ob 09:31"
     }
 ]
