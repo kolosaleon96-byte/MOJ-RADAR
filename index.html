@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Moj Radar v živo</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style> 
-        #map { height: 100vh; width: 100%; } 
-        body { margin: 0; } 
+    <title>Slovenija Radar Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map { height: 100vh; width: 100%; }
+        body { margin: 0; padding: 0; }
     </style>
 </head>
 <body>
@@ -15,14 +17,26 @@
         var map = L.map('map').setView([46.1512, 14.9955], 8);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-        fetch('radarji.json')
-            .then(res => res.json())
+        fetch('radarji.json?t=' + Date.now())
+            .then(response => response.json())
             .then(data => {
-                data.forEach(r => {
-                    L.marker([r.lat, r.lon]).addTo(map)
-                     .bindPopup('<b>' + r.regija + '</b><br>' + r.kraj + ' ob ' + r.cas);
+                data.forEach(radar => {
+                    // AMZS naj bo rumen, Facebook pa moder
+                    var barva = (radar.vir === 'AMZS') ? 'yellow' : 'blue';
+
+                    L.circleMarker([radar.lat, radar.lon], {
+                        radius: 9,
+                        fillColor: barva,
+                        color: "#000", // Črn rob, da se rumena bolje vidi
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.9
+                    })
+                    .addTo(map)
+                    .bindPopup(`<b>${radar.regija}</b><br>${radar.kraj}<br>Čas: ${radar.cas}<br>Vir: ${radar.vir || 'Facebook'}`);
                 });
-            }).catch(e => console.log("Čakam na podatke..."));
+            })
+            .catch(err => console.error("Napaka:", err));
     </script>
 </body>
 </html>
