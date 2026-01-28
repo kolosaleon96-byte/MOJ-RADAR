@@ -2,14 +2,13 @@ name: Radar Robot Update
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Robot se zažene na vsakih 15 minut
-  workflow_dispatch:      # Omogoči gumb "Run workflow" za ročni zagon
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
-    # Dovoljenja za pisanje, da odpravimo Error 128
     permissions:
       contents: write
 
@@ -17,7 +16,7 @@ jobs:
       - name: Checkout koda
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Prenese celotno zgodovino za varen rebase
+          fetch-depth: 0
 
       - name: Nastavi Python
         uses: actions/setup-python@v4
@@ -27,7 +26,7 @@ jobs:
       - name: Namesti knjižnice
         run: pip install requests
 
-      - name: Zaženi robota (Waze, Dars, Radarbot)
+      - name: Zaženi robota
         run: python robot.py
 
       - name: Objavi spremembe na GitHub
@@ -35,14 +34,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-          # Rešitev za Error 128: najprej posrka morebitne ročne spremembe
-          git pull origin main --rebase
-          
-          # Doda posodobljen radarji.json
+          # To reši Error 128: najprej commitamo lokalno, nato vlečemo (pull) spremembe
           git add radarji.json
-          
-          # Če ni novih radarjev, se ne sesuje
           git commit -m "Robot: Osvežena baza (Waze/Dars/AMZS)" || echo "Ni novih sprememb"
           
-          # Pošlje nazaj na GitHub
+          # Tukaj rešimo "cannot pull with rebase" napako s slike
+          git pull --rebase origin main
           git push origin main
