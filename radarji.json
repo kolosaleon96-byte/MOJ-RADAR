@@ -7,7 +7,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Prekmurje",
@@ -17,7 +17,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Prekmurje",
@@ -27,7 +27,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Prekmurje",
@@ -37,7 +37,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "LJ",
@@ -47,7 +47,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "60",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "MB",
@@ -57,7 +57,7 @@
         "vir": "Radarbot",
         "opis": "STACIONARNI RADAR",
         "omejitev": "70",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Pomurje",
@@ -67,7 +67,7 @@
         "vir": "Facebook",
         "opis": "Kontrola prometa (FB)",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Pomurje",
@@ -77,7 +77,7 @@
         "vir": "Facebook",
         "opis": "Poročilo s terena (FB)",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Pomurje",
@@ -87,7 +87,7 @@
         "vir": "Facebook",
         "opis": "Merjenje hitrosti (FB)",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Pomurje",
@@ -97,7 +97,7 @@
         "vir": "Facebook",
         "opis": "Aktivna kontrola (FB)",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     },
     {
         "regija": "Slovenija",
@@ -107,6 +107,6 @@
         "vir": "AMZS",
         "opis": "AMZS: Meritve hitrosti!",
         "omejitev": "-",
-        "cas": "28.01.2026 ob 09:47"
+        "cas": "28.01.2026 ob 09:51"
     }
 ]
