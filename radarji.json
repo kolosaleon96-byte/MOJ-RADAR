@@ -1,54 +1,6 @@
 [
     {
-        "regija": "Radarbot Gold",
-        "kraj": "AC Golovec (Predor)",
-        "cas": "24/7",
-        "lat": 46.0382,
-        "lon": 14.5422,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "LJ - Celovška",
-        "cas": "24/7",
-        "lat": 46.0792,
-        "lon": 14.4841,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "LJ - Dunajska",
-        "cas": "24/7",
-        "lat": 46.0841,
-        "lon": 14.5094,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "MB - Ptujska cesta",
-        "cas": "24/7",
-        "lat": 46.5385,
-        "lon": 15.6662,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "CE - Mariborska",
-        "cas": "24/7",
-        "lat": 46.2461,
-        "lon": 15.2711,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "KP - Šmarska cesta",
-        "cas": "24/7",
-        "lat": 45.5401,
-        "lon": 13.7315,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
+        "regija": "Fiksni",
         "kraj": "MS - Lendavska",
         "cas": "24/7",
         "lat": 46.6591,
@@ -56,7 +8,135 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
+        "regija": "Fiksni",
+        "kraj": "MS - Noršinska",
+        "cas": "24/7",
+        "lat": 46.6655,
+        "lon": 16.1811,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "MS - Panonska",
+        "cas": "24/7",
+        "lat": 46.6555,
+        "lon": 16.1711,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "Gederovci",
+        "cas": "24/7",
+        "lat": 46.6655,
+        "lon": 16.0488,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "Petanjci",
+        "cas": "24/7",
+        "lat": 46.6455,
+        "lon": 16.0588,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "Vaneča",
+        "cas": "24/7",
+        "lat": 46.7214,
+        "lon": 16.1633,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Celovška 1",
+        "cas": "24/7",
+        "lat": 46.0792,
+        "lon": 14.4841,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Celovška 2",
+        "cas": "24/7",
+        "lat": 46.0945,
+        "lon": 14.4751,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Dunajska 1",
+        "cas": "24/7",
+        "lat": 46.0841,
+        "lon": 14.5094,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Dunajska 2",
+        "cas": "24/7",
+        "lat": 46.1011,
+        "lon": 14.5155,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Dolenjska",
+        "cas": "24/7",
+        "lat": 46.0233,
+        "lon": 14.5311,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "LJ - Roška",
+        "cas": "24/7",
+        "lat": 46.0456,
+        "lon": 14.5167,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "MB - Ptujska 1",
+        "cas": "24/7",
+        "lat": 46.5385,
+        "lon": 15.6662,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "MB - Ptujska 2",
+        "cas": "24/7",
+        "lat": 46.5255,
+        "lon": 15.6711,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "MB - Tržaška",
+        "cas": "24/7",
+        "lat": 46.5311,
+        "lon": 15.6511,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "MB - Titova",
+        "cas": "24/7",
+        "lat": 46.5511,
+        "lon": 15.6511,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
+        "kraj": "CE - Mariborska",
+        "cas": "24/7",
+        "lat": 46.2461,
+        "lon": 15.2711,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "Fiksni",
         "kraj": "AC - Tepanje",
         "cas": "24/7",
         "lat": 46.3455,
@@ -64,85 +144,61 @@
         "vir": "Radarbot"
     },
     {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Lukovica",
+        "regija": "Fiksni",
+        "kraj": "KP - Šmarska",
         "cas": "24/7",
-        "lat": 46.1681,
-        "lon": 14.6851,
+        "lat": 45.5401,
+        "lon": 13.7315,
         "vir": "Radarbot"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "AMZS\nMotorevija\nCenter varne vožnje\nŠola vožnje\nAvto-moto šp",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "Fiksni",
+        "kraj": "NM - Bučna vas",
+        "cas": "24/7",
+        "lat": 45.8211,
+        "lon": 15.1511,
+        "vir": "Radarbot"
+    },
+    {
+        "regija": "AMZS",
+        "kraj": "AMZS\nMotorevija\nCenter varne vožnje\nŠola vožnje\nAvto-moto šport\nKarting in motoš",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "Članstvo\n\n\n\nČlanstvo\n Nazaj\n\n\n\n\n\n      Zakaj (p)ostati član?",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "AMZS",
+        "kraj": "Članstvo\n\n\n\nČlanstvo\n Nazaj\n\n\n\n\n\n      Zakaj (p)ostati član?\n\n\n\nZakaj (p)ostati ",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "Varna mobilnost\n\n\n\nVarna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS te",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "AMZS",
+        "kraj": "Varna mobilnost\n\n\n\nVarna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS testi\n\n\n\n\n\n      Razis",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "Varna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS testi\n\n\n\n\n\n      Razi",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "AMZS",
+        "kraj": "Varna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS testi\n\n\n\n\n\n      Raziskave\n\n\n\nRaziskave\n ",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "Projekti in kampanje\n\n\n\nProjekti in kampanje\n Nazaj\n\n\n\n\n\n   ",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "AMZS",
+        "kraj": "Projekti in kampanje\n\n\n\nProjekti in kampanje\n Nazaj\n\n\n\n\n\n      Prva pomoč - obno",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Radar",
-        "kraj": "Projekti in kampanje\n Nazaj\n\n\n\n\n\n      Prva pomoč - obnovitv",
-        "lat": 46.5547,
-        "lon": 15.6459,
+        "regija": "AMZS",
+        "kraj": "Projekti in kampanje\n Nazaj\n\n\n\n\n\n      Prva pomoč - obnovitveni tečaji\n\n\n\nPrva p",
+        "lat": 46.6775,
+        "lon": 15.9922,
         "vir": "AMZS"
-    },
-    {
-        "regija": "Kolpa-Ljubljana",
-        "kraj": "FB Javljanje: Kolpa-Ljubljana",
-        "cas": "08:23",
-        "lat": 46.0569,
-        "lon": 14.5058,
-        "vir": "Facebook"
-    },
-    {
-        "regija": "Ptuj in okolica",
-        "kraj": "FB Javljanje: Ptuj in okolica",
-        "cas": "08:23",
-        "lat": 46.42,
-        "lon": 15.87,
-        "vir": "Facebook"
-    },
-    {
-        "regija": "Kranj",
-        "kraj": "FB Javljanje: Kranj",
-        "cas": "08:23",
-        "lat": 46.2428,
-        "lon": 14.3555,
-        "vir": "Facebook"
-    },
-    {
-        "regija": "Postojna",
-        "kraj": "FB Javljanje: Postojna",
-        "cas": "08:23",
-        "lat": 45.7751,
-        "lon": 14.2122,
-        "vir": "Facebook"
     }
 ]
