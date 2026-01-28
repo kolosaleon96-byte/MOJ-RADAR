@@ -25,42 +25,10 @@
     },
     {
         "regija": "Radarbot Gold",
-        "kraj": "LJ - Dolenjska cesta",
-        "cas": "24/7",
-        "lat": 46.0233,
-        "lon": 14.5311,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Brezovica",
-        "cas": "24/7",
-        "lat": 46.0155,
-        "lon": 14.4122,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Lukovica",
-        "cas": "24/7",
-        "lat": 46.1681,
-        "lon": 14.6851,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
         "kraj": "MB - Ptujska cesta",
         "cas": "24/7",
         "lat": 46.5385,
         "lon": 15.6662,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "MB - Tržaška",
-        "cas": "24/7",
-        "lat": 46.5311,
-        "lon": 15.6511,
         "vir": "Radarbot"
     },
     {
@@ -73,42 +41,10 @@
     },
     {
         "regija": "Radarbot Gold",
-        "kraj": "AC - Tepanje",
-        "cas": "24/7",
-        "lat": 46.3455,
-        "lon": 15.4722,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Dramlje",
-        "cas": "24/7",
-        "lat": 46.2711,
-        "lon": 15.3922,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
         "kraj": "KP - Šmarska cesta",
         "cas": "24/7",
         "lat": 45.5401,
         "lon": 13.7315,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "AC - Postojna",
-        "cas": "24/7",
-        "lat": 45.7722,
-        "lon": 14.2111,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Radarbot Gold",
-        "kraj": "KR - Zlato polje",
-        "cas": "24/7",
-        "lat": 46.2435,
-        "lon": 14.3501,
         "vir": "Radarbot"
     },
     {
@@ -121,63 +57,92 @@
     },
     {
         "regija": "Radarbot Gold",
-        "kraj": "PT - Ormoška cesta",
+        "kraj": "AC - Tepanje",
         "cas": "24/7",
-        "lat": 46.4188,
-        "lon": 15.8822,
+        "lat": 46.3455,
+        "lon": 15.4722,
         "vir": "Radarbot"
     },
     {
         "regija": "Radarbot Gold",
-        "kraj": "NM - Kandija",
+        "kraj": "AC - Lukovica",
         "cas": "24/7",
-        "lat": 45.8011,
-        "lon": 15.1722,
+        "lat": 46.1681,
+        "lon": 14.6851,
         "vir": "Radarbot"
     },
     {
-        "regija": "AMZS Uradno",
-        "kraj": "URADNO: AMZS\nMotorevija\nCenter varne vožnje\nŠola",
+        "regija": "AMZS Radar",
+        "kraj": "AMZS\nMotorevija\nCenter varne vožnje\nŠola vožnje\nAvto-moto šp",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Uradno",
-        "kraj": "URADNO: Varna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS t",
+        "regija": "AMZS Radar",
+        "kraj": "Članstvo\n\n\n\nČlanstvo\n Nazaj\n\n\n\n\n\n      Zakaj (p)ostati član?",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
-        "regija": "AMZS Uradno",
-        "kraj": "URADNO: Projekti in kampanje\n Nazaj\n\n\n\n\n\n      P",
+        "regija": "AMZS Radar",
+        "kraj": "Varna mobilnost\n\n\n\nVarna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS te",
+        "lat": 46.5547,
+        "lon": 15.6459,
+        "vir": "AMZS"
+    },
+    {
+        "regija": "AMZS Radar",
+        "kraj": "Varna mobilnost\n Nazaj\n\n\n\n\n\n      AMZS testi\n\n\n\n\n\n      Razi",
+        "lat": 46.5547,
+        "lon": 15.6459,
+        "vir": "AMZS"
+    },
+    {
+        "regija": "AMZS Radar",
+        "kraj": "Projekti in kampanje\n\n\n\nProjekti in kampanje\n Nazaj\n\n\n\n\n\n   ",
+        "lat": 46.5547,
+        "lon": 15.6459,
+        "vir": "AMZS"
+    },
+    {
+        "regija": "AMZS Radar",
+        "kraj": "Projekti in kampanje\n Nazaj\n\n\n\n\n\n      Prva pomoč - obnovitv",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
     },
     {
         "regija": "Kolpa-Ljubljana",
-        "kraj": "FB: Kolpa-Ljubljana (Javljeno)",
-        "cas": "07:54",
+        "kraj": "FB Javljanje: Kolpa-Ljubljana",
+        "cas": "08:03",
         "lat": 46.0569,
         "lon": 14.5058,
         "vir": "Facebook"
     },
     {
         "regija": "Ptuj in okolica",
-        "kraj": "FB: Ptuj in okolica (Javljeno)",
-        "cas": "07:54",
+        "kraj": "FB Javljanje: Ptuj in okolica",
+        "cas": "08:03",
         "lat": 46.42,
         "lon": 15.87,
         "vir": "Facebook"
     },
     {
         "regija": "Kranj",
-        "kraj": "FB: Kranj (Javljeno)",
-        "cas": "07:54",
+        "kraj": "FB Javljanje: Kranj",
+        "cas": "08:03",
         "lat": 46.2428,
         "lon": 14.3555,
+        "vir": "Facebook"
+    },
+    {
+        "regija": "Postojna",
+        "kraj": "FB Javljanje: Postojna",
+        "cas": "08:03",
+        "lat": 45.7751,
+        "lon": 14.2122,
         "vir": "Facebook"
     }
 ]
