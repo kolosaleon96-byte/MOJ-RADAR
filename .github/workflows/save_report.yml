@@ -1,0 +1,22 @@
+name: Shrani prijavo radarja
+on:
+  repository_dispatch:
+    types: [new_report]
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Dodaj radar v listo
+        run: |
+          echo '${{ github.event.client_payload.data }}' > new_item.json
+          # Preveri če datoteka obstaja, če ne, jo ustvari
+          if [ ! -f radarji.json ]; then echo "[]" > radarji.json; fi
+          jq ". += [$(cat new_item.json)]" radarji.json > temp.json && mv temp.json radarji.json
+      - name: Shrani spremembe
+        run: |
+          git config --global user.name "RadarRobot"
+          git config --global user.email "robot@radar-slo.com"
+          git add radarji.json
+          git commit -m "Nova prijava s terena"
+          git push
