@@ -6,13 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; background: #1a1a1a; color: white; font-family: sans-serif; }
+        body { margin: 0; padding: 0; background: #121212; color: white; font-family: sans-serif; }
         #map { height: 100vh; width: 100vw; }
-        .legend { background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; line-height: 1.5; }
-        .icon-fiksni { filter: hue-rotate(90deg); font-size: 20px; }
-        .icon-waze { font-size: 20px; text-shadow: 0 0 5px #00fbff; }
-        .icon-amzs { font-size: 20px; text-shadow: 0 0 5px #ff9800; }
-        .update-btn { position: absolute; top: 10px; right: 10px; z-index: 1000; background: #cc0000; color: white; border: none; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        /* Stil za ikone na mapi */
+        .radar-label {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            width: 35px !important;
+            height: 35px !important;
+            line-height: 32px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        .waze-icon { border-color: #00fbff; box-shadow: 0 0 10px #00fbff; }
+        .amzs-icon { border-color: #ff9800; box-shadow: 0 0 10px #ff9800; }
+        .speed-limit {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: red;
+            border: 2px solid red;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 18px;
+        }
+
+        .update-btn { 
+            position: absolute; top: 15px; right: 15px; z-index: 1000; 
+            background: #cc0000; color: white; border: none; 
+            padding: 12px 20px; border-radius: 8px; font-weight: bold; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -22,63 +55,70 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([46.1512, 14.9955], 8); // Center Slovenije
+        var map = L.map('map', { zoomControl: false }).setView([46.65, 16.16], 11);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Plast za markerje (da jih lahko pobrišemo ob osvežitvi)
         var markersLayer = L.layerGroup().addTo(map);
+
+        // Funkcija za ustvarjanje ikone z emoji-jem in omejitvijo
+        function createIcon(emoji, className, speed) {
+            let speedHtml = speed ? `<div class="speed-limit">${speed}</div>` : '';
+            return L.divIcon({
+                className: `radar-label ${className}`,
+                html: `${emoji}${speedHtml}`,
+                iconSize: [35, 35]
+            });
+        }
 
         async function osveziPodatke() {
             markersLayer.clearLayers();
-            
-            // 1. NALOŽI FIKSNE RADARJE (iz tvojega robota)
+            const proxy = "https://corsproxy.io/?";
+
+            // 1. FIKSNI + GOLD (iz radarji.json)
             try {
                 const res = await fetch('radarji.json?t=' + Date.now());
                 const data = await res.json();
                 data.forEach(r => {
-                    L.marker([r.lat, r.lon]).addTo(markersLayer)
-                     .bindPopup(`<b>${r.tip}</b><br>${r.opis}<br>Vir: ${r.vir}`);
+                    L.marker([r.lat, r.lon], { 
+                        icon: createIcon(r.icon || '📸', 'fiksni-icon', r.limit) 
+                    }).addTo(markersLayer).bindPopup(`<b>${r.tip}</b><br>${r.opis}`);
                 });
-            } catch (e) { console.log("Fiksni radarji niso na voljo."); }
+            } catch (e) { console.log("Fiksni error"); }
 
-            // 2. WAZE V ŽIVO (Preko proxy-ja, da ne blokira)
-            const proxy = "https://corsproxy.io/?";
-            const wazeUrl = encodeURIComponent("https://www.waze.com/rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0");
-            
+            // 2. WAZE V ŽIVO
             try {
-                const res = await fetch(proxy + wazeUrl);
+                const wUrl = encodeURIComponent("https://www.waze.com/rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0");
+                const res = await fetch(proxy + wUrl);
                 const data = await res.json();
                 data.alerts.forEach(a => {
-                    if (a.type === 'POLICE' || a.type === 'ROAD_HAZARD') {
-                        L.marker([a.location.y, a.location.x], {
-                            icon: L.divIcon({ className: 'icon-waze', html: '👮' })
-                        }).addTo(markersLayer).bindPopup("<b>WAZE</b><br>" + (a.reportDescription || "Mobilni radar"));
+                    if (a.type === 'POLICE') {
+                        L.marker([a.location.y, a.location.x], { 
+                            icon: createIcon('👮', 'waze-icon', '') 
+                        }).addTo(markersLayer).bindPopup("<b>WAZE POLICIJA</b><br>" + (a.reportDescription || "Kontrola"));
                     }
                 });
-            } catch (e) { console.log("Waze blokada."); }
+            } catch (e) { console.log("Waze error"); }
 
-            // 3. AMZS / DARS V ŽIVO
-            const amzsUrl = encodeURIComponent("https://www.promet.si/dc/traffic.events.public.json");
+            // 3. AMZS / DARS
             try {
-                const res = await fetch(proxy + amzsUrl);
+                const dUrl = encodeURIComponent("https://www.promet.si/dc/traffic.events.public.json");
+                const res = await fetch(proxy + dUrl);
                 const data = await res.json();
                 data.contents.forEach(e => {
                     if (e.description.toLowerCase().includes('radar') || e.description.toLowerCase().includes('kontrola')) {
-                        L.marker([e.y, e.x], {
-                            icon: L.divIcon({ className: 'icon-amzs', html: '📸' })
+                        L.marker([e.y, e.x], { 
+                            icon: createIcon('📸', 'amzs-icon', '') 
                         }).addTo(markersLayer).bindPopup("<b>AMZS/DARS</b><br>" + e.description);
                     }
                 });
-            } catch (e) { console.log("AMZS blokada."); }
+            } catch (e) { console.log("Dars error"); }
         }
 
-        // Zaženi ob nalaganju
         osveziPodatke();
-        // Samodejno osveži vsakih 5 minut
-        setInterval(osveziPodatke, 300000);
+        setInterval(osveziPodatke, 120000); // Samodejno na 2 minuti
     </script>
 </body>
 </html>
