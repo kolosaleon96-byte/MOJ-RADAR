@@ -10,12 +10,15 @@ jobs:
     steps:
       - name: Prenos kode
         uses: actions/checkout@v3
+
       - name: Nastavitev Pythona
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+
       - name: Namestitev knjiznic
         run: pip install pyotp
+
       - name: Zagon robota
         env:
           FB_EMAIL: ${{ secrets.FB_EMAIL }}
