@@ -29,6 +29,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add radarji.json || echo "Datoteka še ne obstaja"
-          git commit -m "Robot: Posodobljene lokacije radarjev" || exit 0
-          git push origin main
+          git add radarji.json
+          git commit -m "Robot: Osveženi radarji" || exit 0
+          git push
