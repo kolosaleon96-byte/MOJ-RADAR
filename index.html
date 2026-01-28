@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Radar SLO Pro Nav</title>
+    <title>Radar SLO Pro 3D Traffic</title>
     <link rel="manifest" href="manifest.json">
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -11,36 +11,39 @@
     
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; background: #242f3e; overflow: hidden; }
-        #map { height: 100vh; width: 100vw; background: #242f3e; }
+        #map { height: 100vh; width: 100vw; background: #242f3e; transition: transform 0.5s; }
         
-        /* ISKALNIK IN FILTRI */
+        /* 3D NAGIB */
+        .map-3d { transform: perspective(600px) rotateX(30deg); height: 120vh !important; margin-top: -10vh; }
+
         #nav-container {
             position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
             background: rgba(36, 47, 62, 0.95); padding: 12px; border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #444;
         }
-        #nav-search { display: flex; gap: 8px; margin-bottom: 10px; }
+        #nav-search { display: flex; gap: 8px; margin-bottom: 8px; }
         #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #333; color: white; font-size: 16px; outline: none; }
         #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
+        
+        #nav-options { display: flex; justify-content: space-between; color: #ccc; font-size: 11px; }
+        #traffic-status { font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        .traffic-ok { color: #4caf50; }
+        .traffic-jam { color: #ff1744; background: rgba(255,23,68,0.1); }
 
-        #nav-options { display: flex; gap: 15px; color: white; font-size: 13px; padding-left: 5px; }
-        #nav-options label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        #bottom-info {
+            position: absolute; bottom: 0; left: 0; right: 0; z-index: 1001;
+            background: rgba(0, 0, 0, 0.95); color: white; padding: 15px;
+            display: flex; justify-content: space-around; align-items: center;
+            border-top: 2px solid #007bff; font-weight: bold;
+        }
 
-        /* GUMBI */
         #report-btn { 
-            position: absolute; bottom: 30px; left: 20px; z-index: 1000; 
-            background: #ff1744; color: white; border: none; padding: 18px 25px; 
-            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            position: absolute; bottom: 90px; left: 20px; z-index: 1000; 
+            background: #ff1744; color: white; border: none; padding: 15px 22px; 
+            border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
-        #recenter-btn {
-            position: absolute; bottom: 110px; right: 20px; z-index: 1000;
-            background: white; border: none; width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        #info-panel { position: absolute; bottom: 30px; right: 20px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        #current-speed-box { background: #1a1a1a; color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        #limit-box { background: white; color: black; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 26px; font-weight: bold; }
+        
+        #speed-box { position: absolute; bottom: 90px; right: 20px; z-index: 1000; background: #1a1a1a; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
         
         .leaflet-routing-container { display: none; }
     </style>
@@ -49,24 +52,26 @@
 
     <div id="nav-container">
         <div id="nav-search">
-            <input type="text" id="target-dest" placeholder="Kam potujemo?">
+            <input type="text" id="target-dest" placeholder="Cilj vožnje...">
             <button onclick="najdiPot()">GO</button>
         </div>
         <div id="nav-options">
-            <label><input type="checkbox" id="avoid-highways"> Brez avtocest</label>
-            <label><input type="checkbox" id="avoid-tolls"> Brez cestnin</label>
+            <label><input type="checkbox" id="toggle-3d" onchange="toggle3D()"> 3D Pogled</label>
+            <div id="traffic-status" class="traffic-ok">PROMET: TEKOČE</div>
         </div>
     </div>
 
-    <button id="recenter-btn" onclick="recenterMe()">🎯</button>
     <button id="report-btn" onclick="prijaviMeni()">⚠️ PRIJAVI</button>
 
-    <div id="info-panel">
-        <div id="limit-box">50</div>
-        <div id="current-speed-box">
-            <span id="speed-val" style="font-size: 32px; font-weight: bold;">0</span>
-            <small>km/h</small>
-        </div>
+    <div id="speed-box">
+        <span id="speed-val" style="font-size: 28px; font-weight: bold;">0</span>
+        <small>km/h</small>
+    </div>
+
+    <div id="bottom-info">
+        <div>KM: <span id="dist-val">--</span></div>
+        <div style="color: #007bff; font-size: 20px;" id="eta-val">--:--</div>
+        <div>PREOSTALO: <span id="time-val">-- min</span></div>
     </div>
 
     <div id="map"></div>
@@ -80,35 +85,25 @@
         var userPos = null;
         var routingControl = null;
         var vsiMarkers = L.layerGroup().addTo(map);
-        var vsiRadarjiPodatki = [];
         var slediUporabniku = true;
 
+        function toggle3D() { document.getElementById('map').classList.toggle('map-3d'); }
         map.on('movestart', function() { slediUporabniku = false; });
-        function recenterMe() { if (userPos) { slediUporabniku = true; map.setView(userPos, 16); } }
 
         map.locate({watch: true, enableHighAccuracy: true});
         map.on('locationfound', function(e) {
             userPos = e.latlng;
-            var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
-            document.getElementById('speed-val').innerText = speed;
-            document.getElementById('limit-box').innerText = speed > 105 ? "130" : (speed > 65 ? "90" : "50");
-
+            document.getElementById('speed-val').innerText = e.speed ? Math.round(e.speed * 3.6) : 0;
             if (!window.uMarker) {
                 window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: 'white', fillColor: '#007bff', fillOpacity: 1, weight: 3}).addTo(map);
             } else { window.uMarker.setLatLng(e.latlng); }
-
             if (slediUporabniku) { map.setView(e.latlng, map.getZoom()); }
-            preveriBližino(e.latlng);
             if (routingControl) { routingControl.spliceWaypoints(0, 1, e.latlng); }
         });
 
         function najdiPot() {
             var cilj = document.getElementById('target-dest').value;
-            var avoidHighways = document.getElementById('avoid-highways').checked;
-            var avoidTolls = document.getElementById('avoid-tolls').checked;
-
-            if (!cilj) return alert("Vpišite cilj!");
-            if (!userPos) return alert("Lokacija ni na voljo.");
+            if (!cilj || !userPos) return alert("Vpiši cilj!");
 
             fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cilj)}`)
                 .then(res => res.json())
@@ -117,77 +112,60 @@
                         var dest = L.latLng(data[0].lat, data[0].lon);
                         if (routingControl) { map.removeControl(routingControl); }
 
-                        // Navigacija s parametri za izogibanje
                         routingControl = L.Routing.control({
                             waypoints: [userPos, dest],
-                            router: L.Routing.osrmv1({
-                                serviceUrl: 'https://router.project-osrm.org/route/v1',
-                                // Opomba: Standardni OSRM nima direktnega "avoid",
-                                // zato uporabljamo profil, ki favorizira lokalne ceste
-                            }),
-                            lineOptions: { styles: [{ color: '#007bff', opacity: 0.8, weight: 6 }] },
+                            lineOptions: { styles: [{ color: '#007bff', opacity: 0.8, weight: 8 }] },
                             createMarker: function() { return null; }
+                        }).on('routesfound', function(e) {
+                            var route = e.routes[0];
+                            var summary = route.summary;
+                            
+                            // LOGIKA ZA ZASTOJE:
+                            // Če je povprečna hitrost na poti manjša od 30km/h (na dolgi razdalji), obarvamo rdeče
+                            var avgSpeed = (summary.totalDistance / summary.totalTime) * 3.6;
+                            var trafficEl = document.getElementById('traffic-status');
+                            
+                            if (avgSpeed < 35) { // Močan zastoj
+                                routingControl.getPlan().setWaypoints(routingControl.getWaypoints());
+                                routingControl.options.lineOptions.styles = [{color: '#ff1744', opacity: 0.9, weight: 10}];
+                                trafficEl.innerText = "PROMET: ZASTOJ!";
+                                trafficEl.className = "traffic-jam";
+                            } else if (avgSpeed < 55) { // Počasen promet
+                                routingControl.options.lineOptions.styles = [{color: '#ffeb3b', opacity: 0.9, weight: 9}];
+                                trafficEl.innerText = "PROMET: POČASNO";
+                                trafficEl.className = "";
+                                trafficEl.style.color = "#ffeb3b";
+                            } else {
+                                trafficEl.innerText = "PROMET: TEKOČE";
+                                trafficEl.className = "traffic-ok";
+                            }
+
+                            document.getElementById('dist-val').innerText = (summary.totalDistance / 1000).toFixed(1) + " km";
+                            document.getElementById('time-val').innerText = Math.round(summary.totalTime / 60) + " min";
+                            var d = new Date(); d.setSeconds(d.getSeconds() + summary.totalTime);
+                            document.getElementById('eta-val').innerText = d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
                         }).addTo(map);
-
-                        // Če sta izbrana izogibanja, obvestimo uporabnika (OSRM ima omejitve pri teh parametrih v brezplačni verziji)
-                        if(avoidHighways || avoidTolls) {
-                            console.log("Iščem pot brez avtocest/cestnin...");
-                        }
-
+                        
                         slediUporabniku = true;
-                    } else { alert("Cilja ni bilo mogoče najti."); }
+                        if(!document.getElementById('toggle-3d').checked) { document.getElementById('toggle-3d').checked = true; toggle3D(); }
+                    }
                 });
         }
 
-        // --- RADARJI ---
-        function osvežiRadarje() {
-            fetch('radarji.json?t=' + Date.now())
-                .then(res => res.json())
-                .then(data => {
-                    vsiRadarjiPodatki = data;
-                    vsiMarkers.clearLayers();
-                    data.forEach(r => {
-                        var icon = L.divIcon({ 
-                            html: `<div style="font-size:28px; background: white; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.4); border: 2px solid #ff1744;">${r.icon}</div>`, 
-                            className: 'custom-div-icon', iconSize: [42, 42], iconAnchor: [21, 21]
-                        });
-                        L.marker([r.lat, r.lon], {icon: icon}).addTo(vsiMarkers);
-                    });
-                });
-        }
-        osvežiRadarje();
-        setInterval(osvežiRadarje, 600000);
-
-        async function submitReport(tip, ikona) {
-            const mojKljuc = "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";
-            fetch(`https://api.github.com/repos/kolosaleon96-byte/MOJ-RADAR/dispatches`, {
-                method: 'POST',
-                headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
-                body: JSON.stringify({ event_type: 'new_report', client_payload: { data: { lat: userPos.lat, lon: userPos.lng, opis: tip, icon: ikona } } })
-            });
-            alert("Poslano: " + tip);
-        }
-
+        // --- PRIJAVA IN RADARJI ---
         function prijaviMeni() {
             let t = prompt("Prijavi:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
-            if(t == "1") submitReport("POLICIJA", "👮");
-            if(t == "2") submitReport("RADAR", "📸");
-            if(t == "3") submitReport("NESREČA", "💥");
+            const mojKljuc = "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";
+            let opisi = {"1":["POLICIJA","👮"],"2":["RADAR","📸"],"3":["NESREČA","💥"]};
+            if(opisi[t]) {
+                fetch(`https://api.github.com/repos/kolosaleon96-byte/MOJ-RADAR/dispatches`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
+                    body: JSON.stringify({ event_type: 'new_report', client_payload: { data: { lat: userPos.lat, lon: userPos.lng, opis: opisi[t][0], icon: opisi[t][1] } } })
+                });
+                alert("Javljeno!");
+            }
         }
-
-        function preveriBližino(trenutnaLok) {
-            let zdaj = Date.now();
-            vsiRadarjiPodatki.forEach(r => {
-                let razdalja = map.distance(trenutnaLok, [r.lat, r.lon]);
-                if(razdalja < 1000 && (zdaj - window.zadnjeOpozorilo > 60000)) {
-                    let msg = new SpeechSynthesisUtterance("Pozor, " + r.opis + " v bližini.");
-                    msg.lang = 'sl-SI';
-                    window.speechSynthesis.speak(msg);
-                    window.zadnjeOpozorilo = zdaj;
-                }
-            });
-        }
-        window.zadnjeOpozorilo = 0;
     </script>
 </body>
 </html>
