@@ -1,202 +1,84 @@
 <!DOCTYPE html>
-<html lang="sl">
+<html>
 <head>
+    <title>SLO Radar Terminal</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Radar SLO Pro - Premium Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #1a1a1a; overflow: hidden; }
-        
-        /* 3D SISTEM */
-        #map-wrapper { width: 100vw; height: 100vh; transition: all 0.5s ease-in-out; }
-        #map { width: 100%; height: 100%; }
-        .mode-3d { transform: perspective(800px) rotateX(45deg) translateY(-100px) scale(1.3); height: 140vh !important; }
-
-        /* GUMBI ZGORAJ */
-        #btn-3d {
-            position: absolute; top: 20px; right: 20px; z-index: 2000;
-            width: 55px; height: 55px; background: rgba(0,0,0,0.85);
-            border: 2px solid #ffd700; border-radius: 12px; color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        #dist-box {
-            position: absolute; top: 20px; left: 20px; z-index: 1000;
-            width: 65px; height: 65px; background: rgba(0,0,0,0.85);
-            border: 2px solid #33ccff; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; font-weight: bold;
-        }
-
-        /* GUMBI SPODAJ */
-        #recenter-btn {
-            position: absolute; bottom: 30px; left: 20px; z-index: 1000;
-            width: 60px; height: 60px; background: #33ccff; color: white;
-            border-radius: 50%; border: 3px solid white; display: none;
-            align-items: center; justify-content: center; font-size: 30px;
-        }
-
-        #main-report-btn {
-            position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%);
-            z-index: 1000; width: 85px; height: 85px; background: #ff1744;
-            border-radius: 50%; border: 4px solid white; color: white;
-            font-size: 45px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 20px rgba(255, 23, 68, 0.4);
-        }
-
-        #bottom-right-stats {
-            position: absolute; bottom: 25px; right: 20px; z-index: 1000;
-            display: flex; gap: 12px; align-items: flex-end;
-        }
-        .stat-circle {
-            width: 75px; height: 75px; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-weight: bold; color: white; background: black;
-        }
-        #speed-circle { border: 4px solid #33ccff; }
-        #limit-circle { border: 5px solid #ff1744; background: white; color: black; font-size: 28px; }
-
-        /* MENI ZA PRIJAVO */
-        #report-menu {
-            position: absolute; bottom: 130px; left: 50%; transform: translateX(-50%);
-            z-index: 1001; display: none; gap: 15px; background: rgba(0,0,0,0.95);
-            padding: 20px; border-radius: 25px; border: 1px solid #444;
-        }
-        .menu-item { font-size: 35px; cursor: pointer; }
-
-        /* NOVE BARVE IKON */
-        .base-marker { border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px !important; height: 40px !important; box-shadow: 0 0 10px rgba(0,0,0,0.5); font-size: 24px; }
-        
-        .icon-stacionarni { border: 3px solid #00ff00 !important; background: rgba(0, 255, 0, 0.3) !important; } /* ZELENA */
-        .icon-waze { border: 3px solid #33ccff; background: rgba(51, 204, 255, 0.2); } /* MODRA */
-        .icon-gold { border: 3px solid #ffd700; background: rgba(255, 215, 0, 0.2); } /* ZLATA */
-        .icon-dars { border: 3px solid #ff9800; background: rgba(255, 152, 0, 0.2); } /* ORANŽNA */
-        .icon-user { border: 3px solid #ff1744; background: rgba(255, 23, 68, 0.2); } /* RDEČA */
+        body { margin: 0; padding: 0; background: #1a1a1a; color: white; font-family: sans-serif; }
+        #map { height: 100vh; width: 100vw; }
+        .legend { background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; line-height: 1.5; }
+        .icon-fiksni { filter: hue-rotate(90deg); font-size: 20px; }
+        .icon-waze { font-size: 20px; text-shadow: 0 0 5px #00fbff; }
+        .icon-amzs { font-size: 20px; text-shadow: 0 0 5px #ff9800; }
+        .update-btn { position: absolute; top: 10px; right: 10px; z-index: 1000; background: #cc0000; color: white; border: none; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div id="btn-3d" onclick="toggle3D()">3D</div>
-    <div id="dist-box"><span id="dist-val">--</span><small style="font-size: 10px;">KM</small></div>
-    <div id="recenter-btn" onclick="recenterMap()">🎯</div>
-    
-    <div id="main-report-btn" onclick="toggleReportMenu()">+</div>
-    <div id="report-menu">
-        <span class="menu-item" onclick="oddaj('POLICIJA', '👮')">👮</span>
-        <span class="menu-item" onclick="oddaj('RADAR', '📸')">📸</span>
-        <span class="menu-item" onclick="oddaj('DELA', '🚧')">🚧</span>
-        <span class="menu-item" onclick="oddaj('NESREČA', '💥')">💥</span>
-    </div>
-
-    <div id="bottom-right-stats">
-        <div id="limit-circle" class="stat-circle">--</div>
-        <div id="speed-circle" class="stat-circle">
-            <span id="current-speed" style="font-size: 28px;">0</span>
-            <small style="font-size: 11px;">km/h</small>
-        </div>
-    </div>
-
-    <div id="map-wrapper"><div id="map"></div></div>
+    <button class="update-btn" onclick="osveziPodatke()">OSVEŽI VSE 🔄</button>
+    <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map', { zoomControl: false }).setView([46.05, 14.50], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        var map = L.map('map').setView([46.1512, 14.9955], 8); // Center Slovenije
 
-        var userPos = null;
-        var isFollowing = true;
-        var radarLayer = L.layerGroup().addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-        function toggle3D() {
-            var wrapper = document.getElementById('map-wrapper');
-            var btn = document.getElementById('btn-3d');
-            wrapper.classList.toggle('mode-3d');
-            btn.innerText = wrapper.classList.contains('mode-3d') ? "2D" : "3D";
-            setTimeout(() => { map.invalidateSize(); }, 500);
-        }
+        // Plast za markerje (da jih lahko pobrišemo ob osvežitvi)
+        var markersLayer = L.layerGroup().addTo(map);
 
-        function toggleReportMenu() {
-            var menu = document.getElementById('report-menu');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        map.locate({watch: true, enableHighAccuracy: true});
-        map.on('locationfound', function(e) {
-            userPos = e.latlng;
-            document.getElementById('current-speed').innerText = e.speed ? Math.round(e.speed * 3.6) : 0;
-            if (!window.uMarker) {
-                window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: '#33ccff', fillColor: 'white', fillOpacity: 1, weight: 3}).addTo(map);
-            } else { window.uMarker.setLatLng(e.latlng); }
-            if (isFollowing) { map.setView(e.latlng, 17); }
-            preveriBližino(e.latlng);
-        });
-
-        map.on('dragstart', function() {
-            isFollowing = false;
-            document.getElementById('recenter-btn').style.display = 'flex';
-        });
-
-        function recenterMap() {
-            isFollowing = true;
-            if(userPos) map.flyTo(userPos, 17);
-            document.getElementById('recenter-btn').style.display = 'none';
-        }
-
-        // --- GLAVNI JAVASCRIPT ZA OSVEŽEVANJE IN BARVE ---
-        function osveziBazo() {
-            fetch('radarji.json?t=' + Date.now())
-                .then(res => res.json())
-                .then(data => {
-                    radarLayer.clearLayers();
-                    data.forEach(r => {
-                        let klasa = "icon-user";
-                        // BARVNA LOGIKA
-                        if (r.tip === "STACIONARNI RADAR") { klasa = "icon-stacionarni"; }
-                        else if (r.vir === "WAZE") { klasa = "icon-waze"; }
-                        else if (r.vir === "RADARBOT GOLD") { klasa = "icon-gold"; }
-                        else if (r.vir === "DARS") { klasa = "icon-dars"; }
-
-                        let icon = L.divIcon({ 
-                            html: `<div class="base-marker ${klasa}">${r.icon}</div>`, 
-                            className: 'dummy', 
-                            iconSize: [40, 40] 
-                        });
-                        
-                        L.marker([r.lat, r.lon], {icon: icon}).addTo(radarLayer)
-                         .bindPopup(`<b>${r.tip}</b><br>${r.opis}<br>Omejitev: ${r.limit} km/h`);
-                        
-                        // Posodobi omejitev na zaslonu če smo blizu (opcijsko)
-                        if (userPos && map.distance(userPos, [r.lat, r.lon]) < 500) {
-                            document.getElementById('limit-circle').innerText = r.limit;
-                        }
-                    });
-                    window.vsiRadarjiPodatki = data;
+        async function osveziPodatke() {
+            markersLayer.clearLayers();
+            
+            // 1. NALOŽI FIKSNE RADARJE (iz tvojega robota)
+            try {
+                const res = await fetch('radarji.json?t=' + Date.now());
+                const data = await res.json();
+                data.forEach(r => {
+                    L.marker([r.lat, r.lon]).addTo(markersLayer)
+                     .bindPopup(`<b>${r.tip}</b><br>${r.opis}<br>Vir: ${r.vir}`);
                 });
-        }
-        
-        setInterval(osveziBazo, 30000);
-        osveziBazo();
+            } catch (e) { console.log("Fiksni radarji niso na voljo."); }
 
-        var zadnjiGovor = 0;
-        function preveriBližino(pos) {
-            if(!window.vsiRadarjiPodatki) return;
-            window.vsiRadarjiPodatki.forEach(r => {
-                var d = map.distance(pos, [r.lat, r.lon]);
-                if (d < 1000 && d > 850 && Date.now() - zadnjiGovor > 60000) {
-                    var m = new SpeechSynthesisUtterance("Pozor, " + r.tip + " čez en kilometer.");
-                    m.lang = 'sl-SI';
-                    window.speechSynthesis.speak(m);
-                    zadnjiGovor = Date.now();
-                }
-            });
+            // 2. WAZE V ŽIVO (Preko proxy-ja, da ne blokira)
+            const proxy = "https://corsproxy.io/?";
+            const wazeUrl = encodeURIComponent("https://www.waze.com/rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0");
+            
+            try {
+                const res = await fetch(proxy + wazeUrl);
+                const data = await res.json();
+                data.alerts.forEach(a => {
+                    if (a.type === 'POLICE' || a.type === 'ROAD_HAZARD') {
+                        L.marker([a.location.y, a.location.x], {
+                            icon: L.divIcon({ className: 'icon-waze', html: '👮' })
+                        }).addTo(markersLayer).bindPopup("<b>WAZE</b><br>" + (a.reportDescription || "Mobilni radar"));
+                    }
+                });
+            } catch (e) { console.log("Waze blokada."); }
+
+            // 3. AMZS / DARS V ŽIVO
+            const amzsUrl = encodeURIComponent("https://www.promet.si/dc/traffic.events.public.json");
+            try {
+                const res = await fetch(proxy + amzsUrl);
+                const data = await res.json();
+                data.contents.forEach(e => {
+                    if (e.description.toLowerCase().includes('radar') || e.description.toLowerCase().includes('kontrola')) {
+                        L.marker([e.y, e.x], {
+                            icon: L.divIcon({ className: 'icon-amzs', html: '📸' })
+                        }).addTo(markersLayer).bindPopup("<b>AMZS/DARS</b><br>" + e.description);
+                    }
+                });
+            } catch (e) { console.log("AMZS blokada."); }
         }
 
-        function oddaj(tip, ikona) {
-            alert("Javljeno!");
-            toggleReportMenu();
-        }
+        // Zaženi ob nalaganju
+        osveziPodatke();
+        // Samodejno osveži vsakih 5 minut
+        setInterval(osveziPodatke, 300000);
     </script>
 </body>
 </html>
