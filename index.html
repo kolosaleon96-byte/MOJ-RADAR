@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <title>Radar SLO Pro Nav</title>
+    <title>Radar SLO Nav Pro</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -9,41 +9,39 @@
         body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; overflow: hidden; }
         #map { height: 100vh; width: 100vw; }
 
-        /* NAVIGACIJA ZGORAJ */
+        /* Navigacija zgoraj */
         #nav-search {
             position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
-            display: flex; gap: 8px; background: rgba(0,0,0,0.85); padding: 12px; 
-            border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex; gap: 8px; background: rgba(0,0,0,0.9); padding: 12px; border-radius: 15px;
         }
-        #nav-search input { 
-            flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #444; 
-            background: #222; color: white; font-size: 16px; outline: none;
-        }
-        #nav-search button { 
-            background: #007bff; color: white; border: none; padding: 12px 20px; 
-            border-radius: 8px; font-weight: bold; cursor: pointer;
-        }
+        #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #222; color: white; }
+        #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
 
-        /* OSTALI ELEMENTI (Gumb za prijavo in Speedo) */
-        #main-btn { position: absolute; bottom: 30px; left: 20px; z-index: 1000; background: #ff1744; color: white; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; }
-        #speed-container { position: absolute; bottom: 30px; right: 20px; z-index: 1000; display: flex; align-items: flex-end; gap: 10px; }
-        #current-speed-box { background: rgba(0, 0, 0, 0.85); color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
-        #limit-box { background: white; color: black; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 22px; font-weight: bold; }
+        /* Speedometer & Omejitev spodaj desno */
+        #speed-container {
+            position: absolute; bottom: 30px; right: 20px; z-index: 1000;
+            display: flex; align-items: flex-end; gap: 10px;
+        }
+        #current-speed-box { background: rgba(0,0,0,0.9); color: white; width: 75px; height: 75px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
+        #limit-box { background: white; color: black; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 24px; font-weight: bold; }
+
+        /* Prijavni gumb spodaj levo */
+        #report-btn { position: absolute; bottom: 30px; left: 20px; z-index: 1000; background: #ff1744; color: white; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; font-size: 16px; }
     </style>
 </head>
 <body>
 
     <div id="nav-search">
         <input type="text" id="target-dest" placeholder="Kam se peljemo?">
-        <button onclick="startNavigation()">POJDI</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(document.getElementById('target-dest').value))">GO</button>
     </div>
 
-    <button id="main-btn" onclick="toggleMenu(true)">⚠️ PRIJAVI</button>
+    <button id="report-btn">⚠️ PRIJAVI</button>
 
     <div id="speed-container">
         <div id="limit-box">50</div>
         <div id="current-speed-box">
-            <span id="speed-val" style="font-size: 28px; font-weight: bold;">0</span>
+            <span id="speed-val" style="font-size: 30px; font-weight: bold;">0</span>
             <small>km/h</small>
         </div>
     </div>
@@ -55,25 +53,29 @@
         var map = L.map('map', { zoomControl: false }).setView([46.15, 15.00], 8);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        // GPS in hitrost
+        // GPS in Merilnik
         map.locate({setView: true, watch: true, enableHighAccuracy: true});
         map.on('locationfound', function(e) {
             var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
             document.getElementById('speed-val').innerText = speed;
+            document.getElementById('limit-box').innerText = speed > 90 ? "130" : (speed > 55 ? "90" : "50");
+            
             if (!window.u) window.u = L.circleMarker(e.latlng, {radius: 9, color: 'white', fillColor: '#007bff', fillOpacity: 1}).addTo(map);
             else window.u.setLatLng(e.latlng);
         });
 
-        // FUNKCIJA ZA NAVIGACIJO
-        function startNavigation() {
-            var destination = document.getElementById('target-dest').value;
-            if (destination) {
-                // To odpre Google Maps navigacijo v novem zavihku
-                window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination));
-            } else {
-                alert("Prosimo, vpišite cilj.");
-            }
-        }
+        // Nalaganje radarjev iz JSON
+        fetch('radarji.json?t=' + Date.now())
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(t => {
+                    var icon = L.divIcon({
+                        html: `<div style="font-size: 28px;">${t.icon}</div>`,
+                        className: 'custom-icon', iconSize: [40, 40], iconAnchor: [20, 20]
+                    });
+                    L.marker([t.lat, t.lon], {icon: icon}).addTo(map).bindPopup(`<b>${t.opis}</b><br>${t.vir}`);
+                });
+            });
     </script>
 </body>
 </html>
