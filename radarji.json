@@ -1,35 +1,42 @@
 [
     {
         "regija": "Pomurje",
-        "kraj": "MS-Lendavska",
+        "kraj": "MS-Lendavska (Radar)",
         "lat": 46.6591,
         "lon": 16.1622,
         "vir": "Radarbot"
     },
     {
         "regija": "Pomurje",
-        "kraj": "MS-Noršinska",
+        "kraj": "MS-Noršinska (Radar)",
         "lat": 46.6655,
         "lon": 16.1811,
         "vir": "Radarbot"
     },
     {
         "regija": "Pomurje",
-        "kraj": "Gederovci",
-        "lat": 46.6655,
-        "lon": 16.0488,
+        "kraj": "MS-Panonska (Radar)",
+        "lat": 46.6555,
+        "lon": 16.1711,
         "vir": "Radarbot"
     },
     {
         "regija": "Pomurje",
-        "kraj": "Petanjci",
+        "kraj": "Gederovci (Kamera)",
+        "lat": 46.6655,
+        "lon": 16.0488,
+        "vir": "Kamere"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Petanjci (Radar)",
         "lat": 46.6455,
         "lon": 16.0588,
         "vir": "Radarbot"
     },
     {
         "regija": "Pomurje",
-        "kraj": "Vaneča",
+        "kraj": "Vaneča (Radar)",
         "lat": 46.7214,
         "lon": 16.1633,
         "vir": "Radarbot"
@@ -49,31 +56,73 @@
         "vir": "Facebook"
     },
     {
-        "regija": "Ljubljana",
-        "kraj": "Celovška",
+        "regija": "Pomurje",
+        "kraj": "Radenci",
+        "lat": 46.6433,
+        "lon": 16.0422,
+        "vir": "DARS"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Lendava AC",
+        "lat": 46.5511,
+        "lon": 16.4411,
+        "vir": "Kamere"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "G. Radgona",
+        "lat": 46.6775,
+        "lon": 15.9922,
+        "vir": "Facebook"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Puconci",
+        "lat": 46.7055,
+        "lon": 16.1522,
+        "vir": "Facebook"
+    },
+    {
+        "regija": "Pomurje",
+        "kraj": "Turnišče",
+        "lat": 46.6311,
+        "lon": 16.3211,
+        "vir": "Facebook"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "LJ-Celovška",
         "lat": 46.0792,
         "lon": 14.4841,
         "vir": "Radarbot"
     },
     {
-        "regija": "Ljubljana",
-        "kraj": "Dunajska",
-        "lat": 46.0841,
-        "lon": 14.5094,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Maribor",
-        "kraj": "Ptujska",
+        "regija": "MB",
+        "kraj": "MB-Ptujska",
         "lat": 46.5385,
         "lon": 15.6662,
         "vir": "Radarbot"
     },
     {
+        "regija": "AC",
+        "kraj": "Tepanje",
+        "lat": 46.3455,
+        "lon": 15.4722,
+        "vir": "Kamere"
+    },
+    {
         "regija": "Obala",
-        "kraj": "KP-Šmarska",
-        "lat": 45.5401,
-        "lon": 13.7315,
-        "vir": "Radarbot"
+        "kraj": "Črni Kal",
+        "lat": 45.5533,
+        "lon": 13.8811,
+        "vir": "Kamere"
+    },
+    {
+        "regija": "AMZS",
+        "kraj": "AMZS: Aktivno merjenje!",
+        "lat": 46.05,
+        "lon": 14.5,
+        "vir": "AMZS"
     }
 ]
