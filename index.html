@@ -3,23 +3,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Radar SLO Pro - Smart Tracking</title>
+    <title>Radar SLO Pro - 3D Drive</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; overflow: hidden; }
-        #map { height: 100vh; width: 100vw; }
-
-        /* GUMB NAZAJ NA LOKACIJO (Spodaj levo) */
-        #recenter-btn {
-            position: absolute; bottom: 30px; left: 20px; z-index: 1000;
-            width: 60px; height: 60px; background: #33ccff; color: white;
-            border-radius: 50%; border: 3px solid white; display: none; /* Skrit dokler ne premakneš mape */
-            align-items: center; justify-content: center; font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5); cursor: pointer;
+        
+        /* 3D NAGIB KONTEJNERJA */
+        #map-wrapper { width: 100vw; height: 100vh; transition: all 0.5s ease-in-out; }
+        #map { width: 100%; height: 100%; }
+        
+        .mode-3d { 
+            transform: perspective(800px) rotateX(40deg) translateY(-50px) scale(1.2); 
+            height: 130vh !important;
         }
 
-        /* OSTALI ELEMENTI (Razdalja, Hitrost, Prijava - že urejeno) */
+        /* 3D GUMB DESNO ZGORAJ */
+        #btn-3d {
+            position: absolute; top: 20px; right: 20px; z-index: 2000;
+            width: 50px; height: 50px; background: rgba(0,0,0,0.8);
+            border: 2px solid #ffd700; border-radius: 12px; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 14px; cursor: pointer;
+        }
+
+        /* OSTALI ELEMENTI (Razdalja, Hitrost, Prijava...) */
         #dist-box { position: absolute; top: 20px; left: 20px; z-index: 1000; width: 60px; height: 60px; background: rgba(0,0,0,0.8); border: 2px solid #33ccff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; }
+        #recenter-btn { position: absolute; bottom: 30px; left: 20px; z-index: 1000; width: 60px; height: 60px; background: #33ccff; color: white; border-radius: 50%; border: 3px solid white; display: none; align-items: center; justify-content: center; font-size: 30px; }
         #bottom-right-stats { position: absolute; bottom: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; align-items: flex-end; }
         .stat-circle { width: 70px; height: 70px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; color: white; background: black; }
         #speed-circle { border: 4px solid #33ccff; }
@@ -29,10 +38,10 @@
 </head>
 <body>
 
-    <div id="dist-box"> <span id="dist-val">--</span> <small style="font-size: 9px;">KM</small> </div>
+    <div id="btn-3d" onclick="toggle3D()">3D</div>
 
+    <div id="dist-box"> <span id="dist-val">--</span> <small>KM</small> </div>
     <div id="recenter-btn" onclick="recenterMap()">🎯</div>
-
     <div id="main-report-btn" onclick="toggleReportMenu()">+</div>
 
     <div id="bottom-right-stats">
@@ -43,55 +52,55 @@
         </div>
     </div>
 
-    <div id="map"></div>
+    <div id="map-wrapper">
+        <div id="map"></div>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         var map = L.map('map', { zoomControl: false }).setView([46.05, 14.50], 13);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        var userPos = null;
-        var isFollowing = true; // Spremenljivka, ki pove ali sledimo lokaciji
+        function toggle3D() {
+            var wrapper = document.getElementById('map-wrapper');
+            var btn = document.getElementById('btn-3d');
+            if (wrapper.classList.contains('mode-3d')) {
+                wrapper.classList.remove('mode-3d');
+                btn.style.borderColor = "#ffd700";
+                btn.innerText = "3D";
+            } else {
+                wrapper.classList.add('mode-3d');
+                btn.style.borderColor = "#33ccff";
+                btn.innerText = "2D";
+            }
+            // Osveži mapo, da se ne popači
+            setTimeout(() => { map.invalidateSize(); }, 500);
+        }
 
-        // Zaznaj ročni premik mape
-        map.on('movestart', function() {
-            // Če je premik povzročil uporabnik (in ne koda), izklopi sledenje
-            // Uporabimo majhen trik s preverjanjem dogodka
+        // GPS IN SLEDI (kot prej)
+        var userPos = null;
+        var isFollowing = true;
+
+        map.locate({watch: true, enableHighAccuracy: true});
+        map.on('locationfound', function(e) {
+            userPos = e.latlng;
+            document.getElementById('current-speed').innerText = e.speed ? Math.round(e.speed * 3.6) : 0;
+            if (!window.uMarker) {
+                window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: '#33ccff', fillColor: 'white', fillOpacity: 1, weight: 3}).addTo(map);
+            } else { window.uMarker.setLatLng(e.latlng); }
+            if (isFollowing) { map.setView(e.latlng, 17); }
         });
 
-        // Leaflet nima direktnega 'userdrag' dogodka, zato uporabimo 'dragstart'
         map.on('dragstart', function() {
             isFollowing = false;
             document.getElementById('recenter-btn').style.display = 'flex';
         });
 
         function recenterMap() {
-            if (userPos) {
-                isFollowing = true;
-                map.flyTo(userPos, 16); // Gladko skoči nazaj
-                document.getElementById('recenter-btn').style.display = 'none';
-            }
+            isFollowing = true;
+            map.flyTo(userPos, 17);
+            document.getElementById('recenter-btn').style.display = 'none';
         }
-
-        map.locate({watch: true, enableHighAccuracy: true});
-        map.on('locationfound', function(e) {
-            userPos = e.latlng;
-            var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
-            document.getElementById('current-speed').innerText = speed;
-
-            if (!window.uMarker) {
-                window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: '#33ccff', fillColor: 'white', fillOpacity: 1, weight: 3}).addTo(map);
-            } else {
-                window.uMarker.setLatLng(e.latlng);
-            }
-            
-            // Samodejno centriraj SAMO ČE je isFollowing true
-            if (isFollowing) {
-                map.setView(e.latlng, map.getZoom());
-            }
-        });
-
-        // ... ostale funkcije za prijavo in menu ostanejo enake ...
     </script>
 </body>
 </html>
