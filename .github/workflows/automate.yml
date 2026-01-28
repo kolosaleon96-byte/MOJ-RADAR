@@ -1,34 +1,32 @@
-name: Radar Osvezevalec
+name: Avtomatika Radarjev
+
 on:
   schedule:
-    - cron: '*/30 * * * *'
-  workflow_dispatch:
+    - cron: '*/10 * * * *'  # Zažene se samodejno vsakih 10 minut
+  workflow_dispatch:        # Gumb za ročni zagon
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Prenos kode
-        uses: actions/checkout@v3
-
-      - name: Nastavitev Pythona
-        uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.x'
 
-      - name: Namestitev knjiznic
-        run: pip install pyotp requests beautifulsoup4 geopy
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
 
-      - name: Zagon robota
-        env:
-          FB_EMAIL: ${{ secrets.FB_EMAIL }}
-          FB_PASS: ${{ secrets.FB_PASS }}
-          FB_2FA_KEY: ${{ secrets.FB_2FA_KEY }}
+      - name: Run robot
         run: python radar.py
-      - name: Shrani rezultate na GitHub
+
+      - name: Save data
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "RadarBot"
+          git config --global user.email "bot@radar.si"
           git add radarji.json
-          git commit -m "Robot: Osveženi radarji" || exit 0
+          git commit -m "Osvežitev podatkov" || exit 0
           git push
