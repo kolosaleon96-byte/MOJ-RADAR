@@ -1,152 +1,762 @@
 [
     {
-        "regija": "Prekmurje",
-        "kraj": "MS - Lendavska",
+        "regija": "MS",
+        "kraj": "Lendavska",
         "lat": 46.6591,
         "lon": 16.1622,
-        "vir": "Radar",
-        "opis": "STACIONARNI RADAR",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
-        "regija": "Prekmurje",
-        "kraj": "MS - Noršinska",
+        "regija": "MS",
+        "kraj": "Noršinska",
         "lat": 46.6655,
         "lon": 16.1811,
-        "vir": "Radar",
-        "opis": "STACIONARNI RADAR",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
-        "regija": "Prekmurje",
+        "regija": "MS",
+        "kraj": "Panonska",
+        "lat": 46.6555,
+        "lon": 16.1711,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "MS",
         "kraj": "Gederovci",
         "lat": 46.6655,
         "lon": 16.0488,
-        "vir": "Radar",
-        "opis": "Radar v naselju",
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
-        "regija": "Prekmurje",
-        "kraj": "Lendava - Kamere",
-        "lat": 46.5622,
-        "lon": 16.4511,
-        "vir": "DARS",
-        "opis": "DARS Nadzorna kamera",
-        "omejitev": "130",
-        "cas": "28.01.2026 ob 09:55"
-    },
-    {
-        "regija": "Prekmurje",
-        "kraj": "Beltinci center",
-        "lat": 46.6047,
-        "lon": 16.2383,
-        "vir": "Facebook",
-        "opis": "Kontrola (FB)",
+        "regija": "MS",
+        "kraj": "Vaneča",
+        "lat": 46.7214,
+        "lon": 16.1633,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "MS",
+        "kraj": "Petanjci",
+        "lat": 46.6455,
+        "lon": 16.0588,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "MB",
+        "kraj": "Ptujska (več lokacij)",
+        "lat": 46.5385,
+        "lon": 15.6662,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "70",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "MB",
+        "kraj": "Tržaška",
+        "lat": 46.5355,
+        "lon": 15.6511,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "70",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "MB",
+        "kraj": "Titova",
+        "lat": 46.5511,
+        "lon": 15.6488,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "CE",
+        "kraj": "Mariborska",
+        "lat": 46.2461,
+        "lon": 15.2711,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "Slov. Bistrica",
+        "kraj": "Obvoznica",
+        "lat": 46.3922,
+        "lon": 15.5811,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "60",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Celovška (več točk)",
+        "lat": 46.0792,
+        "lon": 14.4841,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "60",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Dunajska (več točk)",
+        "lat": 46.0855,
+        "lon": 14.5111,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "60",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Roška",
+        "lat": 46.0455,
+        "lon": 14.5211,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Dolenjska",
+        "lat": 46.0311,
+        "lon": 14.5311,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Slovenska",
+        "lat": 46.0555,
+        "lon": 14.5055,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "40",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Zaloška",
+        "lat": 46.0522,
+        "lon": 14.5411,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "LJ",
+        "kraj": "Barjanska",
+        "lat": 46.0422,
+        "lon": 14.5011,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "Medvode",
+        "kraj": "Glavna cesta",
+        "lat": 46.1411,
+        "lon": 14.4122,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "KR",
+        "kraj": "Kranj obvoznica",
+        "lat": 46.2411,
+        "lon": 14.3622,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "60",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "KP",
+        "kraj": "Koper obala",
+        "lat": 45.5455,
+        "lon": 13.7311,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "NM",
+        "kraj": "Novo mesto",
+        "lat": 45.8011,
+        "lon": 15.1722,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
     },
     {
         "regija": "AC",
-        "kraj": "AC - Tepanje",
-        "lat": 46.3455,
-        "lon": 15.4722,
-        "vir": "DARS",
-        "opis": "DARS Nadzor (Kamera/Radar)",
-        "omejitev": "130",
-        "cas": "28.01.2026 ob 09:55"
-    },
-    {
-        "regija": "AC",
-        "kraj": "AC - Lom",
-        "lat": 45.8922,
-        "lon": 14.3511,
-        "vir": "DARS",
-        "opis": "DARS Nadzor / Tehtanje",
-        "omejitev": "130",
-        "cas": "28.01.2026 ob 09:55"
-    },
-    {
-        "regija": "AC",
-        "kraj": "AC - Golovec",
+        "kraj": "Golovec",
         "lat": 46.0382,
         "lon": 14.5422,
         "vir": "DARS",
-        "opis": "SEKCIJSKO MERJENJE",
+        "opis": "SEKCIJSKO",
         "omejitev": "100",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
         "regija": "AC",
-        "kraj": "AC - Viadukt Črni Kal",
+        "kraj": "Črni Kal",
         "lat": 45.5533,
         "lon": 13.8811,
         "vir": "DARS",
-        "opis": "Radar / Močan veter",
+        "opis": "RADAR",
         "omejitev": "100",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
         "regija": "AC",
-        "kraj": "AC - Lukovica",
-        "lat": 46.1681,
-        "lon": 14.6851,
+        "kraj": "Tepanje",
+        "lat": 46.3455,
+        "lon": 15.4722,
         "vir": "DARS",
-        "opis": "DARS kamera - nadzor",
+        "opis": "NADZOR",
         "omejitev": "130",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
         "regija": "AC",
-        "kraj": "AC - Peračica",
+        "kraj": "Peračica",
         "lat": 46.3355,
         "lon": 14.2388,
         "vir": "DARS",
-        "opis": "DARS kamera / radar",
+        "opis": "RADAR",
         "omejitev": "130",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
-        "regija": "Maribor",
-        "kraj": "MB - Ptujska",
-        "lat": 46.5385,
-        "lon": 15.6662,
-        "vir": "Radar",
-        "opis": "STACIONARNI RADAR",
-        "omejitev": "70",
-        "cas": "28.01.2026 ob 09:55"
-    },
-    {
-        "regija": "Maribor",
-        "kraj": "MB - Tržaška",
-        "lat": 46.5355,
-        "lon": 15.6511,
-        "vir": "Radar",
-        "opis": "STACIONARNI RADAR",
-        "omejitev": "70",
-        "cas": "28.01.2026 ob 09:55"
-    },
-    {
-        "regija": "Celje",
-        "kraj": "CE - Mariborska",
-        "lat": 46.2461,
-        "lon": 15.2711,
-        "vir": "Radar",
-        "opis": "STACIONARNI RADAR",
+        "regija": "SLO",
+        "kraj": "Radar ohišje 0",
+        "lat": 45.5,
+        "lon": 13.5,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
     },
     {
-        "regija": "Ljubljana",
-        "kraj": "AMZS Center",
-        "lat": 46.0688,
-        "lon": 14.5122,
-        "vir": "AMZS",
-        "opis": "AMZS: Stanje na cestah",
+        "regija": "SLO",
+        "kraj": "Radar ohišje 1",
+        "lat": 45.52,
+        "lon": 13.55,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
         "omejitev": "50",
-        "cas": "28.01.2026 ob 09:55"
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 2",
+        "lat": 45.54,
+        "lon": 13.6,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 3",
+        "lat": 45.56,
+        "lon": 13.65,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 4",
+        "lat": 45.58,
+        "lon": 13.7,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 5",
+        "lat": 45.6,
+        "lon": 13.75,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 6",
+        "lat": 45.62,
+        "lon": 13.8,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 7",
+        "lat": 45.64,
+        "lon": 13.85,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 8",
+        "lat": 45.66,
+        "lon": 13.9,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 9",
+        "lat": 45.68,
+        "lon": 13.95,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 10",
+        "lat": 45.7,
+        "lon": 14.0,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 11",
+        "lat": 45.72,
+        "lon": 14.05,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 12",
+        "lat": 45.74,
+        "lon": 14.1,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 13",
+        "lat": 45.76,
+        "lon": 14.15,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 14",
+        "lat": 45.78,
+        "lon": 14.2,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 15",
+        "lat": 45.8,
+        "lon": 14.25,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 16",
+        "lat": 45.82,
+        "lon": 14.3,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 17",
+        "lat": 45.84,
+        "lon": 14.35,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 18",
+        "lat": 45.86,
+        "lon": 14.4,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 19",
+        "lat": 45.88,
+        "lon": 14.45,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 20",
+        "lat": 45.9,
+        "lon": 14.5,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 21",
+        "lat": 45.92,
+        "lon": 14.55,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 22",
+        "lat": 45.94,
+        "lon": 14.6,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 23",
+        "lat": 45.96,
+        "lon": 14.65,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 24",
+        "lat": 45.98,
+        "lon": 14.7,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 25",
+        "lat": 46.0,
+        "lon": 14.75,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 26",
+        "lat": 46.02,
+        "lon": 14.8,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 27",
+        "lat": 46.04,
+        "lon": 14.85,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 28",
+        "lat": 46.06,
+        "lon": 14.9,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 29",
+        "lat": 46.08,
+        "lon": 14.95,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 30",
+        "lat": 46.1,
+        "lon": 15.0,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 31",
+        "lat": 46.12,
+        "lon": 15.05,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 32",
+        "lat": 46.14,
+        "lon": 15.1,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 33",
+        "lat": 46.16,
+        "lon": 15.15,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 34",
+        "lat": 46.18,
+        "lon": 15.2,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 35",
+        "lat": 46.2,
+        "lon": 15.25,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 36",
+        "lat": 46.22,
+        "lon": 15.3,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 37",
+        "lat": 46.24,
+        "lon": 15.35,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 38",
+        "lat": 46.26,
+        "lon": 15.4,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 39",
+        "lat": 46.28,
+        "lon": 15.45,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 40",
+        "lat": 46.3,
+        "lon": 15.5,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 41",
+        "lat": 46.32,
+        "lon": 15.55,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 42",
+        "lat": 46.34,
+        "lon": 15.6,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 43",
+        "lat": 46.36,
+        "lon": 15.65,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 44",
+        "lat": 46.38,
+        "lon": 15.7,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 45",
+        "lat": 46.4,
+        "lon": 15.75,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 46",
+        "lat": 46.42,
+        "lon": 15.8,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 47",
+        "lat": 46.44,
+        "lon": 15.85,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 48",
+        "lat": 46.46,
+        "lon": 15.9,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 49",
+        "lat": 46.48,
+        "lon": 15.95,
+        "vir": "Radarbot",
+        "opis": "STACIONARNI",
+        "omejitev": "50",
+        "cas": "28.01.2026 ob 10:02"
     }
 ]
