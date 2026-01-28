@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Slovenija Radar - Vsi Viri</title>
+    <title>SLO Radar & Promet VSE-V-ENEM</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -9,86 +9,43 @@
     <style>
         #map { height: 100vh; width: 100%; }
         body { margin: 0; padding: 0; }
-        
-        /* Stil za legendo v kotu */
-        .info-box {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            position: absolute;
-            bottom: 20px;
-            left: 10px;
-            z-index: 1000;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            border: 2px solid #333;
-        }
-        .dot {
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 5px;
-            border: 1px solid #000;
+        .legend {
+            background: white; padding: 10px; position: absolute; bottom: 20px; left: 10px;
+            z-index: 1000; border: 2px solid #333; border-radius: 5px; font-family: Arial; font-size: 11px;
         }
     </style>
 </head>
 <body>
-
     <div id="map"></div>
-
-    <div class="info-box">
-        <strong>LEGENDA RADARJEV:</strong><br>
-        <span class="dot" style="background-color: #0000FF;"></span> Facebook (V živo)<br>
-        <span class="dot" style="background-color: #FFFF00;"></span> AMZS (Uradno)<br>
-        <span class="dot" style="background-color: #FFA500;"></span> Radarbot Gold (Fiksni)
+    <div class="legend">
+        <b>LEGENDA:</b><br>
+        <span style="color:blue">●</span> Facebook (Radarji v živo)<br>
+        <span style="color:orange">●</span> Radarbot (Fiksni radarji)<br>
+        <span style="color:yellow; background:black;">●</span> AMZS (Uradni radarji)<br>
+        <span style="color:red">●</span> DARS (Zastoji & Nesreče)<br>
+        <span style="color:gray">●</span> Kamere (Stanje prometa)
     </div>
-
     <script>
-        // Nastavitev začetnega pogleda na celo Slovenijo
         var map = L.map('map').setView([46.1512, 14.9955], 8);
-        
-        // Uporaba standardne podlage
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-        // Nalaganje podatkov iz radarji.json
         fetch('radarji.json?t=' + Date.now())
             .then(response => response.json())
             .then(data => {
                 data.forEach(radar => {
-                    // Določanje barve glede na vir podatkov
-                    var barva = 'blue'; // Privzeto za Facebook
-                    if (radar.vir === 'AMZS') {
-                        barva = 'yellow';
-                    } else if (radar.vir === 'Radarbot') {
-                        barva = 'orange';
-                    }
+                    var barva = 'blue';
+                    if (radar.vir === 'AMZS') barva = 'yellow';
+                    else if (radar.vir === 'Radarbot') barva = 'orange';
+                    else if (radar.vir === 'DARS') barva = 'red';
+                    else if (radar.vir === 'Kamere') barva = 'gray';
 
-                    // Izris pike na zemljevidu
                     L.circleMarker([radar.lat, radar.lon], {
-                        radius: 10,
-                        fillColor: barva,
-                        color: "#000",
-                        weight: 2,
-                        opacity: 1,
-                        fillOpacity: 0.9
+                        radius: 10, fillColor: barva, color: "#000", weight: 2, fillOpacity: 0.9
                     })
                     .addTo(map)
-                    .bindPopup(`
-                        <div style="font-family: Arial;">
-                            <b style="font-size: 14px; color: ${barva === 'yellow' ? '#666' : barva};">${radar.regija}</b><br>
-                            <hr>
-                            <strong>Opis:</strong> ${radar.kraj}<br>
-                            <strong>Čas:</strong> ${radar.cas}<br>
-                            <strong>Vir:</strong> ${radar.vir}
-                        </div>
-                    `);
+                    .bindPopup(`<b>${radar.vir}</b><br>${radar.kraj}<br>Čas: ${radar.cas || 'V živo'}`);
                 });
-            })
-            .catch(err => console.error("Napaka pri nalaganju JSON datoteke:", err));
+            });
     </script>
 </body>
 </html>
