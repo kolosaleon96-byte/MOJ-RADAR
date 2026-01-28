@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <title>Radar SLO Nav Pro</title>
+    <title>Radar SLO Pro Nav</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -9,39 +9,58 @@
         body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; overflow: hidden; }
         #map { height: 100vh; width: 100vw; }
 
-        /* Navigacija zgoraj */
+        /* NAVIGACIJA ZGORAJ */
         #nav-search {
             position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
-            display: flex; gap: 8px; background: rgba(0,0,0,0.9); padding: 12px; border-radius: 15px;
+            display: flex; gap: 8px; background: rgba(0,0,0,0.85); padding: 10px; 
+            border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #222; color: white; }
-        #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
-
-        /* Speedometer & Omejitev spodaj desno */
-        #speed-container {
-            position: absolute; bottom: 30px; right: 20px; z-index: 1000;
-            display: flex; align-items: flex-end; gap: 10px;
+        #nav-search input { 
+            flex: 1; padding: 12px; border-radius: 8px; border: none; 
+            background: #222; color: white; font-size: 16px;
         }
-        #current-speed-box { background: rgba(0,0,0,0.9); color: white; width: 75px; height: 75px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
-        #limit-box { background: white; color: black; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 24px; font-weight: bold; }
+        #nav-search button { 
+            background: #007bff; color: white; border: none; padding: 12px; 
+            border-radius: 8px; font-weight: bold;
+        }
 
-        /* Prijavni gumb spodaj levo */
-        #report-btn { position: absolute; bottom: 30px; left: 20px; z-index: 1000; background: #ff1744; color: white; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; font-size: 16px; }
+        /* GUMB PRIJAVI */
+        #report-btn { 
+            position: absolute; bottom: 30px; left: 20px; z-index: 1000; 
+            background: #ff1744; color: white; border: none; padding: 15px 25px; 
+            border-radius: 50px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* HITROST IN OMEJITEV */
+        #speed-container { 
+            position: absolute; bottom: 30px; right: 20px; z-index: 1000; 
+            display: flex; align-items: flex-end; gap: 10px; 
+        }
+        #current-speed-box { 
+            background: rgba(0, 0, 0, 0.9); color: white; width: 70px; height: 70px; 
+            border-radius: 50%; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; border: 3px solid #007bff; 
+        }
+        #limit-box { 
+            background: white; color: black; width: 55px; height: 55px; 
+            border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; border: 5px solid #d32f2f; font-size: 22px; font-weight: bold; 
+        }
     </style>
 </head>
 <body>
 
     <div id="nav-search">
         <input type="text" id="target-dest" placeholder="Kam se peljemo?">
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(document.getElementById('target-dest').value))">GO</button>
+        <button onclick="goNav()">GO</button>
     </div>
 
-    <button id="report-btn">⚠️ PRIJAVI</button>
+    <button id="report-btn" onclick="prijaviMeni()">⚠️ PRIJAVI</button>
 
     <div id="speed-container">
         <div id="limit-box">50</div>
         <div id="current-speed-box">
-            <span id="speed-val" style="font-size: 30px; font-weight: bold;">0</span>
+            <span id="speed-val" style="font-size: 28px; font-weight: bold;">0</span>
             <small>km/h</small>
         </div>
     </div>
@@ -50,32 +69,92 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map', { zoomControl: false }).setView([46.15, 15.00], 8);
+        // Nastavitve mape
+        var map = L.map('map', { zoomControl: false }).setView([46.05, 14.50], 13);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        // GPS in Merilnik
+        var userPos = null;
+        var zadnjeOpozorilo = 0;
+
+        // GPS sledenje in hitrost
         map.locate({setView: true, watch: true, enableHighAccuracy: true});
+        
         map.on('locationfound', function(e) {
+            userPos = e.latlng;
             var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
             document.getElementById('speed-val').innerText = speed;
-            document.getElementById('limit-box').innerText = speed > 90 ? "130" : (speed > 55 ? "90" : "50");
             
-            if (!window.u) window.u = L.circleMarker(e.latlng, {radius: 9, color: 'white', fillColor: '#007bff', fillOpacity: 1}).addTo(map);
-            else window.u.setLatLng(e.latlng);
+            // Dinamična omejitev (simulacija)
+            document.getElementById('limit-box').innerText = speed > 100 ? "130" : (speed > 60 ? "90" : "50");
+
+            if (!window.marker) {
+                window.marker = L.circleMarker(e.latlng, {radius: 9, color: 'white', fillColor: '#007bff', fillOpacity: 1}).addTo(map);
+            } else {
+                window.marker.setLatLng(e.latlng);
+            }
+            
+            preveriRadarjeVBližini(e.latlng);
         });
 
-        // Nalaganje radarjev iz JSON
-        fetch('radarji.json?t=' + Date.now())
-            .then(res => res.json())
-            .then(data => {
-                data.forEach(t => {
-                    var icon = L.divIcon({
-                        html: `<div style="font-size: 28px;">${t.icon}</div>`,
-                        className: 'custom-icon', iconSize: [40, 40], iconAnchor: [20, 20]
+        // Nalaganje radarjev
+        function naložiRadarje() {
+            fetch('radarji.json?t=' + Date.now())
+                .then(res => res.json())
+                .then(data => {
+                    window.vsiRadarji = data;
+                    data.forEach(r => {
+                        var icon = L.divIcon({ html: `<div style="font-size:25px;">${r.icon}</div>`, className: 'r-icon' });
+                        L.marker([r.lat, r.lon], {icon: icon}).addTo(map).bindPopup(r.opis);
                     });
-                    L.marker([t.lat, t.lon], {icon: icon}).addTo(map).bindPopup(`<b>${t.opis}</b><br>${t.vir}`);
                 });
+        }
+        naložiRadarje();
+
+        // Funkcija za prijavo z tvojim ključem
+        async function submitReport(tip, ikona) {
+            const mojKljuc = "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";
+            if(!userPos) return alert("Čakam na GPS...");
+
+            const podatki = { lat: userPos.lat, lon: userPos.lng, opis: tip, icon: ikona, vir: "Uporabnik" };
+
+            L.marker([userPos.lat, userPos.lng], {
+                icon: L.divIcon({ html: `<div style="font-size:30px;">${ikona}</div>` })
+            }).addTo(map).bindPopup("Shranjevanje...").openPopup();
+
+            await fetch(`https://api.github.com/repos/kolosaleon96-byte/MOJ-RADAR/dispatches`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
+                body: JSON.stringify({ event_type: 'new_report', client_payload: { data: podatki } })
             });
+            alert("Javljeno: " + tip);
+        }
+
+        function prijaviMeni() {
+            let t = prompt("1: Policija 👮, 2: Radar 📸, 3: Nesreča 💥");
+            if(t == "1") submitReport("POLICIJA", "👮");
+            if(t == "2") submitReport("RADAR", "📸");
+            if(t == "3") submitReport("NESREČA", "💥");
+        }
+
+        // Zvočno opozarjanje
+        function preveriRadarjeVBližini(pos) {
+            if(!window.vsiRadarji) return;
+            let zdaj = Date.now();
+            window.vsiRadarji.forEach(r => {
+                let d = map.distance(pos, [r.lat, r.lon]);
+                if(d < 800 && (zdaj - zadnjeOpozorilo > 30000)) { // Opozori na 800m, max vsakih 30s
+                    let govor = new SpeechSynthesisUtterance("Pozor, " + r.opis + " čez 800 metrov!");
+                    govor.lang = 'sl-SI';
+                    window.speechSynthesis.speak(govor);
+                    zadnjeOpozorilo = zdaj;
+                }
+            });
+        }
+
+        function goNav() {
+            let dest = document.getElementById('target-dest').value;
+            window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(dest));
+        }
     </script>
 </body>
 </html>
