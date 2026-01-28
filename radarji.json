@@ -20,19 +20,17 @@
   {
     "lat": 46.6621,
     "lon": 16.1612,
-    "tip": "STACIONARNI RADAR",
+    "tip": "STACIONARNI",
     "icon": "📸",
-    "opis": "MS - Lendavska",
-    "vir": "STACIONARNI",
-    "limit": "50"
+    "opis": "MS Center",
+    "vir": "FIKSNI"
   },
   {
     "lat": 46.5412,
     "lon": 16.4632,
-    "tip": "STACIONARNI RADAR",
+    "tip": "STACIONARNI",
     "icon": "📸",
-    "opis": "Lendava vstop",
-    "vir": "STACIONARNI",
-    "limit": "50"
+    "opis": "Lendava",
+    "vir": "FIKSNI"
   }
 ]
