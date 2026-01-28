@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moj Radar v živo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style> 
+        #map { height: 100vh; width: 100%; } 
+        body { margin: 0; } 
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([46.1512, 14.9955], 8);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        fetch('radarji.json')
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(r => {
+                    L.marker([r.lat, r.lon]).addTo(map)
+                     .bindPopup('<b>' + r.regija + '</b><br>' + r.kraj + ' ob ' + r.cas);
+                });
+            }).catch(e => console.log("Čakam na podatke..."));
+    </script>
+</body>
+</html>
