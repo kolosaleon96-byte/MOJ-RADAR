@@ -1645,5 +1645,1652 @@
         "vir": "Uradno",
         "opis": "OHIŠJE RADARJA",
         "cas": "28.01.2026 ob 10:57"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 1",
+        "lat": 45.4,
+        "lon": 13.5,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 2",
+        "lat": 45.412,
+        "lon": 13.525,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 3",
+        "lat": 45.424,
+        "lon": 13.55,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 4",
+        "lat": 45.436,
+        "lon": 13.575,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 5",
+        "lat": 45.448,
+        "lon": 13.6,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 6",
+        "lat": 45.46,
+        "lon": 13.625,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 7",
+        "lat": 45.472,
+        "lon": 13.65,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 8",
+        "lat": 45.484,
+        "lon": 13.675,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 9",
+        "lat": 45.495999999999995,
+        "lon": 13.7,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 10",
+        "lat": 45.507999999999996,
+        "lon": 13.725,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 11",
+        "lat": 45.519999999999996,
+        "lon": 13.75,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 12",
+        "lat": 45.532,
+        "lon": 13.775,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 13",
+        "lat": 45.544,
+        "lon": 13.8,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 14",
+        "lat": 45.556,
+        "lon": 13.825,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 15",
+        "lat": 45.568,
+        "lon": 13.85,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 16",
+        "lat": 45.58,
+        "lon": 13.875,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 17",
+        "lat": 45.592,
+        "lon": 13.9,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 18",
+        "lat": 45.604,
+        "lon": 13.925,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 19",
+        "lat": 45.616,
+        "lon": 13.95,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 20",
+        "lat": 45.628,
+        "lon": 13.975,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 21",
+        "lat": 45.64,
+        "lon": 14.0,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 22",
+        "lat": 45.652,
+        "lon": 14.025,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 23",
+        "lat": 45.664,
+        "lon": 14.05,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 24",
+        "lat": 45.676,
+        "lon": 14.075,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 25",
+        "lat": 45.687999999999995,
+        "lon": 14.1,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 26",
+        "lat": 45.699999999999996,
+        "lon": 14.125,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 27",
+        "lat": 45.711999999999996,
+        "lon": 14.15,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 28",
+        "lat": 45.724,
+        "lon": 14.175,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 29",
+        "lat": 45.736,
+        "lon": 14.2,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 30",
+        "lat": 45.748,
+        "lon": 14.225,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 31",
+        "lat": 45.76,
+        "lon": 14.25,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 32",
+        "lat": 45.772,
+        "lon": 14.275,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 33",
+        "lat": 45.784,
+        "lon": 14.3,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 34",
+        "lat": 45.796,
+        "lon": 14.325,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 35",
+        "lat": 45.808,
+        "lon": 14.35,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 36",
+        "lat": 45.82,
+        "lon": 14.375,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 37",
+        "lat": 45.832,
+        "lon": 14.4,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 38",
+        "lat": 45.844,
+        "lon": 14.425,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 39",
+        "lat": 45.856,
+        "lon": 14.45,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 40",
+        "lat": 45.868,
+        "lon": 14.475,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 41",
+        "lat": 45.879999999999995,
+        "lon": 14.5,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 42",
+        "lat": 45.891999999999996,
+        "lon": 14.525,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 43",
+        "lat": 45.903999999999996,
+        "lon": 14.55,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 44",
+        "lat": 45.916,
+        "lon": 14.575,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 45",
+        "lat": 45.928,
+        "lon": 14.6,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 46",
+        "lat": 45.94,
+        "lon": 14.625,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 47",
+        "lat": 45.952,
+        "lon": 14.65,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 48",
+        "lat": 45.964,
+        "lon": 14.675,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 49",
+        "lat": 45.976,
+        "lon": 14.7,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 50",
+        "lat": 45.988,
+        "lon": 14.725,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 51",
+        "lat": 46.0,
+        "lon": 14.75,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 52",
+        "lat": 46.012,
+        "lon": 14.775,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 53",
+        "lat": 46.024,
+        "lon": 14.8,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 54",
+        "lat": 46.036,
+        "lon": 14.825,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 55",
+        "lat": 46.048,
+        "lon": 14.85,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 56",
+        "lat": 46.059999999999995,
+        "lon": 14.875,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 57",
+        "lat": 46.071999999999996,
+        "lon": 14.9,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 58",
+        "lat": 46.083999999999996,
+        "lon": 14.925,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 59",
+        "lat": 46.096,
+        "lon": 14.95,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 60",
+        "lat": 46.108,
+        "lon": 14.975,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 61",
+        "lat": 46.12,
+        "lon": 15.0,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 62",
+        "lat": 46.132,
+        "lon": 15.025,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 63",
+        "lat": 46.144,
+        "lon": 15.05,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 64",
+        "lat": 46.156,
+        "lon": 15.075,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 65",
+        "lat": 46.168,
+        "lon": 15.1,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 66",
+        "lat": 46.18,
+        "lon": 15.125,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 67",
+        "lat": 46.192,
+        "lon": 15.15,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 68",
+        "lat": 46.204,
+        "lon": 15.175,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 69",
+        "lat": 46.216,
+        "lon": 15.2,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 70",
+        "lat": 46.228,
+        "lon": 15.225,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 71",
+        "lat": 46.24,
+        "lon": 15.25,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 72",
+        "lat": 46.251999999999995,
+        "lon": 15.275,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 73",
+        "lat": 46.263999999999996,
+        "lon": 15.3,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 74",
+        "lat": 46.275999999999996,
+        "lon": 15.325,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 75",
+        "lat": 46.288,
+        "lon": 15.35,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 76",
+        "lat": 46.3,
+        "lon": 15.375,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 77",
+        "lat": 46.312,
+        "lon": 15.4,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 78",
+        "lat": 46.324,
+        "lon": 15.425,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 79",
+        "lat": 46.336,
+        "lon": 15.45,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 80",
+        "lat": 46.348,
+        "lon": 15.475,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 81",
+        "lat": 46.36,
+        "lon": 15.5,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 82",
+        "lat": 46.372,
+        "lon": 15.525,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 83",
+        "lat": 46.384,
+        "lon": 15.55,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 84",
+        "lat": 46.396,
+        "lon": 15.575,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 85",
+        "lat": 46.408,
+        "lon": 15.6,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 86",
+        "lat": 46.42,
+        "lon": 15.625,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 87",
+        "lat": 46.432,
+        "lon": 15.65,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 88",
+        "lat": 46.443999999999996,
+        "lon": 15.675,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 89",
+        "lat": 46.455999999999996,
+        "lon": 15.7,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 90",
+        "lat": 46.467999999999996,
+        "lon": 15.725,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 91",
+        "lat": 46.48,
+        "lon": 15.75,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 92",
+        "lat": 46.492,
+        "lon": 15.775,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 93",
+        "lat": 46.504,
+        "lon": 15.8,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 94",
+        "lat": 46.516,
+        "lon": 15.825,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 95",
+        "lat": 46.528,
+        "lon": 15.85,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 96",
+        "lat": 46.54,
+        "lon": 15.875,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 97",
+        "lat": 46.552,
+        "lon": 15.9,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 98",
+        "lat": 46.564,
+        "lon": 15.925,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 99",
+        "lat": 46.576,
+        "lon": 15.95,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 100",
+        "lat": 46.588,
+        "lon": 15.975,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 101",
+        "lat": 46.6,
+        "lon": 16.0,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 102",
+        "lat": 46.612,
+        "lon": 16.025,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 103",
+        "lat": 46.623999999999995,
+        "lon": 16.05,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 104",
+        "lat": 46.635999999999996,
+        "lon": 16.075,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 105",
+        "lat": 46.647999999999996,
+        "lon": 16.1,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 106",
+        "lat": 46.66,
+        "lon": 16.125,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 107",
+        "lat": 46.672,
+        "lon": 16.15,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 108",
+        "lat": 46.684,
+        "lon": 16.175,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 109",
+        "lat": 46.696,
+        "lon": 16.2,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 110",
+        "lat": 46.708,
+        "lon": 16.225,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 111",
+        "lat": 46.72,
+        "lon": 16.25,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 112",
+        "lat": 46.732,
+        "lon": 16.275,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 113",
+        "lat": 46.744,
+        "lon": 16.3,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 114",
+        "lat": 46.756,
+        "lon": 16.325,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 115",
+        "lat": 46.768,
+        "lon": 16.35,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 116",
+        "lat": 46.78,
+        "lon": 16.375,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 117",
+        "lat": 46.792,
+        "lon": 16.4,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 118",
+        "lat": 46.804,
+        "lon": 16.425,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 119",
+        "lat": 46.815999999999995,
+        "lon": 16.45,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 120",
+        "lat": 46.827999999999996,
+        "lon": 16.475,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 121",
+        "lat": 46.839999999999996,
+        "lon": 16.5,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 122",
+        "lat": 46.852,
+        "lon": 16.525,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 123",
+        "lat": 46.864,
+        "lon": 16.55,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 124",
+        "lat": 46.876,
+        "lon": 16.575,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 125",
+        "lat": 46.888,
+        "lon": 16.6,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 126",
+        "lat": 46.9,
+        "lon": 16.625,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 127",
+        "lat": 46.912,
+        "lon": 16.65,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 128",
+        "lat": 46.924,
+        "lon": 16.675,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 129",
+        "lat": 46.936,
+        "lon": 16.7,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 130",
+        "lat": 46.948,
+        "lon": 16.725,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 131",
+        "lat": 46.96,
+        "lon": 16.75,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 132",
+        "lat": 46.972,
+        "lon": 16.775,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 133",
+        "lat": 46.984,
+        "lon": 16.8,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 134",
+        "lat": 46.995999999999995,
+        "lon": 16.825,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 135",
+        "lat": 47.007999999999996,
+        "lon": 16.85,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 136",
+        "lat": 47.019999999999996,
+        "lon": 16.875,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 137",
+        "lat": 47.032,
+        "lon": 16.9,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 138",
+        "lat": 47.044,
+        "lon": 16.925,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 139",
+        "lat": 47.056,
+        "lon": 16.95,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 140",
+        "lat": 47.068,
+        "lon": 16.975,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 141",
+        "lat": 47.08,
+        "lon": 17.0,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 142",
+        "lat": 47.092,
+        "lon": 17.025,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 143",
+        "lat": 47.104,
+        "lon": 17.05,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 144",
+        "lat": 47.116,
+        "lon": 17.075,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 145",
+        "lat": 47.128,
+        "lon": 17.1,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 146",
+        "lat": 47.14,
+        "lon": 17.125,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 147",
+        "lat": 47.152,
+        "lon": 17.15,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 148",
+        "lat": 47.164,
+        "lon": 17.175,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 149",
+        "lat": 47.176,
+        "lon": 17.2,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 150",
+        "lat": 47.187999999999995,
+        "lon": 17.225,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 151",
+        "lat": 47.199999999999996,
+        "lon": 17.25,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 152",
+        "lat": 47.211999999999996,
+        "lon": 17.275,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 153",
+        "lat": 47.224,
+        "lon": 17.3,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 154",
+        "lat": 47.236,
+        "lon": 17.325,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 155",
+        "lat": 47.248,
+        "lon": 17.35,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 156",
+        "lat": 47.26,
+        "lon": 17.375,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 157",
+        "lat": 47.272,
+        "lon": 17.4,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 158",
+        "lat": 47.284,
+        "lon": 17.425,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 159",
+        "lat": 47.296,
+        "lon": 17.45,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 160",
+        "lat": 47.308,
+        "lon": 17.475,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 161",
+        "lat": 47.32,
+        "lon": 17.5,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 162",
+        "lat": 47.332,
+        "lon": 17.525,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 163",
+        "lat": 47.344,
+        "lon": 17.55,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 164",
+        "lat": 47.356,
+        "lon": 17.575,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 165",
+        "lat": 47.367999999999995,
+        "lon": 17.6,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 166",
+        "lat": 47.379999999999995,
+        "lon": 17.625,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 167",
+        "lat": 47.391999999999996,
+        "lon": 17.65,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 168",
+        "lat": 47.403999999999996,
+        "lon": 17.675,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 169",
+        "lat": 47.416,
+        "lon": 17.7,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 170",
+        "lat": 47.428,
+        "lon": 17.725,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 171",
+        "lat": 47.44,
+        "lon": 17.75,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 172",
+        "lat": 47.452,
+        "lon": 17.775,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 173",
+        "lat": 47.464,
+        "lon": 17.8,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 174",
+        "lat": 47.476,
+        "lon": 17.825,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 175",
+        "lat": 47.488,
+        "lon": 17.85,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 176",
+        "lat": 47.5,
+        "lon": 17.875,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 177",
+        "lat": 47.512,
+        "lon": 17.9,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 178",
+        "lat": 47.524,
+        "lon": 17.925,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 179",
+        "lat": 47.536,
+        "lon": 17.95,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "SLO",
+        "kraj": "Radar ohišje 180",
+        "lat": 47.548,
+        "lon": 17.975,
+        "vir": "Sistem",
+        "opis": "STACIONARNI RADAR",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "FB",
+        "kraj": "Beltinci - FB",
+        "lat": 46.6047,
+        "lon": 16.2383,
+        "vir": "Facebook",
+        "opis": "OBJAVA V ŽIVO",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "FB",
+        "kraj": "MS - FB",
+        "lat": 46.6591,
+        "lon": 16.1622,
+        "vir": "Facebook",
+        "opis": "OBJAVA V ŽIVO",
+        "cas": "28.01.2026 ob 10:58"
+    },
+    {
+        "regija": "FB",
+        "kraj": "Lipovci - FB",
+        "lat": 46.6322,
+        "lon": 16.2344,
+        "vir": "Facebook",
+        "opis": "OBJAVA V ŽIVO",
+        "cas": "28.01.2026 ob 10:58"
     }
 ]
