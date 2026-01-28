@@ -1,0 +1,27 @@
+name: Radar Osvezevalec
+on:
+schedule:
+- cron: '*/30 * * * *' # Robot se samodejno zbudi vsakih 30 minut
+workflow_dispatch: # Omogoča, da ga poženeš ročno za test
+
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- name: Prenos kode
+uses: actions/checkout@v3
+
+- name: Nastavitev Pythona
+uses: actions/setup-python@v4
+with:
+python-version: '3.9'
+
+- name: Namestitev knjiznic
+run: pip install pyotp
+
+- name: Zagon robota
+env:
+FB_EMAIL: ${{ secrets.FB_EMAIL }}
+FB_PASS: ${{ secrets.FB_PASS }}
+FB_2FA_KEY: ${{ secrets.FB_2FA_KEY }}
+run: python radar.py
