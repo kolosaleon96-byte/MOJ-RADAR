@@ -7,35 +7,47 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; background: #f0f0f0; overflow: hidden; }
-        #map { height: 100vh; width: 100vw; }
+        /* SIVA/MODRA TEMA ZA OZADJE */
+        body { margin: 0; padding: 0; font-family: sans-serif; background: #242f3e; overflow: hidden; }
+        #map { height: 100vh; width: 100vw; background: #242f3e; }
         
+        /* ISKALNIK */
         #nav-search {
             position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
-            display: flex; gap: 8px; background: white; padding: 10px; border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex; gap: 8px; background: rgba(36, 47, 62, 0.9); padding: 10px; border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #444;
         }
-        #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none; }
+        #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #333; color: white; font-size: 16px; outline: none; }
         #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
 
+        /* GUMB PRIJAVI */
         #report-btn { 
             position: absolute; bottom: 30px; left: 20px; z-index: 1000; 
             background: #ff1744; color: white; border: none; padding: 18px 25px; 
-            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
+        /* GUMB ZA CENTRIRANJE */
+        #recenter-btn {
+            position: absolute; bottom: 110px; right: 20px; z-index: 1000;
+            background: white; border: none; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* HITROST */
         #speed-container { position: absolute; bottom: 30px; right: 20px; z-index: 1000; display: flex; align-items: flex-end; gap: 10px; }
-        #current-speed-box { background: white; color: black; width: 80px; height: 80px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        #limit-box { background: white; color: black; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 26px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        #current-speed-box { background: #1a1a1a; color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        #limit-box { background: white; color: black; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 26px; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div id="nav-search">
-        <input type="text" id="target-dest" placeholder="Kam se peljemo?">
-        <button onclick="goNav()">GO</button>
+        <input type="text" id="target-dest" placeholder="Vpiši cilj...">
+        <button onclick="goNav()">NAV</button>
     </div>
 
+    <button id="recenter-btn" onclick="recenterMe()">🎯</button>
     <button id="report-btn" onclick="prijaviMeni()">⚠️ PRIJAVI</button>
 
     <div id="speed-container">
@@ -50,24 +62,31 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Nastavitev zemljevida - uporabil sem svetlo "Voyager" temo, kjer se vidi vse
+        // Srednja pot: CartoDB Dark Matter, ki je dejansko temno siva, ne črna
         var map = L.map('map', { zoomControl: false }).setView([46.05, 14.50], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
             attribution: '© OpenStreetMap'
         }).addTo(map);
+        
+        // Če želiš še malo bolj temno, lahko zamenjaš zgornji link z:
+        // 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' (svetlo siva)
 
         var userPos = null;
         var zadnjeOpozorilo = 0;
         var vsiMarkers = L.layerGroup().addTo(map);
         var vsiRadarjiPodatki = [];
-        var slediUporabniku = true; // Spremenljivka, ki pove, če naj zemljevid sledi piki
+        var slediUporabniku = true;
 
-        // Ko se uporabnik dotakne zemljevida, ugasnemo avtomatsko skakanje nazaj
         map.on('movestart', function() {
             slediUporabniku = false;
-            // Čez 10 sekund se sledenje spet vklopi samo, če se zemljevid ne premika več
-            setTimeout(() => { slediUporabniku = true; }, 15000); 
         });
+
+        function recenterMe() {
+            if (userPos) {
+                slediUporabniku = true;
+                map.setView(userPos, 16);
+            }
+        }
 
         map.locate({watch: true, enableHighAccuracy: true});
         
@@ -83,11 +102,9 @@
                 window.uMarker.setLatLng(e.latlng);
             }
 
-            // Samo če uporabnik ne raziskuje drugje, centriraj mapo na piko
             if (slediUporabniku) {
                 map.setView(e.latlng, map.getZoom());
             }
-            
             preveriBližino(e.latlng);
         });
 
@@ -99,10 +116,10 @@
                     vsiMarkers.clearLayers();
                     data.forEach(r => {
                         var icon = L.divIcon({ 
-                            html: `<div style="font-size:28px; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.5); border: 2px solid #ff1744;">${r.icon}</div>`, 
+                            html: `<div style="font-size:28px; background: white; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.4); border: 2px solid #ff1744;">${r.icon}</div>`, 
                             className: 'custom-div-icon',
-                            iconSize: [40, 40],
-                            iconAnchor: [20, 20]
+                            iconSize: [42, 42],
+                            iconAnchor: [21, 21]
                         });
                         L.marker([r.lat, r.lon], {icon: icon}).addTo(vsiMarkers).bindPopup(r.opis);
                     });
@@ -120,11 +137,11 @@
                 headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
                 body: JSON.stringify({ event_type: 'new_report', client_payload: { data: podatki } })
             });
-            alert("Sistem: " + tip + " javljen!");
+            alert("Poslano: " + tip);
         }
 
         function prijaviMeni() {
-            let t = prompt("Izberi:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
+            let t = prompt("Prijavi:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
             if(t == "1") submitReport("POLICIJA", "👮");
             if(t == "2") submitReport("RADAR", "📸");
             if(t == "3") submitReport("NESREČA", "💥");
@@ -135,7 +152,7 @@
             vsiRadarjiPodatki.forEach(r => {
                 let razdalja = map.distance(trenutnaLok, [r.lat, r.lon]);
                 if(razdalja < 1000 && (zdaj - zadnjeOpozorilo > 60000)) {
-                    let msg = new SpeechSynthesisUtterance("Pozor, " + r.opis + " v bližini.");
+                    let msg = new SpeechSynthesisUtterance("Pozor, " + r.opis + " čez en kilometer.");
                     msg.lang = 'sl-SI';
                     window.speechSynthesis.speak(msg);
                     zadnjeOpozorilo = zdaj;
