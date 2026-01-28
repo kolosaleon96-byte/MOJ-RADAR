@@ -1,51 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SLO Radar & Promet VSE-V-ENEM</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <style>
-        #map { height: 100vh; width: 100%; }
-        body { margin: 0; padding: 0; }
-        .legend {
-            background: white; padding: 10px; position: absolute; bottom: 20px; left: 10px;
-            z-index: 1000; border: 2px solid #333; border-radius: 5px; font-family: Arial; font-size: 11px;
-        }
-    </style>
-</head>
-<body>
-    <div id="map"></div>
-    <div class="legend">
-        <b>LEGENDA:</b><br>
-        <span style="color:blue">●</span> Facebook (Radarji v živo)<br>
-        <span style="color:orange">●</span> Radarbot (Fiksni radarji)<br>
-        <span style="color:yellow; background:black;">●</span> AMZS (Uradni radarji)<br>
-        <span style="color:red">●</span> DARS (Zastoji & Nesreče)<br>
-        <span style="color:gray">●</span> Kamere (Stanje prometa)
-    </div>
-    <script>
-        var map = L.map('map').setView([46.1512, 14.9955], 8);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+<div class="legend">
+    <b>LEGENDA:</b><br>
+    <span style="color:blue">●</span> Facebook (Radarji)<br>
+    <span style="color:purple">●</span> Waze (Policija v živo)<br>
+    <span style="color:orange">●</span> Radarbot (Fiksni)<br>
+    <span style="color:yellow; background:black;">●</span> AMZS (Uradni radarji)<br>
+    <span style="color:red">●</span> DARS (Zastoji & Nesreče)<br>
+    <span style="color:gray">●</span> Kamere (Stanje prometa)
+</div>
 
-        fetch('radarji.json?t=' + Date.now())
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(radar => {
-                    var barva = 'blue';
-                    if (radar.vir === 'AMZS') barva = 'yellow';
-                    else if (radar.vir === 'Radarbot') barva = 'orange';
-                    else if (radar.vir === 'DARS') barva = 'red';
-                    else if (radar.vir === 'Kamere') barva = 'gray';
-
-                    L.circleMarker([radar.lat, radar.lon], {
-                        radius: 10, fillColor: barva, color: "#000", weight: 2, fillOpacity: 0.9
-                    })
-                    .addTo(map)
-                    .bindPopup(`<b>${radar.vir}</b><br>${radar.kraj}<br>Čas: ${radar.cas || 'V živo'}`);
-                });
-            });
-    </script>
-</body>
-</html>
+<script>
+    // ... v fetch delu ...
+    var barva = 'blue';
+    if (radar.vir === 'AMZS') barva = 'yellow';
+    else if (radar.vir === 'Radarbot') barva = 'orange';
+    else if (radar.vir === 'DARS') barva = 'red';
+    else if (radar.vir === 'Kamere') barva = 'gray';
+    else if (radar.vir === 'Waze') barva = 'purple'; // VIJOLIČNA ZA WAZE
+    // ...
+</script>
