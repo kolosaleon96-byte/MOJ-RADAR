@@ -1,29 +1,11 @@
 [
   {
-    "lat": 46.051,
-    "lon": 14.505,
-    "tip": "POLICIJA",
-    "icon": "👮",
-    "opis": "Waze: Mobilni radar",
-    "vir": "WAZE",
-    "limit": "50"
-  },
-  {
     "lat": 46.6621,
     "lon": 16.1612,
     "tip": "STACIONARNI RADAR",
     "icon": "📸",
-    "opis": "Murska Sobota - Lendavska ul. (50 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 46.6515,
-    "lon": 16.1705,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Murska Sobota - obrtna cona (50 km/h)",
-    "vir": "RADARBOT GOLD",
+    "opis": "MS - Lendavska",
+    "vir": "STACIONARNI",
     "limit": "50"
   },
   {
@@ -31,71 +13,8 @@
     "lon": 16.4521,
     "tip": "STACIONARNI RADAR",
     "icon": "📸",
-    "opis": "Lendava - vstop v mesto (50 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 46.6782,
-    "lon": 16.0125,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Gornja Radgona - center (50 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 46.5412,
-    "lon": 15.6421,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Maribor - Ptujska cesta (70 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "70"
-  },
-  {
-    "lat": 46.0612,
-    "lon": 14.5312,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Ljubljana - Dunajska cesta (60 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "60"
-  },
-  {
-    "lat": 46.0415,
-    "lon": 14.4823,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Ljubljana - Rožna dolina (50 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 45.5482,
-    "lon": 13.7315,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Koper - Šmarska cesta (70 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "70"
-  },
-  {
-    "lat": 46.2412,
-    "lon": 14.3551,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Kranj - Zlato polje (50 km/h)",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 46.3615,
-    "lon": 15.1121,
-    "tip": "STACIONARNI RADAR",
-    "icon": "📸",
-    "opis": "Velenje - Partizanska (50 km/h)",
-    "vir": "RADARBOT GOLD",
+    "opis": "Lendava vstop",
+    "vir": "STACIONARNI",
     "limit": "50"
   }
 ]
