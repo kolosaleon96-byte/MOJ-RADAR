@@ -1,1 +1,29 @@
-()
+[
+  {
+    "lat": 46.0569,
+    "lon": 14.5058,
+    "tip": "FIKSNI RADAR",
+    "icon": "📸",
+    "opis": "Ljubljana Center - 50 km/h",
+    "vir": "RADARBOT GOLD",
+    "limit": "50"
+  },
+  {
+    "lat": 46.2361,
+    "lon": 14.3572,
+    "tip": "POLICIJA",
+    "icon": "👮",
+    "opis": "Radar v civilnem avtu (Kranj)",
+    "vir": "WAZE",
+    "limit": "60"
+  },
+  {
+    "lat": 46.1512,
+    "lon": 14.9955,
+    "tip": "DELA NA CESTI",
+    "icon": "🚧",
+    "opis": "Zaprt pas zaradi obnove",
+    "vir": "DARS",
+    "limit": "80"
+  }
+]
