@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <title>Radar SLO Pro Nav</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Radar SLO Pro Nav</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff1744">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; overflow: hidden; }
@@ -13,6 +18,7 @@
         #nav-search {
             position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
             display: flex; gap: 8px; background: rgba(0,0,0,0.85); padding: 10px; border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #222; color: white; font-size: 16px; outline: none; }
         #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
@@ -20,21 +26,21 @@
         /* GUMB PRIJAVI */
         #report-btn { 
             position: absolute; bottom: 30px; left: 20px; z-index: 1000; 
-            background: #ff1744; color: white; border: none; padding: 15px 25px; 
-            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            background: #ff1744; color: white; border: none; padding: 18px 25px; 
+            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         /* HITROST IN OMEJITEV */
         #speed-container { position: absolute; bottom: 30px; right: 20px; z-index: 1000; display: flex; align-items: flex-end; gap: 10px; }
-        #current-speed-box { background: rgba(0,0,0,0.9); color: white; width: 75px; height: 75px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
-        #limit-box { background: white; color: black; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 24px; font-weight: bold; }
+        #current-speed-box { background: rgba(0,0,0,0.9); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
+        #limit-box { background: white; color: black; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #d32f2f; font-size: 26px; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div id="nav-search">
-        <input type="text" id="target-dest" placeholder="Kam se peljemo?">
-        <button onclick="goNav()">NAVIGACIJA</button>
+        <input type="text" id="target-dest" placeholder="Vpiši cilj...">
+        <button onclick="goNav()">GO</button>
     </div>
 
     <button id="report-btn" onclick="prijaviMeni()">⚠️ PRIJAVI</button>
@@ -42,7 +48,7 @@
     <div id="speed-container">
         <div id="limit-box">50</div>
         <div id="current-speed-box">
-            <span id="speed-val" style="font-size: 30px; font-weight: bold;">0</span>
+            <span id="speed-val" style="font-size: 32px; font-weight: bold;">0</span>
             <small>km/h</small>
         </div>
     </div>
@@ -59,7 +65,7 @@
         var vsiMarkers = L.layerGroup().addTo(map);
         var vsiRadarjiPodatki = [];
 
-        // --- GPS IN HITROST ---
+        // GPS SLEDENJE
         map.locate({setView: true, watch: true, enableHighAccuracy: true});
         
         map.on('locationfound', function(e) {
@@ -76,57 +82,50 @@
             preveriBližino(e.latlng);
         });
 
-        // --- FUNKCIJA ZA SAMODEJNO OSVEŽEVANJE (10 MIN) ---
+        // NALAGANJE IN SAMODEJNO OSVEŽEVANJE (10 MIN)
         function osvežiRadarje() {
-            console.log("Osvežujem radarje iz baze...");
             fetch('radarji.json?t=' + Date.now())
                 .then(res => res.json())
                 .then(data => {
                     vsiRadarjiPodatki = data;
-                    vsiMarkers.clearLayers(); // Pobrišemo stare, da naložimo sveže
+                    vsiMarkers.clearLayers();
                     data.forEach(r => {
-                        var icon = L.divIcon({ html: `<div style="font-size:25px; filter: drop-shadow(0 0 2px black);">${r.icon}</div>`, className: 'dummy' });
+                        var icon = L.divIcon({ html: `<div style="font-size:25px;">${r.icon}</div>`, className: 'dummy' });
                         L.marker([r.lat, r.lon], {icon: icon}).addTo(vsiMarkers).bindPopup(r.opis);
                     });
                 });
         }
-
-        // Prvo nalaganje takoj
         osvežiRadarje();
-        // Nastavitev na 10 minut (600.000 milisekund)
-        setInterval(osvežiRadarje, 600000);
+        setInterval(osvežiRadarje, 600000); 
 
-        // --- SHRANJEVANJE PRIJAVE ---
+        // PRIJAVA Z TVOJIM KLJUČEM
         async function submitReport(tip, ikona) {
             const mojKljuc = "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";
             if(!userPos) return alert("Čakam na GPS...");
 
             const podatki = { lat: userPos.lat, lon: userPos.lng, opis: tip, icon: ikona, vir: "Uporabnik" };
 
-            // Pošljemo ukaz GitHubu
             fetch(`https://api.github.com/repos/kolosaleon96-byte/MOJ-RADAR/dispatches`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
                 body: JSON.stringify({ event_type: 'new_report', client_payload: { data: podatki } })
             });
-            
-            alert("Sistem: Prijava (" + tip + ") poslana!");
+            alert("Sistem: " + tip + " javljen!");
         }
 
         function prijaviMeni() {
-            let t = prompt("Izberi prijavo:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
+            let t = prompt("Izberi:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
             if(t == "1") submitReport("POLICIJA", "👮");
             if(t == "2") submitReport("RADAR", "📸");
             if(t == "3") submitReport("NESREČA", "💥");
         }
 
-        // --- ZVOČNA OPOZORILA ---
+        // ZVOČNA OPOZORILA
         function preveriBližino(trenutnaLok) {
             let zdaj = Date.now();
             vsiRadarjiPodatki.forEach(r => {
                 let razdalja = map.distance(trenutnaLok, [r.lat, r.lon]);
-                // Če je radar bližje kot 1 km in nismo opozorili zadnjih 40 sekund
-                if(razdalja < 1000 && (zdaj - zadnjeOpozorilo > 40000)) {
+                if(razdalja < 1000 && (zdaj - zadnjeOpozorilo > 45000)) {
                     let msg = new SpeechSynthesisUtterance("Pozor, " + r.opis + " v bližini.");
                     msg.lang = 'sl-SI';
                     window.speechSynthesis.speak(msg);
@@ -138,7 +137,6 @@
         function goNav() {
             let d = document.getElementById('target-dest').value;
             if(d) window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(d));
-            else alert("Vpiši cilj!");
         }
     </script>
 </body>
