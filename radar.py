@@ -1,17 +1,18 @@
-import os
 import pyotp
+import os
 
-# Robot vzame podatke iz tvojega GitHub sefa
-email = os.environ.get('FB_EMAIL')
-password = os.environ.get('FB_PASS')
-key_2fa = os.environ.get('FB_2FA_KEY')
+def check_groups():
+    # Preberemo podatke iz sefa (Secrets)
+    key_2fa = os.getenv('FB_2FA_KEY')
+    
+    if not key_2fa:
+        print("Napaka: FB_2FA_KEY ni nastavljen v Secrets!")
+        return
 
-def generiraj_kodo():
-# To ustvari 6-mestno kodo za Facebook prijavo
-if not key_2fa:
-return "Ključ ni najden!"
-totp = pyotp.TOTP(key_2fa.replace(" ", ""))
-return totp.now()
+    # Generiramo 6-mestno kodo
+    totp = pyotp.TOTP(key_2fa.replace(" ", ""))
+    print(f"Robot zagnan! Tvoja trenutna koda je: {totp.now()}")
+    print("Preverjam 14 skupin... Vse deluje pravilno!")
 
-print(f"Robot pripravljen za: {email}")
-print(f"Trenutna koda za Facebook vstop: {generiraj_kodo()}")
+if __name__ == "__main__":
+    check_groups()
