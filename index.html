@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Radar SLO Pro - Final Edition</title>
+    <title>Radar SLO Pro - Premium Edition</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #1a1a1a; overflow: hidden; }
@@ -13,7 +13,7 @@
         #map { width: 100%; height: 100%; }
         .mode-3d { transform: perspective(800px) rotateX(45deg) translateY(-100px) scale(1.3); height: 140vh !important; }
 
-        /* GUMB 3D (Desno zgoraj) */
+        /* GUMBI ZGORAJ */
         #btn-3d {
             position: absolute; top: 20px; right: 20px; z-index: 2000;
             width: 55px; height: 55px; background: rgba(0,0,0,0.85);
@@ -22,7 +22,6 @@
             font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* RAZDALJA (Levo zgoraj) */
         #dist-box {
             position: absolute; top: 20px; left: 20px; z-index: 1000;
             width: 65px; height: 65px; background: rgba(0,0,0,0.85);
@@ -31,29 +30,14 @@
             color: white; font-weight: bold;
         }
 
-        /* NAZAJ NA LOKACIJO (Levo spodaj) */
+        /* GUMBI SPODAJ */
         #recenter-btn {
             position: absolute; bottom: 30px; left: 20px; z-index: 1000;
             width: 60px; height: 60px; background: #33ccff; color: white;
             border-radius: 50%; border: 3px solid white; display: none;
             align-items: center; justify-content: center; font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* HITROST IN OMEJITEV (Desno spodaj) */
-        #bottom-right-stats {
-            position: absolute; bottom: 25px; right: 20px; z-index: 1000;
-            display: flex; gap: 12px; align-items: flex-end;
-        }
-        .stat-circle {
-            width: 75px; height: 75px; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-weight: bold; color: white; background: black; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        #speed-circle { border: 4px solid #33ccff; }
-        #limit-circle { border: 5px solid #ff1744; background: white; color: black; font-size: 28px; }
-
-        /* PRIJAVA DOGODKA (Sredina spodaj) */
         #main-report-btn {
             position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%);
             z-index: 1000; width: 85px; height: 85px; background: #ff1744;
@@ -62,20 +46,34 @@
             box-shadow: 0 5px 20px rgba(255, 23, 68, 0.4);
         }
 
+        #bottom-right-stats {
+            position: absolute; bottom: 25px; right: 20px; z-index: 1000;
+            display: flex; gap: 12px; align-items: flex-end;
+        }
+        .stat-circle {
+            width: 75px; height: 75px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: bold; color: white; background: black;
+        }
+        #speed-circle { border: 4px solid #33ccff; }
+        #limit-circle { border: 5px solid #ff1744; background: white; color: black; font-size: 28px; }
+
+        /* MENI ZA PRIJAVO */
         #report-menu {
             position: absolute; bottom: 130px; left: 50%; transform: translateX(-50%);
             z-index: 1001; display: none; gap: 15px; background: rgba(0,0,0,0.95);
-            padding: 20px; border-radius: 25px; border: 1px solid #444; backdrop-filter: blur(10px);
+            padding: 20px; border-radius: 25px; border: 1px solid #444;
         }
-        .menu-item { font-size: 35px; cursor: pointer; transition: transform 0.2s; }
-        .menu-item:active { transform: scale(1.3); }
+        .menu-item { font-size: 35px; cursor: pointer; }
 
-        /* BARVNE IKONE NA MAPI */
+        /* NOVE BARVE IKON */
         .base-marker { border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px !important; height: 40px !important; box-shadow: 0 0 10px rgba(0,0,0,0.5); font-size: 24px; }
-        .icon-waze { border: 3px solid #33ccff; background: rgba(51, 204, 255, 0.2); }
-        .icon-gold { border: 3px solid #ffd700; background: rgba(255, 215, 0, 0.2); }
-        .icon-dars { border: 3px solid #ff9800; background: rgba(255, 152, 0, 0.2); }
-        .icon-user { border: 3px solid #ff1744; background: rgba(255, 23, 68, 0.2); }
+        
+        .icon-stacionarni { border: 3px solid #00ff00 !important; background: rgba(0, 255, 0, 0.3) !important; } /* ZELENA */
+        .icon-waze { border: 3px solid #33ccff; background: rgba(51, 204, 255, 0.2); } /* MODRA */
+        .icon-gold { border: 3px solid #ffd700; background: rgba(255, 215, 0, 0.2); } /* ZLATA */
+        .icon-dars { border: 3px solid #ff9800; background: rgba(255, 152, 0, 0.2); } /* ORANŽNA */
+        .icon-user { border: 3px solid #ff1744; background: rgba(255, 23, 68, 0.2); } /* RDEČA */
     </style>
 </head>
 <body>
@@ -111,32 +109,26 @@
         var isFollowing = true;
         var radarLayer = L.layerGroup().addTo(map);
 
-        // 3D PREKLOP
         function toggle3D() {
             var wrapper = document.getElementById('map-wrapper');
             var btn = document.getElementById('btn-3d');
             wrapper.classList.toggle('mode-3d');
             btn.innerText = wrapper.classList.contains('mode-3d') ? "2D" : "3D";
-            btn.style.borderColor = wrapper.classList.contains('mode-3d') ? "#33ccff" : "#ffd700";
             setTimeout(() => { map.invalidateSize(); }, 500);
         }
 
-        // MENI ZA PRIJAVO
         function toggleReportMenu() {
             var menu = document.getElementById('report-menu');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // GPS SLEDENJE
         map.locate({watch: true, enableHighAccuracy: true});
         map.on('locationfound', function(e) {
             userPos = e.latlng;
             document.getElementById('current-speed').innerText = e.speed ? Math.round(e.speed * 3.6) : 0;
-            
             if (!window.uMarker) {
                 window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: '#33ccff', fillColor: 'white', fillOpacity: 1, weight: 3}).addTo(map);
             } else { window.uMarker.setLatLng(e.latlng); }
-            
             if (isFollowing) { map.setView(e.latlng, 17); }
             preveriBližino(e.latlng);
         });
@@ -152,24 +144,41 @@
             document.getElementById('recenter-btn').style.display = 'none';
         }
 
-        // ROBOT ZA RADARJE (Branje iz radarji.json)
+        // --- GLAVNI JAVASCRIPT ZA OSVEŽEVANJE IN BARVE ---
         function osveziBazo() {
             fetch('radarji.json?t=' + Date.now())
                 .then(res => res.json())
                 .then(data => {
                     radarLayer.clearLayers();
                     data.forEach(r => {
-                        let klasa = r.vir === "WAZE" ? "icon-waze" : r.vir === "RADARBOT GOLD" ? "icon-gold" : r.vir === "DARS" ? "icon-dars" : "icon-user";
-                        let icon = L.divIcon({ html: `<div class="base-marker ${klasa}">${r.icon}</div>`, className: 'dummy', iconSize: [40, 40] });
-                        L.marker([r.lat, r.lon], {icon: icon}).addTo(radarLayer).bindPopup(`<b>${r.tip}</b><br>${r.opis}<br><small>Vir: ${r.vir}</small>`);
+                        let klasa = "icon-user";
+                        // BARVNA LOGIKA
+                        if (r.tip === "STACIONARNI RADAR") { klasa = "icon-stacionarni"; }
+                        else if (r.vir === "WAZE") { klasa = "icon-waze"; }
+                        else if (r.vir === "RADARBOT GOLD") { klasa = "icon-gold"; }
+                        else if (r.vir === "DARS") { klasa = "icon-dars"; }
+
+                        let icon = L.divIcon({ 
+                            html: `<div class="base-marker ${klasa}">${r.icon}</div>`, 
+                            className: 'dummy', 
+                            iconSize: [40, 40] 
+                        });
+                        
+                        L.marker([r.lat, r.lon], {icon: icon}).addTo(radarLayer)
+                         .bindPopup(`<b>${r.tip}</b><br>${r.opis}<br>Omejitev: ${r.limit} km/h`);
+                        
+                        // Posodobi omejitev na zaslonu če smo blizu (opcijsko)
+                        if (userPos && map.distance(userPos, [r.lat, r.lon]) < 500) {
+                            document.getElementById('limit-circle').innerText = r.limit;
+                        }
                     });
                     window.vsiRadarjiPodatki = data;
                 });
         }
+        
         setInterval(osveziBazo, 30000);
         osveziBazo();
 
-        // GLASOVNO OPOZORILO (1 KM)
         var zadnjiGovor = 0;
         function preveriBližino(pos) {
             if(!window.vsiRadarjiPodatki) return;
@@ -185,9 +194,8 @@
         }
 
         function oddaj(tip, ikona) {
-            alert("Javljeno na lokaciji!");
+            alert("Javljeno!");
             toggleReportMenu();
-            // Tukaj bi šel tvoj GitHub Fetch za shranjevanje...
         }
     </script>
 </body>
