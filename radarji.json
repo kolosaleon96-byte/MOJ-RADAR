@@ -4,7 +4,7 @@
     "lon": 16.1612,
     "tip": "FIKSNI",
     "icon": "📸",
-    "opis": "MS Center",
+    "opis": "MS - Lendavska",
     "vir": "FIKSNI"
   },
   {
@@ -16,21 +16,11 @@
     "vir": "FIKSNI"
   },
   {
-    "lat": 46.6588,
-    "lon": 16.1591,
-    "tip": "RADARBOT GOLD",
-    "icon": "💎",
-    "opis": "Fiksni radar - MS Center",
-    "vir": "RADARBOT GOLD",
-    "limit": "50"
-  },
-  {
-    "lat": 46.5412,
-    "lon": 16.4632,
-    "tip": "RADARBOT GOLD",
-    "icon": "💎",
-    "opis": "Kontrola Lendava",
-    "vir": "RADARBOT GOLD",
-    "limit": "40"
+    "lat": 46.6502,
+    "lon": 16.1523,
+    "tip": "FIKSNI",
+    "icon": "📸",
+    "opis": "MS - Center",
+    "vir": "FIKSNI"
   }
 ]
