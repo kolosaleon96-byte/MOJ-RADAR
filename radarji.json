@@ -2,35 +2,64 @@
   {
     "lat": 46.6621,
     "lon": 16.1612,
-    "tip": "FIKSNI",
+    "tip": "STACIONARNI RADAR",
     "icon": "📸",
-    "opis": "MS Center",
-    "vir": "FIKSNI"
-  },
-  {
-    "lat": 46.5412,
-    "lon": 16.4632,
-    "tip": "FIKSNI",
-    "icon": "📸",
-    "opis": "Lendava",
-    "vir": "FIKSNI"
-  },
-  {
-    "lat": 46.6588,
-    "lon": 16.1591,
-    "tip": "RADARBOT GOLD",
-    "icon": "💎",
-    "opis": "Fiksni radar - MS Center",
-    "vir": "RADARBOT GOLD",
+    "opis": "Murska Sobota - Lendavska ulica",
+    "vir": "FIKSNI",
     "limit": "50"
   },
   {
     "lat": 46.5412,
     "lon": 16.4632,
-    "tip": "RADARBOT GOLD",
-    "icon": "💎",
-    "opis": "Kontrola Lendava",
-    "vir": "RADARBOT GOLD",
-    "limit": "40"
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Lendava - vstop v mesto",
+    "vir": "FIKSNI",
+    "limit": "50"
+  },
+  {
+    "lat": 46.6502,
+    "lon": 16.1523,
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Murska Sobota - Center",
+    "vir": "FIKSNI",
+    "limit": "50"
+  },
+  {
+    "lat": 46.5123,
+    "lon": 16.2134,
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Beltinci - glavna cesta",
+    "vir": "FIKSNI",
+    "limit": "50"
+  },
+  {
+    "lat": 46.7123,
+    "lon": 16.2941,
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Gornji Petrovci",
+    "vir": "FIKSNI",
+    "limit": "50"
+  },
+  {
+    "lat": 46.4789,
+    "lon": 16.0123,
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Ljutomer - obvoznica",
+    "vir": "FIKSNI",
+    "limit": "50"
+  },
+  {
+    "lat": 46.6123,
+    "lon": 16.3541,
+    "tip": "STACIONARNI RADAR",
+    "icon": "📸",
+    "opis": "Dobrovnik",
+    "vir": "FIKSNI",
+    "limit": "50"
   }
 ]
