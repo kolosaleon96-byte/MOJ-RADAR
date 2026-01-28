@@ -1,37 +1,66 @@
-<audio id="radarSound" src="https://www.soundjay.com/buttons/beep-01a.mp3" preload="auto"></audio>
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <title>Radar SLO Pro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { margin: 0; padding: 0; background: #1a1a1a; }
+        #map { height: 100vh; width: 100vw; }
+        #speed-panel {
+            position: absolute; top: 10px; right: 10px; z-index: 1000;
+            background: rgba(0,0,0,0.8); color: white; padding: 10px;
+            border-radius: 50%; width: 60px; height: 60px; text-align: center;
+            border: 2px solid #007bff; font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
 
-<script>
-    var radarAudio = document.getElementById('radarSound');
-    var hasAlerted = false; // Da ne piska vsako sekundo za isti radar
+    <div id="speed-panel"><span id="speed-val" style="font-size: 20px; font-weight: bold; display: block; margin-top: 5px;">0</span><small>km/h</small></div>
+    <div id="map"></div>
 
-    function checkNearbyRadars(myLat, myLon) {
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 1. USTVARIMO MAPO (Tudi če ni podatkov, se mora prikazati)
+        var map = L.map('map', { zoomControl: false }).setView([46.15, 15.00], 8);
+        
+        // Temna podlaga
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: 'Radar SLO'
+        }).addTo(map);
+
+        // 2. GPS IN HITROST
+        map.locate({setView: true, watch: true, enableHighAccuracy: true});
+        map.on('locationfound', function(e) {
+            var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
+            document.getElementById('speed-val').innerText = speed;
+            
+            if (!window.u) {
+                window.u = L.circleMarker(e.latlng, {radius: 8, color: 'white', fillColor: '#007bff', fillOpacity: 1}).addTo(map);
+            } else {
+                window.u.setLatLng(e.latlng);
+            }
+        });
+
+        // 3. VARNO NALAGANJE PODATKOV
         fetch('radarji.json?t=' + Date.now())
-            .then(res => res.json())
+            .then(res => {
+                if(!res.ok) throw new Error("Ni datoteke radarji.json");
+                return res.json();
+            })
             .then(data => {
-                let alertFound = false;
                 data.forEach(t => {
-                    var dist = getDistance(myLat, myLon, t.lat, t.lon);
-                    
-                    // Če si bližje kot 1 km in še nismo piskali za ta radar
-                    if (dist < 1.0 && !hasAlerted) { 
-                        playAlertSound();
-                        showAlert(t.opis + " - 1km stran!");
-                        hasAlerted = true;
-                        alertFound = true;
+                    if (t.lat && t.lon) {
+                        var color = (t.vir === "Radarboot" || t.opis.includes("POLICIJA")) ? "#ff1744" : "#ff9100";
+                        L.circleMarker([t.lat, t.lon], {
+                            radius: 8, fillColor: color, color: "white", weight: 2, fillOpacity: 0.9
+                        }).addTo(map).bindPopup("<b>" + t.opis + "</b><br>" + t.vir);
                     }
                 });
-                
-                // Ko se odpelješ stran (več kot 2km), resetiramo opozorilo za naslednji radar
-                if (!alertFound) {
-                    hasAlerted = false;
-                }
-            });
-    }
-
-    function playAlertSound() {
-        // Poskusi predvajati zvok
-        radarAudio.play().catch(function(error) {
-            console.log("Zvok blokiran - uporabnik mora najprej klikniti na stran.");
-        });
-    }
-</script>
+            })
+            .catch(err => console.log("Čakam na prve podatke..."));
+    </script>
+</body>
+</html>
