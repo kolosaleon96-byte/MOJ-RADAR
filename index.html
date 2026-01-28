@@ -3,169 +3,100 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Radar SLO Pro 3D Traffic</title>
-    <link rel="manifest" href="manifest.json">
-    
+    <title>Radar SLO Pro - Color Coding</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-    
     <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; background: #242f3e; overflow: hidden; }
-        #map { height: 100vh; width: 100vw; background: #242f3e; transition: transform 0.5s; }
-        
-        /* 3D NAGIB */
-        .map-3d { transform: perspective(600px) rotateX(30deg); height: 120vh !important; margin-top: -10vh; }
+        body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; }
+        #map { height: 100vh; width: 100vw; }
 
-        #nav-container {
-            position: absolute; top: 15px; left: 15px; right: 15px; z-index: 1000;
-            background: rgba(36, 47, 62, 0.95); padding: 12px; border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #444;
-        }
-        #nav-search { display: flex; gap: 8px; margin-bottom: 8px; }
-        #nav-search input { flex: 1; padding: 12px; border-radius: 8px; border: none; background: #333; color: white; font-size: 16px; outline: none; }
-        #nav-search button { background: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; }
-        
-        #nav-options { display: flex; justify-content: space-between; color: #ccc; font-size: 11px; }
-        #traffic-status { font-weight: bold; padding: 2px 6px; border-radius: 4px; }
-        .traffic-ok { color: #4caf50; }
-        .traffic-jam { color: #ff1744; background: rgba(255,23,68,0.1); }
+        /* BARVNI STILI ZA IKONE */
+        .icon-waze { border: 3px solid #33ccff; background: rgba(51, 204, 255, 0.2); }
+        .icon-gold { border: 3px solid #ffd700; background: rgba(255, 215, 0, 0.2); }
+        .icon-dars { border: 3px solid #ff9800; background: rgba(255, 152, 0, 0.2); }
+        .icon-user { border: 3px solid #ff1744; background: rgba(255, 23, 68, 0.2); }
 
-        #bottom-info {
-            position: absolute; bottom: 0; left: 0; right: 0; z-index: 1001;
-            background: rgba(0, 0, 0, 0.95); color: white; padding: 15px;
-            display: flex; justify-content: space-around; align-items: center;
-            border-top: 2px solid #007bff; font-weight: bold;
+        .base-marker {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 40px !important;
+            height: 40px !important;
         }
 
-        #report-btn { 
-            position: absolute; bottom: 90px; left: 20px; z-index: 1000; 
-            background: #ff1744; color: white; border: none; padding: 15px 22px; 
-            border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        /* INFO KARTICA */
+        .info-card { background: #222; color: white; padding: 10px; border-radius: 8px; border-left: 5px solid; }
+        .popup-waze { border-color: #33ccff; }
+        .popup-gold { border-color: #ffd700; }
+        .popup-dars { border-color: #ff9800; }
+        .popup-user { border-color: #ff1744; }
+
+        #legend {
+            position: absolute; top: 10px; left: 10px; z-index: 1000;
+            background: rgba(0,0,0,0.85); padding: 10px; border-radius: 10px;
+            color: white; font-size: 10px; border: 1px solid #444;
         }
-        
-        #speed-box { position: absolute; bottom: 90px; right: 20px; z-index: 1000; background: #1a1a1a; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid #007bff; }
-        
-        .leaflet-routing-container { display: none; }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
     </style>
 </head>
 <body>
 
-    <div id="nav-container">
-        <div id="nav-search">
-            <input type="text" id="target-dest" placeholder="Cilj vožnje...">
-            <button onclick="najdiPot()">GO</button>
-        </div>
-        <div id="nav-options">
-            <label><input type="checkbox" id="toggle-3d" onchange="toggle3D()"> 3D Pogled</label>
-            <div id="traffic-status" class="traffic-ok">PROMET: TEKOČE</div>
-        </div>
-    </div>
-
-    <button id="report-btn" onclick="prijaviMeni()">⚠️ PRIJAVI</button>
-
-    <div id="speed-box">
-        <span id="speed-val" style="font-size: 28px; font-weight: bold;">0</span>
-        <small>km/h</small>
-    </div>
-
-    <div id="bottom-info">
-        <div>KM: <span id="dist-val">--</span></div>
-        <div style="color: #007bff; font-size: 20px;" id="eta-val">--:--</div>
-        <div>PREOSTALO: <span id="time-val">-- min</span></div>
+    <div id="legend">
+        <b>VIRI PODATKOV:</b><br>
+        <span class="dot" style="background: #33ccff;"></span> WAZE<br>
+        <span class="dot" style="background: #ffd700;"></span> RADARBOT GOLD<br>
+        <span class="dot" style="background: #ff9800;"></span> DARS / AMZS<br>
+        <span class="dot" style="background: #ff1744;"></span> MOJA PRIJAVA
     </div>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script>
         var map = L.map('map', { zoomControl: false }).setView([46.05, 14.50], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png').addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        var userPos = null;
-        var routingControl = null;
-        var vsiMarkers = L.layerGroup().addTo(map);
-        var slediUporabniku = true;
+        function vnesiDogodek(lat, lon, tip, ikona, opis, vir, omejitev) {
+            // Določimo barvno klaso glede na vir
+            let barvaKlasa = "";
+            let popupKlasa = "";
+            if(vir === "WAZE") { barvaKlasa = "icon-waze"; popupKlasa = "popup-waze"; }
+            else if(vir === "RADARBOT GOLD") { barvaKlasa = "icon-gold"; popupKlasa = "popup-gold"; }
+            else if(vir === "DARS/AMZS") { barvaKlasa = "icon-dars"; popupKlasa = "popup-dars"; }
+            else { barvaKlasa = "icon-user"; popupKlasa = "popup-user"; }
 
-        function toggle3D() { document.getElementById('map').classList.toggle('map-3d'); }
-        map.on('movestart', function() { slediUporabniku = false; });
+            var customIcon = L.divIcon({
+                html: `<div class="base-marker ${barvaKlasa}">${ikona}</div>`,
+                className: 'dummy',
+                iconSize: [40, 40]
+            });
+
+            var content = `
+                <div class="info-card ${popupKlasa}">
+                    <h4 style="margin:0; color:#fff;">${tip}</h4>
+                    <p style="margin:5px 0; font-size:12px;">${opis}</p>
+                    ${omejitev ? `<b style="color:#ff1744;">Omejitev: ${omejitev} km/h</b><br>` : ''}
+                    <small>VIR: ${vir}</small>
+                </div>
+            `;
+
+            L.marker([lat, lon], {icon: customIcon}).addTo(map).bindPopup(content);
+        }
+
+        // --- ROBOT POLNI MAPO ---
+        vnesiDogodek(46.058, 14.505, "POLICIJA", "👮", "Laserska kontrola na uvozu.", "WAZE", "50");
+        vnesiDogodek(46.075, 14.530, "FIKSNI RADAR", "📸", "Opozorilo iz baze Gold.", "RADARBOT GOLD", "60");
+        vnesiDogodek(46.120, 14.580, "DELA NA CESTI", "🚧", "Obvoz urejen.", "DARS/AMZS", "40");
+        vnesiDogodek(46.040, 14.480, "ZASTOJ", "🚗", "Močan zastoj v križišču.", "MOJA PRIJAVA", "");
 
         map.locate({watch: true, enableHighAccuracy: true});
         map.on('locationfound', function(e) {
-            userPos = e.latlng;
-            document.getElementById('speed-val').innerText = e.speed ? Math.round(e.speed * 3.6) : 0;
             if (!window.uMarker) {
-                window.uMarker = L.circleMarker(e.latlng, {radius: 10, color: 'white', fillColor: '#007bff', fillOpacity: 1, weight: 3}).addTo(map);
+                window.uMarker = L.circleMarker(e.latlng, {radius: 8, color: '#ffd700', fillColor: 'white', fillOpacity: 1}).addTo(map);
             } else { window.uMarker.setLatLng(e.latlng); }
-            if (slediUporabniku) { map.setView(e.latlng, map.getZoom()); }
-            if (routingControl) { routingControl.spliceWaypoints(0, 1, e.latlng); }
         });
-
-        function najdiPot() {
-            var cilj = document.getElementById('target-dest').value;
-            if (!cilj || !userPos) return alert("Vpiši cilj!");
-
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cilj)}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        var dest = L.latLng(data[0].lat, data[0].lon);
-                        if (routingControl) { map.removeControl(routingControl); }
-
-                        routingControl = L.Routing.control({
-                            waypoints: [userPos, dest],
-                            lineOptions: { styles: [{ color: '#007bff', opacity: 0.8, weight: 8 }] },
-                            createMarker: function() { return null; }
-                        }).on('routesfound', function(e) {
-                            var route = e.routes[0];
-                            var summary = route.summary;
-                            
-                            // LOGIKA ZA ZASTOJE:
-                            // Če je povprečna hitrost na poti manjša od 30km/h (na dolgi razdalji), obarvamo rdeče
-                            var avgSpeed = (summary.totalDistance / summary.totalTime) * 3.6;
-                            var trafficEl = document.getElementById('traffic-status');
-                            
-                            if (avgSpeed < 35) { // Močan zastoj
-                                routingControl.getPlan().setWaypoints(routingControl.getWaypoints());
-                                routingControl.options.lineOptions.styles = [{color: '#ff1744', opacity: 0.9, weight: 10}];
-                                trafficEl.innerText = "PROMET: ZASTOJ!";
-                                trafficEl.className = "traffic-jam";
-                            } else if (avgSpeed < 55) { // Počasen promet
-                                routingControl.options.lineOptions.styles = [{color: '#ffeb3b', opacity: 0.9, weight: 9}];
-                                trafficEl.innerText = "PROMET: POČASNO";
-                                trafficEl.className = "";
-                                trafficEl.style.color = "#ffeb3b";
-                            } else {
-                                trafficEl.innerText = "PROMET: TEKOČE";
-                                trafficEl.className = "traffic-ok";
-                            }
-
-                            document.getElementById('dist-val').innerText = (summary.totalDistance / 1000).toFixed(1) + " km";
-                            document.getElementById('time-val').innerText = Math.round(summary.totalTime / 60) + " min";
-                            var d = new Date(); d.setSeconds(d.getSeconds() + summary.totalTime);
-                            document.getElementById('eta-val').innerText = d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
-                        }).addTo(map);
-                        
-                        slediUporabniku = true;
-                        if(!document.getElementById('toggle-3d').checked) { document.getElementById('toggle-3d').checked = true; toggle3D(); }
-                    }
-                });
-        }
-
-        // --- PRIJAVA IN RADARJI ---
-        function prijaviMeni() {
-            let t = prompt("Prijavi:\n1: Policija 👮\n2: Radar 📸\n3: Nesreča 💥");
-            const mojKljuc = "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";
-            let opisi = {"1":["POLICIJA","👮"],"2":["RADAR","📸"],"3":["NESREČA","💥"]};
-            if(opisi[t]) {
-                fetch(`https://api.github.com/repos/kolosaleon96-byte/MOJ-RADAR/dispatches`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${mojKljuc}`, 'Accept': 'application/vnd.github.v3+json' },
-                    body: JSON.stringify({ event_type: 'new_report', client_payload: { data: { lat: userPos.lat, lon: userPos.lng, opis: opisi[t][0], icon: opisi[t][1] } } })
-                });
-                alert("Javljeno!");
-            }
-        }
     </script>
 </body>
 </html>
