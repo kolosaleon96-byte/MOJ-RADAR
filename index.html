@@ -1,69 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SLO Radar & Promet VSE-V-ENEM</title>
+    <title>SLO Radar Live</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map { height: 100vh; width: 100%; }
         body { margin: 0; padding: 0; }
-        .legend {
-            background: white; padding: 10px; position: absolute; bottom: 20px; left: 10px;
-            z-index: 1000; border: 2px solid #333; border-radius: 5px; font-family: Arial; font-size: 11px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        }
+        .legend { background: white; padding: 10px; line-height: 18px; color: #555; }
     </style>
 </head>
 <body>
     <div id="map"></div>
-    <div class="legend">
-        <b>STREŽNIK V ŽIVO:</b><br>
-        <span style="color:blue">●</span> Facebook (Radarji)<br>
-        <span style="color:purple">●</span> Waze (Policija/Dogodki)<br>
-        <span style="color:orange">●</span> Radarbot (Fiksni)<br>
-        <span style="color:yellow; background:black; padding: 0 2px;">●</span> AMZS (Uradni radarji)<br>
-        <span style="color:red">●</span> DARS (Zastoji & Nesreče)<br>
-        <span style="color:gray">●</span> Kamere (Nadzorne točke)
-    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Postavi pogled na sredino Slovenije
+        // 1. Nastavitev mape na Slovenijo
         var map = L.map('map').setView([46.1512, 14.9955], 8);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-        // Prejemanje podatkov iz JSON datoteke
-        fetch('radarji.json?t=' + Date.now())
+        // 2. Vklop GPS puščice (da vidiš sebe)
+        map.locate({setView: true, watch: true, maxZoom: 15});
+        function onLocationFound(e) {
+            if (!window.userMarker) {
+                window.userMarker = L.circleMarker(e.latlng, {radius: 10, color: 'white', fillColor: '#007bff', fillOpacity: 1, weight: 3}).addTo(map).bindPopup("Ti si tukaj");
+            } else { window.userMarker.setLatLng(e.latlng); }
+        }
+        map.on('locationfound', onLocationFound);
+
+        // 3. Branje podatkov iz radarji.json
+        fetch('radarji.json?t=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
-                data.forEach(radar => {
-                    var barva = 'blue'; // Facebook privzeto
-                    if (radar.vir === 'AMZS') barva = 'yellow';
-                    else if (radar.vir === 'Radarbot') barva = 'orange';
-                    else if (radar.vir === 'DARS') barva = 'red';
-                    else if (radar.vir === 'Kamere') barva = 'gray';
-                    else if (radar.vir === 'Waze') barva = 'purple';
+                data.forEach(function(tocka) {
+                    // Preverimo, če so koordinate sploh pravilne, da ne rišemo črt
+                    if (tocka.lat && tocka.lon && tocka.lat > 40 && tocka.lon > 10) {
+                        
+                        // BARVE: Facebook je RDEČ, ostalo je MODRO ali ORANŽNO
+                        var barva = "blue";
+                        var velikost = 7;
+                        
+                        if (tocka.vir === "Facebook") { barva = "red"; velikost = 12; }
+                        else if (tocka.opis.includes("NESREČA")) { barva = "darkred"; }
+                        else if (tocka.opis.includes("ZASTOJ")) { barva = "orange"; }
 
-                    L.circleMarker([radar.lat, radar.lon], {
-                        radius: 10,
-                        fillColor: barva,
-                        color: "#000",
-                        weight: 2,
-                        opacity: 1,
-                        fillOpacity: 0.9
-                    })
-                    .addTo(map)
-                    .bindPopup(`
-                        <b>${radar.vir}</b><br>
-                        ${radar.kraj}<br>
-                        ${radar.cas ? 'Čas: ' + radar.cas : 'Podatek v živo'}
-                    `);
+                        L.circleMarker([tocka.lat, tocka.lon], {
+                            radius: velikost,
+                            fillColor: barva,
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        }).addTo(map).bindPopup("<b>" + tocka.opis + "</b><br>" + tocka.kraj + "<br>Vir: " + tocka.vir + "<br>Čas: " + tocka.cas);
+                    }
                 });
-            })
-            .catch(err => console.error("Napaka pri branju radarji.json:", err));
+            });
     </script>
 </body>
 </html>
