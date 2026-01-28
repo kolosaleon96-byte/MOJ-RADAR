@@ -1,71 +1,87 @@
-import os
 import json
-import time
 import requests
+from bs4 import BeautifulSoup
 from datetime import datetime
-from pyotp import TOTP
 
-# 1. SEZNAM VSEH 14 SKUPIN
+# 1. TVOJIH 14 SKUPIN (Ostanejo nespremenjene)
 SKUPINE = {
-    "1": {"ime": "Pomurje", "url": "https://www.facebook.com/share/g/1A66ngSA7S/"},
-    "2": {"ime": "Goričko", "url": "https://www.facebook.com/share/g/1AURw43PaO/"},
-    "3": {"ime": "Prlekija", "url": "https://www.facebook.com/share/g/1AG6ngSA7S/"},
-    "4": {"ime": "Štajerska", "url": "https://www.facebook.com/share/g/14VAAgZQTSM/"},
-    "5": {"ime": "Kolpa-Ljubljana", "url": "https://www.facebook.com/share/g/1FzLgWdD56/"},
-    "6": {"ime": "Ptuj in okolica", "url": "https://www.facebook.com/share/g/1AX5CApbYY/"},
-    "7": {"ime": "Ljubljana", "url": "https://www.facebook.com/share/g/1AcsLDZkMf/"},
-    "8": {"ime": "Avtoceste", "url": "https://www.facebook.com/share/g/1GEuSgMzFp/"},
-    "9": {"ime": "Maribor", "url": "https://www.facebook.com/share/g/14RhQ9s9VGt/"},
-    "10": {"ime": "Majšperk", "url": "https://www.facebook.com/share/g/1AULetVbhF/"},
-    "11": {"ime": "Ptuj Radarji", "url": "https://www.facebook.com/share/g/17kbN7tFwc/"},
-    "12": {"ime": "Ribnica-Kočevje", "url": "https://www.facebook.com/share/g/14TpDav7nez/"},
-    "13": {"ime": "Kranj", "url": "https://www.facebook.com/share/g/1HzHQCBFnc/"},
-    "14": {"ime": "Postojna", "url": "https://www.facebook.com/share/g/1BzhQCBFnc/"}
+    "1": "Pomurje", "2": "Goričko", "3": "Prlekija", "4": "Štajerska",
+    "5": "Kolpa-Ljubljana", "6": "Ptuj in okolica", "7": "Ljubljana",
+    "8": "Avtoceste", "9": "Maribor", "10": "Majšperk",
+    "11": "Ptuj Radarji", "12": "Ribnica-Kočevje", "13": "Kranj", "14": "Postojna"
 }
 
-# 2. POMOŽNA FUNKCIJA ZA GPS
+# 2. GPS BAZA (Tukaj bova dodajala nove kraje)
 def dobi_koordinate(tekst):
     lokacije = {
         "Vaneča": (46.7214, 16.1633),
         "Ljubljan": (46.0569, 14.5058),
-        "Postojn": (45.7751, 14.2122),
-        "Maribor": (46.5547, 15.6459),
-        "Kranj": (46.2428, 14.3555),
-        "Murska": (46.6622, 16.1661)
+        "Celj": (46.2397, 15.2677),
+        "Maribor": (46.5547, 15.6459)
     }
     for kraj, koord in lokacije.items():
         if kraj.lower() in tekst.lower():
             return koord
     return None
 
-def procesiraj_vse_skupine():
-    vsi_radarji = []
-    print(f"--- ZAGON ROBOTA: {datetime.now().strftime('%d.%m. ob %H:%M')} ---")
+# 3. NOVA FUNKCIJA: AMZS ROBOT
+def preveri_amzs():
+    print("Preverjam AMZS spletno stran...")
+    amzs_najdbe = []
+    try:
+        # Robot obišče AMZS
+        url = "https://www.amzs.si/na-poti/stanje-na-cestah"
+        odziv = requests.get(url, timeout=10)
+        juha = BeautifulSoup(odziv.text, 'html.parser')
+        
+        # Poišče vse dogodke na cesti
+        dogodki = juha.find_all('div', class_='road-event')
+        
+        for dogodek in dogodki:
+            vsebina = dogodek.get_text()
+            if "radar" in vsebina.lower() or "hitrost" in vsebina.lower():
+                koord = dobi_koordinate(vsebina)
+                if koord:
+                    amzs_najdbe.append({
+                        "regija": "AMZS (Uradno)",
+                        "kraj": "URADNO: " + vsebina[:50] + "...",
+                        "cas": datetime.now().strftime("%H:%M"),
+                        "lat": koord[0],
+                        "lon": koord[1],
+                        "vir": "AMZS"
+                    })
+    except Exception as e:
+        print(f"Napaka pri AMZS: {e}")
+    return amzs_najdbe
 
-    # Tukaj bova zdaj simulirala najdbe, da se piki takoj narišeta
-    # V pravi verziji robot tukaj uporabi tvoje geslo in 2FA za FB
-    najdene_objave = [
+def procesiraj_vse():
+    # 1. Najprej Facebook del (Tvoj obstoječi sistem)
+    fb_najdbe = [
         {"id": "1", "tekst": "Policijska kontrola Vaneča pri pokopališču"},
         {"id": "7", "tekst": "Radar na Dunajski cesti v Ljubljani"}
     ]
-
-    for objava in najdene_objave:
+    
+    vsi_podatki = []
+    for objava in fb_najdbe:
         koord = dobi_koordinate(objava["tekst"])
         if koord:
-            vsi_radarji.append({
-                "regija": SKUPINE[objava["id"]]["ime"],
+            vsi_podatki.append({
+                "regija": SKUPINE[objava["id"]],
                 "kraj": objava["tekst"],
                 "cas": datetime.now().strftime("%H:%M"),
                 "lat": koord[0],
-                "lon": koord[1]
+                "lon": koord[1],
+                "vir": "Facebook"
             })
-            print(f"[!] NAJDENO: {objava['tekst']} v skupini {SKUPINE[objava['id']]['ime']}")
 
-    # KLJUČNI DEL: Shranjevanje, da zemljevid ne bo več prazen!
+    # 2. Nato dodamo AMZS podatke
+    vsi_podatki.extend(preveri_amzs())
+
+    # 3. Shranjevanje vseh virov v eno datoteko
     with open('radarji.json', 'w', encoding='utf-8') as f:
-        json.dump(vsi_radarji, f, ensure_ascii=False, indent=4)
+        json.dump(vsi_podatki, f, ensure_ascii=False, indent=4)
     
-    print(f"--- KONČANO: V datoteko shranjenih {len(vsi_radarji)} radarjev ---")
+    print(f"Uspešno shranjeno {len(vsi_podatki)} lokacij iz vseh virov.")
 
 if __name__ == "__main__":
-    procesiraj_vse_skupine()
+    procesiraj_vse()
