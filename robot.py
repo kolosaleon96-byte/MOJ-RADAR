@@ -5,51 +5,47 @@ import os
 def posodobi():
     vsi_radarji = []
     
-    # POSKUS 1: Svetovni Waze strežnik (včasih manj blokiran)
-    WAZE_URL = "https://www.waze.com/row-rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0"
-    
+    # 1. POSKUS WAZE (Slovenija kordinate)
+    # Uporabimo "World" strežnik, ki je bolj odprt
+    waze_url = "https://www.waze.com/row-rtp-api/web/map/details?bbox=13.2,45.4,16.6,46.9"
     headers = {
-        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://www.waze.com/"
     }
 
     try:
-        # Dodamo par parametrov, ki jih uporablja prava Waze aplikacija
-        params = {
-            "cities": "true",
-            "intersections": "true",
-            "alerts": "true"
-        }
-        r = requests.get(WAZE_URL, headers=headers, params=params, timeout=15)
+        r = requests.get(waze_url, headers=headers, timeout=15)
         if r.status_code == 200:
             data = r.json()
-            alerts = data.get('alerts', [])
-            for a in alerts:
-                if a.get('type') in ['POLICE', 'ROAD_HAZARD']:
+            for a in data.get('alerts', []):
+                if a.get('type') == 'POLICE':
                     vsi_radarji.append({
-                        "lat": a['location']['y'], "lon": a['location']['x'],
-                        "tip": "WAZE: " + a.get('subtype', 'POLICIJA'),
-                        "icon": "👮", "opis": a.get('reportDescription', 'Mobilni radar'),
+                        "lat": a['location']['y'],
+                        "lon": a['location']['x'],
+                        "tip": "POLICIJA",
+                        "icon": "👮",
+                        "opis": "Poročano preko Waze",
                         "vir": "WAZE"
                     })
-            print(f"Waze uspeh! Najdenih: {len(vsi_radarji)}")
-    except Exception as e:
-        print(f"Waze blokiran: {e}")
+            print(f"Waze: Najdenih {len(vsi_radarji)} policistov.")
+    except:
+        print("Waze blokada, gremo naprej.")
 
-    # FIKSNI (Tvoji osebni)
-    vsi_radarji.append({"lat": 46.6621, "lon": 16.1612, "tip": "FIKSNI", "icon": "📸", "opis": "MS Center", "vir": "FIKSNI"})
-    vsi_radarji.append({"lat": 46.5412, "lon": 16.4632, "tip": "FIKSNI", "icon": "📸", "opis": "Lendava", "vir": "FIKSNI"})
+    # 2. TVOJI FIKSNI RADARJI (Tukaj jih dodajaj ročno ali iz FB)
+    fiksni = [
+        {"lat": 46.6621, "lon": 16.1612, "tip": "FIKSNI", "icon": "📸", "opis": "MS - Lendavska", "vir": "FIKSNI"},
+        {"lat": 46.5412, "lon": 16.4632, "tip": "FIKSNI", "icon": "📸", "opis": "Lendava", "vir": "FIKSNI"},
+        {"lat": 46.6502, "lon": 16.1523, "tip": "FIKSNI", "icon": "📸", "opis": "MS - Center", "vir": "FIKSNI"}
+    ]
+    vsi_radarji.extend(fiksni)
 
-    # Če imaš datoteko radarbot_gold.json, jo dodamo
-    if os.path.exists('radarbot_gold.json'):
-        try:
-            with open('radarbot_gold.json', 'r', encoding='utf-8') as f:
-                vsi_radarji.extend(json.load(f))
-        except: pass
+    # 3. DODAJ FB RADARJE (Tukaj boš kasneje dodajal točke, ki jih vidiš na FB)
+    # Primer: vsi_radarji.append({"lat": 46.6, "lon": 16.2, "tip": "FB", "icon": "👥", "opis": "Javljeno na FB", "vir": "FB"})
 
-    # SHRANJEVANJE
-    print(f"Končni izplen: {len(vsi_radarji)} točk v bazi.")
     with open('radarji.json', 'w', encoding='utf-8') as f:
         json.dump(vsi_radarji, f, indent=2, ensure_ascii=False)
+    
+    print(f"Končano! Skupaj {len(vsi_radarji)} točk na tvoji mapi.")
 
 if __name__ == "__main__":
     posodobi()
