@@ -1,296 +1,79 @@
 [
     {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "MS-Lendavska",
         "lat": 46.6591,
         "lon": 16.1622,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "MS-Noršinska",
         "lat": 46.6655,
         "lon": 16.1811,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "MS-Panonska",
-        "lat": 46.6555,
-        "lon": 16.1711,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MS-Grajska",
-        "lat": 46.6611,
-        "lon": 16.1588,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "Gederovci",
         "lat": 46.6655,
         "lon": 16.0488,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "Petanjci",
         "lat": 46.6455,
         "lon": 16.0588,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "Vaneča",
         "lat": 46.7214,
         "lon": 16.1633,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "Ljutomer",
-        "lat": 46.5181,
-        "lon": 16.1975,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
+        "regija": "Pomurje",
         "kraj": "Beltinci",
         "lat": 46.6047,
         "lon": 16.2383,
-        "vir": "Radarbot"
+        "vir": "Facebook"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "Radenci",
-        "lat": 46.6433,
-        "lon": 16.0422,
-        "vir": "Radarbot"
+        "regija": "Pomurje",
+        "kraj": "Ljutomer",
+        "lat": 46.5181,
+        "lon": 16.1975,
+        "vir": "Facebook"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "Lendava",
-        "lat": 46.5622,
-        "lon": 16.4511,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "G. Radgona",
-        "lat": 46.6775,
-        "lon": 15.9922,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MB-Ptujska 1",
-        "lat": 46.5385,
-        "lon": 15.6662,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MB-Ptujska 2",
-        "lat": 46.5255,
-        "lon": 15.6711,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MB-Tržaška",
-        "lat": 46.5311,
-        "lon": 15.6511,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MB-Titova",
-        "lat": 46.5511,
-        "lon": 15.6511,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "MB-Lackova",
-        "lat": 46.5411,
-        "lon": 15.6011,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "PT-Ormoška",
-        "lat": 46.4188,
-        "lon": 15.8822,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Tepanje",
-        "lat": 46.3455,
-        "lon": 15.4722,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Fram",
-        "lat": 46.4561,
-        "lon": 15.6211,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "LJ-Celovška 1",
+        "regija": "Ljubljana",
+        "kraj": "Celovška",
         "lat": 46.0792,
         "lon": 14.4841,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "LJ-Celovška 2",
-        "lat": 46.0945,
-        "lon": 14.4751,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "LJ-Dunajska 1",
+        "regija": "Ljubljana",
+        "kraj": "Dunajska",
         "lat": 46.0841,
         "lon": 14.5094,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "LJ-Dunajska 2",
-        "lat": 46.1011,
-        "lon": 14.5155,
+        "regija": "Maribor",
+        "kraj": "Ptujska",
+        "lat": 46.5385,
+        "lon": 15.6662,
         "vir": "Radarbot"
     },
     {
-        "regija": "Fiksni",
-        "kraj": "LJ-Dolenjska",
-        "lat": 46.0233,
-        "lon": 14.5311,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "LJ-Roška",
-        "lat": 46.0456,
-        "lon": 14.5167,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "LJ-Zaloška",
-        "lat": 46.0511,
-        "lon": 14.5411,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "LJ-Šmartinska",
-        "lat": 46.0688,
-        "lon": 14.5355,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Golovec",
-        "lat": 46.0382,
-        "lon": 14.5422,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Lukovica",
-        "lat": 46.1681,
-        "lon": 14.6851,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Brezovica",
-        "lat": 46.0155,
-        "lon": 14.4122,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Sinja Gorica",
-        "lat": 45.9751,
-        "lon": 14.3122,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "CE-Mariborska",
-        "lat": 46.2461,
-        "lon": 15.2711,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "CE-Dečkova",
-        "lat": 46.2411,
-        "lon": 15.2511,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Dramlje",
-        "lat": 46.2711,
-        "lon": 15.3922,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Arja vas",
-        "lat": 46.2511,
-        "lon": 15.1811,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
+        "regija": "Obala",
         "kraj": "KP-Šmarska",
         "lat": 45.5401,
         "lon": 13.7315,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "KP-Pristaniška",
-        "lat": 45.5481,
-        "lon": 13.7271,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Črni Kal",
-        "lat": 45.5533,
-        "lon": 13.8811,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "AC-Kastelec",
-        "lat": 45.5722,
-        "lon": 13.8711,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "NM-Bučna vas",
-        "lat": 45.8211,
-        "lon": 15.1511,
-        "vir": "Radarbot"
-    },
-    {
-        "regija": "Fiksni",
-        "kraj": "KR-Zlato polje",
-        "lat": 46.2435,
-        "lon": 14.3501,
         "vir": "Radarbot"
     }
 ]
