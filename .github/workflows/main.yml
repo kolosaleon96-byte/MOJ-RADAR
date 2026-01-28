@@ -1,27 +1,31 @@
 name: Radar Robot Update
 on:
   schedule:
-    - cron: '*/10 * * * *' # Robot se zbudi vsakih 10 minut
-  workflow_dispatch: # Gumb za ročni zagon
+    - cron: '*/15 * * * *' # Vsakih 15 minut
+  workflow_dispatch:
 
 jobs:
-  update-radars:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout koda
         uses: actions/checkout@v2
-
-      - name: Zberi podatke (Waze & Dars)
-        run: |
-          # Tukaj robot uporabi skripto, da pogleda na Waze in Dars
-          # Rezultat shrani v tvoj radarji.json
-          echo "Robot skenira Waze in Dars..."
-          # (Tukaj pride dejanski ukaz za skeniranje)
-
-      - name: Shrani v bazo
+      
+      - name: Nastavi Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          
+      - name: Namesti knjižnice
+        run: pip install requests
+        
+      - name: Zaženi robota
+        run: python robot.py
+        
+      - name: Objavi spremembe
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add radarji.json
-          git commit -m "Robot: Posodobljeni radarji iz Waze/Dars" || exit 0
+          git commit -m "Robot: Osvežil bazo (Waze/Dars)" || exit 0
           git push
