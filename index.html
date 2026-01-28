@@ -1,66 +1,52 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <title>Radar SLO Pro Nav</title>
+    <title>Radar SLO Nav Pro</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; background: #1a1a1a; overflow: hidden; }
-        #map { height: 100vh; width: 100vw; }
+        body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background: #1a1a1a; }
+        #map { height: 100vh; width: 100vw; z-index: 1; }
 
-        /* Meni za prijavo */
-        #report-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 2000; display: none;
-            flex-direction: column; align-items: center; justify-content: center;
-        }
-        .report-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%;
-        }
-        .report-item {
-            background: #333; border: 2px solid #444; border-radius: 20px;
-            padding: 20px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; color: white; cursor: pointer;
-        }
-        .report-item span { font-size: 50px; margin-bottom: 10px; }
-        .report-item b { font-size: 14px; text-transform: uppercase; }
-
-        /* Gumb za prijavo na mapi */
-        #main-btn {
-            position: absolute; bottom: 30px; left: 20px; z-index: 1000;
-            background: #ff1744; color: white; border: none; padding: 15px 30px;
-            border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        /* Panel za hitrost spodaj desno */
+        #speed-container {
+            position: absolute; bottom: 30px; right: 20px; z-index: 1000;
+            display: flex; align-items: flex-end; gap: 10px;
         }
 
-        /* Navigacija zgoraj */
-        #nav-box {
-            position: absolute; top: 10px; left: 10px; right: 10px; z-index: 1000;
-            background: white; border-radius: 10px; display: flex; padding: 5px;
+        /* Tvoja trenutna hitrost */
+        #current-speed-box {
+            background: rgba(0, 0, 0, 0.85); color: white;
+            width: 80px; height: 80px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border: 3px solid #007bff; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        #nav-box input { flex: 1; border: none; padding: 10px; font-size: 16px; outline: none; }
-        #nav-box button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; }
+        #speed-val { font-size: 32px; font-weight: bold; }
+
+        /* Ikona za omejitev hitrosti (Prometni znak) */
+        #limit-box {
+            background: white; color: black;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 5px solid #d32f2f; font-size: 24px; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Stil za gumbe za prijavo smo ohranili iz prejšnjega koraka... */
+        #main-btn { position: absolute; bottom: 30px; left: 20px; z-index: 1000; background: #ff1744; color: white; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div id="nav-box">
-        <input type="text" id="dest" placeholder="Kam želite iti?">
-        <button onclick="go()">POJDI</button>
-    </div>
-
     <button id="main-btn" onclick="toggleMenu(true)">⚠️ PRIJAVI</button>
 
-    <div id="report-overlay" id="report-overlay">
-        <div class="report-grid">
-            <div class="report-item" onclick="submit('👮', 'POLICIJA')"><span>👮</span><b>Policija</b></div>
-            <div class="report-item" onclick="submit('📸', 'RADAR')"><span>📸</span><b>Radar</b></div>
-            <div class="report-item" onclick="submit('💥', 'NESREČA')"><span>💥</span><b>Nesreča</b></div>
-            <div class="report-item" onclick="submit('🚗🚗', 'ZASTOJ')"><span>🚗🚗</span><b>Zastoj</b></div>
-            <div class="report-item" onclick="submit('🚧', 'DELO NA CESTI')"><span>🚧</span><b>Delo na cesti</b></div>
-            <div class="report-item" onclick="submit('🔸', 'OPOZORILO')"><span>🔸</span><b>Opozorilo</b></div>
+    <div id="speed-container">
+        <div id="limit-box">50</div>
+        <div id="current-speed-box">
+            <span id="speed-val">0</span>
+            <small>km/h</small>
         </div>
-        <button style="margin-top: 40px; background: none; border: 1px solid white; color: white; padding: 10px 40px; border-radius: 20px;" onclick="toggleMenu(false)">ZAPRI</button>
     </div>
 
     <div id="map"></div>
@@ -70,34 +56,33 @@
         var map = L.map('map', { zoomControl: false }).setView([46.15, 15.00], 8);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        var userPos;
         map.locate({setView: true, watch: true, enableHighAccuracy: true});
+        
         map.on('locationfound', function(e) {
-            userPos = e.latlng;
+            // Izračun trenutne hitrosti
+            var speed = e.speed ? Math.round(e.speed * 3.6) : 0;
+            document.getElementById('speed-val').innerText = speed;
+
+            // Logika za prikaz omejitve (približek)
+            var limitBox = document.getElementById('limit-box');
+            if (speed > 110) limitBox.innerText = "130";
+            else if (speed > 70) limitBox.innerText = "90";
+            else if (speed > 40) limitBox.innerText = "50";
+            else limitBox.innerText = "50";
+
+            // Če prekoračiš omejitev, naj števec utripa rdeče
+            var currentBox = document.getElementById('current-speed-box');
+            if (speed > parseInt(limitBox.innerText)) {
+                currentBox.style.borderColor = "#ff1744";
+                currentBox.style.color = "#ff1744";
+            } else {
+                currentBox.style.borderColor = "#007bff";
+                currentBox.style.color = "white";
+            }
+
             if (!window.u) window.u = L.circleMarker(e.latlng, {radius: 9, color: 'white', fillColor: '#007bff', fillOpacity: 1}).addTo(map);
             else window.u.setLatLng(e.latlng);
         });
-
-        function toggleMenu(s) { document.getElementById('report-overlay').style.display = s ? 'flex' : 'none'; }
-
-        function submit(emoji, tip) {
-            // Ustvari ikono za mapo
-            var icon = L.divIcon({
-                html: '<div style="font-size: 30px;">' + emoji + '</div>',
-                className: 'custom-div-icon',
-                iconSize: [40, 40],
-                iconAnchor: [20, 20]
-            });
-
-            L.marker(userPos, {icon: icon}).addTo(map).bindPopup("<b>" + tip + "</b>").openPopup();
-            toggleMenu(false);
-            alert("Javljeno: " + tip);
-        }
-
-        function go() {
-            var d = document.getElementById('dest').value;
-            if(d) window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(d));
-        }
     </script>
 </body>
 </html>
