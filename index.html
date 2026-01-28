@@ -9,104 +9,102 @@
         body { margin: 0; padding: 0; background: #121212; }
         #map { height: 100vh; width: 100vw; }
         
-        /* Stil za kroge z ikonami */
-        .radar-icon-circle {
-            background: rgba(0, 0, 0, 0.8);
+        /* Enoten stil za vse ikone na mapi */
+        .radar-marker {
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            width: 40px !important;
+            height: 40px !important;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
-        .waze-style { border-color: #00fbff; box-shadow: 0 0 15px #00fbff; }
-        .amzs-style { border-color: #ff9800; box-shadow: 0 0 15px #ff9800; }
-        
-        /* Omejitev hitrosti pod ikono */
-        .speed-tag {
-            position: absolute;
-            bottom: -12px;
-            background: white;
-            color: red;
-            border: 2px solid red;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 11px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Različne barve obrob glede na vir */
+        .waze-border { border-color: #00fbff; box-shadow: 0 0 15px #00fbff; }
+        .amzs-border { border-color: #ff9800; box-shadow: 0 0 15px #ff9800; }
+        .fiksni-border { border-color: #ffffff; box-shadow: 0 0 15px #ffffff; }
+
         .update-btn { 
-            position: absolute; top: 15px; right: 15px; z-index: 1000; 
-            background: #cc0000; color: white; border: none; 
-            padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;
+            position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; background: #cc0000; color: white; border: none; 
+            padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
-    <button class="update-btn" onclick="osveziVse()">OSVEŽI VSE 🔄</button>
+    <button class="update-btn" onclick="zdruziInOsvezi()">OSVEŽI VSE VIRU 🔄</button>
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // Nastavitev mape na Slovenijo
         var map = L.map('map', { zoomControl: false }).setView([46.15, 14.99], 8);
+        
+        // Temna podlaga
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
-        var markers = L.layerGroup().addTo(map);
+        
+        // Enotna plast za vse markerje
+        var markersGroup = L.layerGroup().addTo(map);
 
-        function createCustomIcon(emoji, colorClass, speed) {
-            let speedHtml = speed ? `<div class="speed-tag">${speed}</div>` : '';
+        function ustvariIkono(emoji, borderClass) {
             return L.divIcon({
-                className: `radar-icon-circle ${colorClass}`,
-                html: `<span>${emoji}</span>${speedHtml}`,
+                className: `radar-marker ${borderClass}`,
+                html: `<span>${emoji}</span>`,
                 iconSize: [40, 40],
                 iconAnchor: [20, 20]
             });
         }
 
-        async function osveziVse() {
-            markers.clearLayers();
-            const proxy = "https://corsproxy.io/?";
+        async function zdruziInOsvezi() {
+            markersGroup.clearLayers();
+            const proxy = "https://api.allorigins.win/raw?url="; // Alternativni proxy
 
-            // 1. FIKSNI IZ GITHUBA
+            // 1. VIR: Tvoji fiksni radarji (radarji.json)
             try {
                 const res = await fetch('radarji.json?t=' + Date.now());
                 const data = await res.json();
                 data.forEach(r => {
-                    L.marker([r.lat, r.lon], { icon: createCustomIcon('📸', '', r.limit || '50') })
-                     .addTo(markers).bindPopup(r.opis);
+                    L.marker([r.lat, r.lon], { icon: ustvariIkono(r.icon || '📸', 'fiksni-border') })
+                     .addTo(markersGroup).bindPopup(`<b>FIKSNI:</b> ${r.opis}`);
                 });
-            } catch(e) {}
+            } catch(e) { console.log("Napaka: Fiksni"); }
 
-            // 2. WAZE V ŽIVO (Direktno na telefon)
+            // 2. VIR: WAZE (V živo preko proxy-ja)
+            const wazeUrl = "https://www.waze.com/rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0";
             try {
-                const wUrl = encodeURIComponent("https://www.waze.com/rtp-api/web/map/details?bbox=13.0,45.3,16.7,47.0");
-                const res = await fetch(proxy + wUrl);
+                const res = await fetch(proxy + encodeURIComponent(wazeUrl));
                 const data = await res.json();
                 data.alerts.forEach(a => {
                     if (a.type === 'POLICE') {
-                        L.marker([a.location.y, a.location.x], { icon: createCustomIcon('👮', 'waze-style', '') })
-                         .addTo(markers).bindPopup("WAZE: Policija");
+                        L.marker([a.location.y, a.location.x], { icon: ustvariIkono('👮', 'waze-border') })
+                         .addTo(markersGroup).bindPopup(`<b>WAZE:</b> Policija v živo`);
                     }
                 });
-            } catch(e) {}
+            } catch(e) { console.log("Napaka: Waze"); }
 
-            // 3. AMZS / DARS V ŽIVO
+            // 3. VIR: AMZS/DARS (V živo preko proxy-ja)
+            const darsUrl = "https://www.promet.si/dc/traffic.events.public.json";
             try {
-                const dUrl = encodeURIComponent("https://www.promet.si/dc/traffic.events.public.json");
-                const res = await fetch(proxy + dUrl);
+                const res = await fetch(proxy + encodeURIComponent(darsUrl));
                 const data = await res.json();
                 data.contents.forEach(e => {
-                    if (e.description.toLowerCase().includes('radar')) {
-                        L.marker([e.y, e.x], { icon: createCustomIcon('📸', 'amzs-style', '') })
-                         .addTo(markers).bindPopup("DARS: " + e.description);
+                    const d = e.description.toLowerCase();
+                    if (d.includes('radar') || d.includes('meritev') || d.includes('kontrola')) {
+                        L.marker([e.y, e.x], { icon: ustvariIkono('📸', 'amzs-border') })
+                         .addTo(markersGroup).bindPopup(`<b>AMZS:</b> ${e.description}`);
                     }
                 });
-            } catch(e) {}
+            } catch(e) { console.log("Napaka: AMZS"); }
         }
-        osveziVse();
+
+        // Prvi zagon
+        zdruziInOsvezi();
+        // Avtomatsko osveževanje na 3 minute
+        setInterval(zdruziInOsvezi, 180000);
     </script>
 </body>
 </html>
