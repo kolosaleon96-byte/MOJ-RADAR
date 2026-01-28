@@ -4,58 +4,52 @@ from datetime import datetime
 def procesiraj():
     zdaj = datetime.now().strftime("%d.%m.%Y ob %H:%M")
     
-    # 1. VIR: STACIONARNI RADARJI (Radarbot & Fiksni)
-    stacionarni = [
-        {"regija": "Prekmurje", "kraj": "MS - Lendavska", "lat": 46.6591, "lon": 16.1622, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "50"},
-        {"regija": "Prekmurje", "kraj": "MS - Noršinska", "lat": 46.6655, "lon": 16.1811, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "50"},
-        {"regija": "Prekmurje", "kraj": "MS - Panonska", "lat": 46.6555, "lon": 16.1711, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "50"},
-        {"regija": "Prekmurje", "kraj": "Gederovci", "lat": 46.6655, "lon": 16.0488, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "50"},
-        {"regija": "LJ", "kraj": "LJ - Celovška", "lat": 46.0792, "lon": 14.4841, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "60"},
-        {"regija": "MB", "kraj": "MB - Ptujska", "lat": 46.5385, "lon": 15.6662, "vir": "Radarbot", "opis": "STACIONARNI RADAR", "omejitev": "70"}
+    # --- MASIVNA SLOVENSKA BAZA (Radarji, Kamere, DARS, AMZS) ---
+    vsi = [
+        # PREKMURJE - Detajlno
+        {"regija": "Prekmurje", "kraj": "MS - Lendavska", "lat": 46.6591, "lon": 16.1622, "vir": "Radar", "opis": "STACIONARNI RADAR", "omejitev": "50"},
+        {"regija": "Prekmurje", "kraj": "MS - Noršinska", "lat": 46.6655, "lon": 16.1811, "vir": "Radar", "opis": "STACIONARNI RADAR", "omejitev": "50"},
+        {"regija": "Prekmurje", "kraj": "Gederovci", "lat": 46.6655, "lon": 16.0488, "vir": "Radar", "opis": "Radar v naselju", "omejitev": "50"},
+        {"regija": "Prekmurje", "kraj": "Lendava - Kamere", "lat": 46.5622, "lon": 16.4511, "vir": "DARS", "opis": "DARS Nadzorna kamera", "omejitev": "130"},
+        {"regija": "Prekmurje", "kraj": "Beltinci center", "lat": 46.6047, "lon": 16.2383, "vir": "Facebook", "opis": "Kontrola (FB)", "omejitev": "50"},
+        
+        # AVTOCESTE - VSE KAMERE IN NADZOR (DARS)
+        {"regija": "AC", "kraj": "AC - Tepanje", "lat": 46.3455, "lon": 15.4722, "vir": "DARS", "opis": "DARS Nadzor (Kamera/Radar)", "omejitev": "130"},
+        {"regija": "AC", "kraj": "AC - Lom", "lat": 45.8922, "lon": 14.3511, "vir": "DARS", "opis": "DARS Nadzor / Tehtanje", "omejitev": "130"},
+        {"regija": "AC", "kraj": "AC - Golovec", "lat": 46.0382, "lon": 14.5422, "vir": "DARS", "opis": "SEKCIJSKO MERJENJE", "omejitev": "100"},
+        {"regija": "AC", "kraj": "AC - Viadukt Črni Kal", "lat": 45.5533, "lon": 13.8811, "vir": "DARS", "opis": "Radar / Močan veter", "omejitev": "100"},
+        {"regija": "AC", "kraj": "AC - Lukovica", "lat": 46.1681, "lon": 14.6851, "vir": "DARS", "opis": "DARS kamera - nadzor", "omejitev": "130"},
+        {"regija": "AC", "kraj": "AC - Peračica", "lat": 46.3355, "lon": 14.2388, "vir": "DARS", "opis": "DARS kamera / radar", "omejitev": "130"},
+        
+        # ŠTAJERSKA IN OSTALO
+        {"regija": "Maribor", "kraj": "MB - Ptujska", "lat": 46.5385, "lon": 15.6662, "vir": "Radar", "opis": "STACIONARNI RADAR", "omejitev": "70"},
+        {"regija": "Maribor", "kraj": "MB - Tržaška", "lat": 46.5355, "lon": 15.6511, "vir": "Radar", "opis": "STACIONARNI RADAR", "omejitev": "70"},
+        {"regija": "Celje", "kraj": "CE - Mariborska", "lat": 46.2461, "lon": 15.2711, "vir": "Radar", "opis": "STACIONARNI RADAR", "omejitev": "50"},
+        
+        # AMZS - Ključna obvestila
+        {"regija": "Ljubljana", "kraj": "AMZS Center", "lat": 46.0688, "lon": 14.5122, "vir": "AMZS", "opis": "AMZS: Stanje na cestah", "omejitev": "50"}
     ]
 
-    # 2. VIR: FACEBOOK LOKACIJE (Detajlno Pomurje)
-    facebook_viri = [
-        {"regija": "Pomurje", "kraj": "Beltinci", "lat": 46.6047, "lon": 16.2383, "vir": "Facebook", "opis": "Kontrola prometa (FB)", "omejitev": "50"},
-        {"regija": "Pomurje", "kraj": "Ljutomer", "lat": 46.5181, "lon": 16.1975, "vir": "Facebook", "opis": "Poročilo s terena (FB)", "omejitev": "50"},
-        {"regija": "Pomurje", "kraj": "Radenci", "lat": 46.6433, "lon": 16.0422, "vir": "Facebook", "opis": "Merjenje hitrosti (FB)", "omejitev": "50"},
-        {"regija": "Pomurje", "kraj": "Murska Sobota - Center", "lat": 46.658, "lon": 16.162, "vir": "Facebook", "opis": "Aktivna kontrola (FB)", "omejitev": "50"}
-    ]
-
-    koncni_seznam = []
-
-    # Združevanje vseh virov v eno glavno tabelo
-    for r in stacionarni:
-        r["cas"] = zdaj
-        koncni_seznam.append(r)
-
-    for f in facebook_viri:
-        f["cas"] = zdaj
-        koncni_seznam.append(f)
-
-    # 3. VIR: WAZE & AMZS (Živi podatki)
+    # --- WAZE INTEGRACIJA (Če dela, doda še več, če ne, baza ostane polna) ---
     try:
-        w_res = requests.get("https://www.waze.com/row-rtserver/web/TGeoRSS?top=46.876&bottom=45.421&left=13.375&right=16.610", headers={'User-Agent': 'Mozilla/5.0'}, timeout=5).json()
-        for a in w_res.get('alerts', []):
-            koncni_seznam.append({
+        w_url = "https://www.waze.com/row-rtserver/web/TGeoRSS?top=46.876&bottom=45.421&left=13.375&right=16.610"
+        wr = requests.get(w_url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=5).json()
+        for a in wr.get('alerts', []):
+            vsi.append({
                 "regija": "Slovenija", "kraj": a.get('street', 'Cesta'),
                 "lat": a.get('location', {}).get('y'), "lon": a.get('location', {}).get('x'), 
-                "vir": "Waze Live", "opis": f"V ŽIVO: {a.get('type')}", "omejitev": "Preveri", "cas": zdaj
+                "vir": "Waze Live", "opis": f"WAZE: {a.get('type')}", "omejitev": "Preveri", "cas": zdaj
             })
-    except: pass
+    except:
+        print("Waze trenutno ne odgovarja, uporabljam bogato fiksno bazo.")
 
-    # DODAJANJE AMZS ROČNO, ČE JE KAJ NOVEGA
-    try:
-        r_amzs = requests.get("https://www.amzs.si/na-poti/stanje-na-cestah", timeout=5)
-        if "radar" in r_amzs.text.lower():
-            koncni_seznam.append({"regija": "Slovenija", "kraj": "AMZS Radar", "lat": 46.12, "lon": 14.82, "vir": "AMZS", "opis": "AMZS: Meritve hitrosti!", "omejitev": "-", "cas": zdaj})
-    except: pass
+    for r in vsi: r["cas"] = zdaj
 
-    # SHRANJEVANJE
+    # ZAPIS
     with open('radarji.json', 'w', encoding='utf-8') as f:
-        json.dump(koncni_seznam, f, ensure_ascii=False, indent=4)
+        json.dump(vsi, f, ensure_ascii=False, indent=4)
     
-    print(f"SISTEM POPRAVLJEN: Naloženih {len(koncni_seznam)} točk iz vseh virov.")
+    print(f"Sistem osvežen: {len(vsi)} točk (Kamere DARS in Radarji vključeni).")
 
 if __name__ == "__main__":
     procesiraj()
