@@ -1,32 +1,32 @@
 [
     {
         "regija": "Pomurje",
-        "kraj": "Policijska kontrola Vaneča",
-        "cas": "06:58",
+        "kraj": "Policijska kontrola Vaneča pri pokopališču",
+        "cas": "07:33",
         "lat": 46.7214,
         "lon": 16.1633,
         "vir": "Facebook"
     },
     {
         "regija": "Ljubljana",
-        "kraj": "Radar Dunajska",
-        "cas": "06:58",
+        "kraj": "Radar na Dunajski cesti v Ljubljani",
+        "cas": "07:33",
         "lat": 46.0569,
         "lon": 14.5058,
         "vir": "Facebook"
     },
     {
         "regija": "AMZS Uradno",
-        "kraj": "Radar: Ljubljan (AMZS)",
-        "cas": "07:16",
+        "kraj": "Radar: Ljubljan (Uradno potrjeno)",
+        "cas": "07:33",
         "lat": 46.0569,
         "lon": 14.5058,
         "vir": "AMZS"
     },
     {
         "regija": "AMZS Uradno",
-        "kraj": "Radar: Maribor (AMZS)",
-        "cas": "07:16",
+        "kraj": "Radar: Maribor (Uradno potrjeno)",
+        "cas": "07:33",
         "lat": 46.5547,
         "lon": 15.6459,
         "vir": "AMZS"
