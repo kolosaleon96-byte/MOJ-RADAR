@@ -4,16 +4,16 @@
     "lon": 14.5058,
     "tip": "FIKSNI RADAR",
     "icon": "📸",
-    "opis": "Ljubljana Center - 50 km/h",
+    "opis": "Ljubljana Center - Omejitev 50 km/h",
     "vir": "RADARBOT GOLD",
     "limit": "50"
   },
   {
     "lat": 46.2361,
     "lon": 14.3572,
-    "tip": "POLICIJA",
+    "tip": "POLICIJSKA KONTROLA",
     "icon": "👮",
-    "opis": "Radar v civilnem avtu (Kranj)",
+    "opis": "Merjenje hitrosti - Kranj",
     "vir": "WAZE",
     "limit": "60"
   },
@@ -22,8 +22,17 @@
     "lon": 14.9955,
     "tip": "DELA NA CESTI",
     "icon": "🚧",
-    "opis": "Zaprt pas zaradi obnove",
+    "opis": "Zaprt prehitevalni pas",
     "vir": "DARS",
     "limit": "80"
+  },
+  {
+    "lat": 46.0420,
+    "lon": 14.4860,
+    "tip": "NESREČA",
+    "icon": "💥",
+    "opis": "Manjše trčenje, promet oviran",
+    "vir": "MOJA PRIJAVA",
+    "limit": ""
   }
 ]
