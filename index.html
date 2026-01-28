@@ -1,1 +1,37 @@
+<audio id="radarSound" src="https://www.soundjay.com/buttons/beep-01a.mp3" preload="auto"></audio>
 
+<script>
+    var radarAudio = document.getElementById('radarSound');
+    var hasAlerted = false; // Da ne piska vsako sekundo za isti radar
+
+    function checkNearbyRadars(myLat, myLon) {
+        fetch('radarji.json?t=' + Date.now())
+            .then(res => res.json())
+            .then(data => {
+                let alertFound = false;
+                data.forEach(t => {
+                    var dist = getDistance(myLat, myLon, t.lat, t.lon);
+                    
+                    // Če si bližje kot 1 km in še nismo piskali za ta radar
+                    if (dist < 1.0 && !hasAlerted) { 
+                        playAlertSound();
+                        showAlert(t.opis + " - 1km stran!");
+                        hasAlerted = true;
+                        alertFound = true;
+                    }
+                });
+                
+                // Ko se odpelješ stran (več kot 2km), resetiramo opozorilo za naslednji radar
+                if (!alertFound) {
+                    hasAlerted = false;
+                }
+            });
+    }
+
+    function playAlertSound() {
+        // Poskusi predvajati zvok
+        radarAudio.play().catch(function(error) {
+            console.log("Zvok blokiran - uporabnik mora najprej klikniti na stran.");
+        });
+    }
+</script>
